@@ -1,0 +1,31 @@
+INSERT INTO users (name, surname, middle_name, email)
+VALUES ('Микита', 'Будкін', 'Олександрович', 'budova@gmail.com'),
+       ('Володимир', 'Дудкін', 'Михайлович', 'dydkin@gmail.com'),
+       ('Міхаїл', 'Великий', 'Сергійович', 'mvs_ukraina@ukr.net'),
+       ('Юлія', 'Кожемяка', 'Сергіївна', 'juliaprekrasna@ukr.net'),
+       ('Сергій', 'Котов', 'Микитович', 'sergii@ogo.ua'),
+       ('Олександр', 'Жгутов', 'Володимирович', 'olejgyt@gmail.com'),
+       ('Петро', 'Петрович', 'Петрович', 'pepepe@pe.com');
+
+INSERT INTO phone_numbers (user_id, country_code, number)
+VALUES (5, '+38', '0930236587'),
+       (6, '+38', '0638751276'),
+       (7, '+38', '0661232398'),
+       (8, '+38', '0978679834'),
+       (9, '+38', '0446451287'),
+       (10, '+38', '0674568753'),
+       (11, '+38', '0994563481');
+
+INSERT INTO users_roles (user_id, role_id)
+VALUES (5, 1),
+       (6, 1),
+       (7, 1),
+       (8, 2),
+       (9, 2),
+       (10, 1),
+       (11, 2);
+
+SELECT * FROM users;
+SELECT * FROM phone_numbers;
+SELECT * FROM roles;
+SELECT * FROM users_roles;
