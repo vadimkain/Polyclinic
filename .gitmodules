@@ -1,0 +1,6 @@
+[submodule "common/plog"]
+	path = common/plog
+	url = https://github.com/SergiusTheBest/plog.git
+[submodule "common/googletest"]
+	path = common/googletest
+	url = https://github.com/google/googletest.git

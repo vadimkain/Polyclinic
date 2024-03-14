@@ -176,4 +176,7 @@ BEGIN
     END LOOP;
 END $$;
 
+-- update database version;
+ALTER DATABASE polyclinic REFRESH COLLATION VERSION;
+
 -- DROP TABLE phone_numbers; DROP TABLE users_roles; DROP TABLE users; DROP TABLE roles; DROP DOMAIN custom_email; DROP EXTENSION citext;
