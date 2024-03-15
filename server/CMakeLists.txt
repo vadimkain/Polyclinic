@@ -21,9 +21,6 @@ add_executable(
 
 #----------------------------- LINK LIBRARIES -----------------------------#
 
-target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../logger")
-
-# add_subdirectory(logger)
 add_subdirectory(common)
 add_subdirectory(db)
 add_subdirectory(tests)
