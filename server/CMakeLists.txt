@@ -28,7 +28,7 @@ add_subdirectory(tests)
 set(
     ALL_LIBS
     polyclinic_server_db
-    plog
+    bukhtalogger
 )
 
 target_link_libraries(

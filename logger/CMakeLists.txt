@@ -1,10 +1,13 @@
 #----------------------------- CREATE LIBRARY -----------------------------#
 
 cmake_minimum_required(VERSION 3.6.0)
-set(PROJECT_NAME polyclinic_server_db)
+set(PROJECT_NAME bukhtalogger)
 project(${PROJECT_NAME})
 
-file(GLOB LIB_SRC "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+set(
+    LIB_SRC
+    src/Logger.cpp
+)
 
 add_library(
     ${PROJECT_NAME}
@@ -14,6 +17,7 @@ add_library(
 target_include_directories(
     ${PROJECT_NAME}
     PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
     include
 )
 
@@ -21,8 +25,7 @@ target_include_directories(
 
 set(
     ALL_LIBS
-    polyclinic_server_common
-    bukhtalogger
+    plog
 )
 
 target_link_libraries(
