@@ -36,4 +36,4 @@ void Logger::set_log_file_name(const std::string &val) {
 
 void Logger::set_logging_lvl(LoggingEnum val) noexcept {
     m_logging_lvl = val;
-}
+}   

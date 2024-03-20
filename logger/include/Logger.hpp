@@ -82,6 +82,7 @@ inline void __init_logger__(const std::string& name, bool show_console) {
     }
     __logger__->init();
 }
+
 inline std::string construct_method_name(const std::string& class_name, const std::string& method_name) {
     std::stringstream full_name_stream;
     full_name_stream << "[" << class_name << "][" << method_name << "] ";
@@ -89,8 +90,13 @@ inline std::string construct_method_name(const std::string& class_name, const st
     return std::move(full_name_stream.str());
 }
 
+/*
+ * Logging macros starts;
+ */
+
 #ifndef BLOG_INIT
-#define BLOG_INIT(name, show_console) __init_logger__(name, show_console);
+#define BLOG_INIT(name, show_console)   \
+    __init_logger__(name, show_console);
 #endif // !LOG_INIT;
 
 #ifndef BDECLARE_TAG_SCOPE
@@ -103,23 +109,46 @@ inline std::string construct_method_name(const std::string& class_name, const st
     Logger::get_instance()->log(LOG_LVL, __function_name__, __VA_ARGS__);
 #endif  // !BLOG
 
+/*
+ * Logging Lvl macros starts;
+ */
+
 #ifndef BLOG_VERBOSE
-#define BLOG_VERBOSE(...) BLOG(plog::verbose, __VA_ARGS__);
+#define BLOG_VERBOSE(...)   \
+    BLOG(plog::verbose, __VA_ARGS__);
 #endif  // !BLOG_VERBOSE;
+
 #ifndef BLOG_DEBUG
-#define BLOG_DEBUG(...) BLOG(plog::debug, __VA_ARGS__);
+#define BLOG_DEBUG(...) \
+    BLOG(plog::debug, __VA_ARGS__);
 #endif  // !BLOG_DEBUG;
+
 #ifndef BLOG_INFO
-#define BLOG_INFO(...) BLOG(plog::info, __VA_ARGS__);
+#define BLOG_INFO(...)  \
+    BLOG(plog::info, __VA_ARGS__);
 #endif  // !BLOG_INFO;
+
 #ifndef BLOG_WARNING
-#define BLOG_WARNING(...) BLOG(plog::warning, __VA_ARGS__);
+#define BLOG_WARNING(...)   \
+    BLOG(plog::warning, __VA_ARGS__);
 #endif  // !BLOG_WARNING;
+
 #ifndef BLOG_ERROR
-#define BLOG_ERROR(...) BLOG(plog::error, __VA_ARGS__);
+#define BLOG_ERROR(...) \
+    BLOG(plog::error, __VA_ARGS__);
 #endif  // !BLOG_ERROR;
+
 #ifndef BLOG_FATAL
-#define BLOG_FATAL(...) BLOG(plog::fatal, __VA_ARGS__);
+#define BLOG_FATAL(...) \
+    BLOG(plog::fatal, __VA_ARGS__);
 #endif  // !BLOG_FATAL;
+
+/*
+ * Logging Lvl macros ends;
+ */
+
+/*
+ * Logging macros ends;
+ */
 
 #endif // !BUKHTALOG_LOGGER_HPP
