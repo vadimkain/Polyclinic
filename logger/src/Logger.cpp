@@ -6,6 +6,8 @@
 
 #include <sstream>
 
+namespace bukhtalog {
+
 /* Description:
  *  The implementation of this method in hpp file because the link error is happened
  * due to using macros. Please check Logger.hpp file to check the implementation;
@@ -37,3 +39,5 @@ void Logger::set_log_file_name(const std::string &val) {
 void Logger::set_logging_lvl(LoggingEnum val) noexcept {
     m_logging_lvl = val;
 }   
+
+}   // !bukhtalog;

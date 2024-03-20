@@ -37,7 +37,7 @@ std::string generate_log_file_name(const std::string &first_name_part) {
 
 int main(int argc, char **argv) {
     BLOG_INIT(std::move(generate_log_file_name("server_logs.txt")), true);
-    // LOG_INFO
+    BDECLARE_TAG_SCOPE("", __FUNCTION__);
     
     db::DBQuery dbquery;
     dbquery.output_all_users();
