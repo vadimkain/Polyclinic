@@ -21,7 +21,7 @@ DBQuery::DBQuery() {
                                  << " user=" << config::DB_USERNAME << " password=" << config::DB_PASSWORD 
                                  << " dbname=" << config::DB_NAME;
 
-    // BLOG_INFO("Make connection to db. ", db_connection_command_stream.str());
+    BLOG_INFO("Make connection to db. ", db_connection_command_stream.str());
     m_db_connection = std::make_unique<pqxx::connection>(db_connection_command_stream.str());
 
     if (m_db_connection->is_open()) {

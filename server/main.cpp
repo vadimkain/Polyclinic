@@ -1,6 +1,5 @@
 #include "config.hpp"
 #include "DBQuery.hpp"
-
 #include "Logger.hpp"
 
 #include <cinttypes>
@@ -8,6 +7,8 @@
 #include <ctime>
 #include <iomanip>
 #include <sstream>
+
+#include <sys/stat.h>   // mkdir;
 
 namespace db = server::db;
 
@@ -36,7 +37,9 @@ std::string generate_log_file_name(const std::string &first_name_part) {
 }
 
 int main(int argc, char **argv) {
-    BLOG_INIT(std::move(generate_log_file_name("server_logs.txt")), true);
+    const std::string LOGS_FOLDER_DIR_NAME = "logs";
+    mkdir(LOGS_FOLDER_DIR_NAME.c_str(), 0755);
+    BLOG_INIT(std::move(generate_log_file_name(LOGS_FOLDER_DIR_NAME + "/server_logs.txt")), true);
     BDECLARE_TAG_SCOPE("", __FUNCTION__);
     
     db::DBQuery dbquery;
