@@ -24,11 +24,13 @@ add_executable(
 add_subdirectory(common)
 add_subdirectory(db)
 add_subdirectory(tests)
+add_subdirectory(server)
 
 set(
     ALL_LIBS
     polyclinic_server_db
     bukhtalogger
+    polyclinic_server_code
 )
 
 target_link_libraries(

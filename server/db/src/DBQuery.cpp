@@ -6,7 +6,7 @@
 #include <pqxx/result>
 
 #include <sstream>
-#include <iostream>
+#include <thread>
 
 namespace config = server::common::config;
 
@@ -21,6 +21,7 @@ DBQuery::DBQuery() {
                                  << " user=" << config::DB_USERNAME << " password=" << config::DB_PASSWORD 
                                  << " dbname=" << config::DB_NAME;
 
+    BLOG_INFO("constructor called on thread #", std::this_thread::get_id());
     BLOG_INFO("Make connection to db. ", db_connection_command_stream.str());
     m_db_connection = std::make_unique<pqxx::connection>(db_connection_command_stream.str());
 
