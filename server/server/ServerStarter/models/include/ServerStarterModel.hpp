@@ -11,8 +11,8 @@ class ServerStarterModel : public IServerStarterModel {
 public:
     ServerStarterModel(void);
 
-    std::int32_t socket() const noexcept override;
-    void set_socket(std::int32_t val) noexcept override;
+    std::int32_t socket_fd() const noexcept override;
+    void set_socket_fd(std::int32_t val) noexcept override;
 
 private:
     std::atomic<std::int32_t> m_socket_fd;

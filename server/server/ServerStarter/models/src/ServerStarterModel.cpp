@@ -8,11 +8,11 @@ ServerStarterModel::ServerStarterModel(void)
 
 }
 
-std::int32_t ServerStarterModel::socket() const noexcept {
+std::int32_t ServerStarterModel::socket_fd() const noexcept {
     return m_socket_fd.load(std::memory_order::memory_order_acquire);
 }
 
-void ServerStarterModel::set_socket(std::int32_t val) noexcept {
+void ServerStarterModel::set_socket_fd(std::int32_t val) noexcept {
     m_socket_fd.exchange(val, std::memory_order::memory_order_release);
 }
 

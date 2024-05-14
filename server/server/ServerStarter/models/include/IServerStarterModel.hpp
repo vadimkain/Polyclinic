@@ -8,8 +8,8 @@ namespace server::serverstarter::models {
 
 class IServerStarterModel {
 public:
-    virtual std::int32_t socket() const noexcept = 0;
-    virtual void set_socket(std::int32_t val) noexcept = 0;
+    virtual std::int32_t socket_fd() const noexcept = 0;
+    virtual void set_socket_fd(std::int32_t val) noexcept = 0;
 };
 
 }   // !server::serverstarter::models;

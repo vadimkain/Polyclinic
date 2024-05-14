@@ -10,8 +10,10 @@ namespace server::serverstarter::controllers {
 class ServerStarterController {
 public:
     ServerStarterController(std::weak_ptr<models::IServerStarterModel> model);
+    ~ServerStarterController(void);
 
     void start(void);
+    void close(void);
 
 private:
     std::shared_ptr<models::IServerStarterModel> m_server_starter_model;

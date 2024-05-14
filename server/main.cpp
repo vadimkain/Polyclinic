@@ -52,7 +52,9 @@ int main(int argc, char **argv) {
     server::serverstarter::controllers::ServerStarterController server_starter_controller(server_starter_model);
     db::DBQuery dbquery;
 
-    std::thread(&server::serverstarter::controllers::ServerStarterController::start, &server_starter_controller).detach();
+    std::thread server_starter_thread (&server::serverstarter::controllers::ServerStarterController::start, &server_starter_controller);
+
+    server_starter_thread.join();
     
     // dbquery.output_all_users();
 
