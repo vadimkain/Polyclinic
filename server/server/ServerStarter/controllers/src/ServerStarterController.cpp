@@ -12,23 +12,23 @@ ServerStarterController::ServerStarterController(std::weak_ptr<models::IServerSt
     : m_server_starter_model{model.lock()}
 {
     BDECLARE_TAG_SCOPE("ServerStarterController", __FUNCTION__);
-
     BLOG_INFO("constructor called on thread #", std::this_thread::get_id());
+
+    m_client_handler_controller = std::make_shared<client_handler::controllers::ClientHandlerController>(m_server_starter_model);
 }
 
 ServerStarterController::~ServerStarterController(void) {
     BDECLARE_TAG_SCOPE("ServerStarterController", __FUNCTION__);
     BLOG_INFO("destructor called on thread #", std::this_thread::get_id());
-    
+
     close();
 }
 
 void ServerStarterController::start(void) {
     BDECLARE_TAG_SCOPE("ServerStarterController", __FUNCTION__);
-
-    while (true) {};
-
     BLOG_INFO("called");
+
+    std::thread(&client_handler::controllers::ClientHandlerController::start, m_client_handler_controller.get()).detach();
 }
 
 void ServerStarterController::close(void) {

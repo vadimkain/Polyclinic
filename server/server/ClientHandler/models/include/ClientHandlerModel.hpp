@@ -9,6 +9,11 @@ namespace server::client_handler::models {
     
 class ClientHandlerModel : public IClientHandlerModel {
 public:
+    bool operator== (const ClientHandlerModel& other);
+    bool operator!= (const ClientHandlerModel& other);
+    bool operator< (const ClientHandlerModel& other);
+    bool operator> (const ClientHandlerModel& other);
+
     std::int32_t socket_fd(void) const noexcept override;
     void set_socket_fd(std::int32_t val) noexcept override;
 

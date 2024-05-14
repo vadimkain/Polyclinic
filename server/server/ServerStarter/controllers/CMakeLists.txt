@@ -21,8 +21,9 @@ target_include_directories(
 
 set(
     ALL_LIBS
-    polyclinic_server_code_server_starter_models
     bukhtalogger
+    polyclinic_server_code_server_starter_models
+    polyclinic_server_code_client_handler_controllers
 )
 
 target_link_libraries(
