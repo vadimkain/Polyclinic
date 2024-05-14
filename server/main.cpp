@@ -2,11 +2,16 @@
 #include "DBQuery.hpp"
 #include "Logger.hpp"
 
+#include "ServerStarterController.hpp"
+#include "ServerStarterModel.hpp"
+
 #include <cinttypes>
 #include <chrono>
 #include <ctime>
 #include <iomanip>
 #include <sstream>
+#include <thread>
+#include <memory>
 
 #include <sys/stat.h>   // mkdir;
 
@@ -41,9 +46,15 @@ int main(int argc, char **argv) {
     mkdir(LOGS_FOLDER_DIR_NAME.c_str(), 0755);
     BLOG_INIT(std::move(generate_log_file_name(LOGS_FOLDER_DIR_NAME + "/server_logs.txt")), true);
     BDECLARE_TAG_SCOPE("", __FUNCTION__);
-    
+
+    auto server_starter_model = std::make_shared<server::serverstarter::models::ServerStarterModel>();
+
+    server::serverstarter::controllers::ServerStarterController server_starter_controller(server_starter_model);
     db::DBQuery dbquery;
-    dbquery.output_all_users();
+
+    std::thread(&server::serverstarter::controllers::ServerStarterController::start, &server_starter_controller).detach();
+    
+    // dbquery.output_all_users();
 
     return 0;
 }

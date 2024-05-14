@@ -7,7 +7,7 @@
 
 namespace server::serverstarter::models {
 
-class ServerStarterModel : IServerStarterModel {
+class ServerStarterModel : public IServerStarterModel {
 public:
     ServerStarterModel(void);
 
