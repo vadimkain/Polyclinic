@@ -12,6 +12,7 @@ namespace server::client_handler::controllers {
 class ClientHandlerController {
 public:
     ClientHandlerController(std::weak_ptr<serverstarter::models::IServerStarterModel> server_model);
+    ~ClientHandlerController(void);
     void start(void);
 
 private:
@@ -19,7 +20,7 @@ private:
     void read_data(std::weak_ptr<models::IClientHandlerModel> client);
     void send_data(std::weak_ptr<models::IClientHandlerModel> client);
 
-    void handle_connect(std::int32_t client_fd);
+    void handle_connect(const common::Socket& client_socket);
 
 private:
     std::shared_ptr<const serverstarter::models::IServerStarterModel> m_SERVER_STARTER_MODEL;

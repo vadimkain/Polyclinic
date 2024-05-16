@@ -12,6 +12,7 @@
 #include <sstream>
 #include <thread>
 #include <memory>
+#include <queue>
 
 #include <sys/stat.h>   // mkdir;
 
@@ -47,14 +48,22 @@ int main(int argc, char **argv) {
     BLOG_INIT(std::move(generate_log_file_name(LOGS_FOLDER_DIR_NAME + "/server_logs.txt")), true);
     BDECLARE_TAG_SCOPE("", __FUNCTION__);
 
+    std::queue<std::thread> thread_pull;
+
     auto server_starter_model = std::make_shared<server::serverstarter::models::ServerStarterModel>();
 
     server::serverstarter::controllers::ServerStarterController server_starter_controller(server_starter_model);
     db::DBQuery dbquery;
 
-    std::thread server_starter_thread (&server::serverstarter::controllers::ServerStarterController::start, &server_starter_controller);
+    thread_pull.push(std::thread(&server::serverstarter::controllers::ServerStarterController::start, &server_starter_controller));
 
-    server_starter_thread.join();
+    while (!thread_pull.empty()) {
+        if (thread_pull.front().joinable()) {
+            thread_pull.front().join();
+        }
+
+        thread_pull.pop();
+    }
     
     // dbquery.output_all_users();
 

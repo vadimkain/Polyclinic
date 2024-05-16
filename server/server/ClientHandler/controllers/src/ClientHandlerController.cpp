@@ -19,6 +19,20 @@ ClientHandlerController::ClientHandlerController(std::weak_ptr<serverstarter::mo
     BLOG_INFO("constructor called on thread #", std::this_thread::get_id());
 }
 
+ClientHandlerController::~ClientHandlerController(void) {
+    BDECLARE_TAG_SCOPE("ClientHandlerController", __FUNCTION__);
+    BLOG_INFO("destructor called on thread #", std::this_thread::get_id());
+    for (auto &client : m_client_handler_model_container) {
+        client->socket().close();
+
+        if (!client->socket().is_valid()) {
+            BLOG_DEBUG("client with fd ", client->socket().m_socket_fd, " is closed");
+        } else {
+            BLOG_WARNING("Impossible to close the client with fd ", client->socket().m_socket_fd);
+        }
+    }
+}
+
 void ClientHandlerController::start(void) {
     BDECLARE_TAG_SCOPE("ClientHandlerController", __FUNCTION__);
     BLOG_INFO("called");
@@ -30,9 +44,17 @@ void ClientHandlerController::catch_new_connection(void) {
     BDECLARE_TAG_SCOPE("ClientHandlerController", __FUNCTION__);
     BLOG_INFO("called");
 
-    while (m_SERVER_STARTER_MODEL->socket().m_socket_fd) {
+    auto server_socket = m_SERVER_STARTER_MODEL->socket();
+    while (server_socket.m_socket_fd > 0) {
         BLOG_DEBUG("waiting for connection");
-        // handle_connect();
+
+        auto client_socket = server_socket.accept();
+        if (client_socket.m_socket_fd < 0) {
+            BLOG_ERROR("impossible to connect to client: ", client_socket.latest_error());
+            continue;
+        }
+
+        handle_connect(client_socket);
     }
 }
 
@@ -44,15 +66,11 @@ void ClientHandlerController::send_data(std::weak_ptr<models::IClientHandlerMode
 
 }
 
-void ClientHandlerController::handle_connect(std::int32_t client_fd) {
+void ClientHandlerController::handle_connect(const common::Socket& client_socket) {
     BDECLARE_TAG_SCOPE("ClientHandlerController", __FUNCTION__);
     BLOG_INFO("called");
 
     auto client = std::make_shared<models::ClientHandlerModel>();
-    common::Socket client_socket;
-    client_socket.m_socket_fd = client_fd;
-    socklen_t client_address_len = sizeof(client_socket.m_sock_address);
-    getsockname(client_socket.m_socket_fd, reinterpret_cast<sockaddr*>(&client_socket.m_sock_address), &client_address_len);
 
     // inet_ntoa(client_socket.m_sock_address.sin_addr);
     BLOG_INFO("connected client ip: ", inet_ntoa(client_socket.m_sock_address.sin_addr), "; client port: ", client_socket.m_sock_address.sin_port, 

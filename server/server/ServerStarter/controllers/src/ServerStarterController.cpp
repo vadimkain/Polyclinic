@@ -1,8 +1,10 @@
 #include "ServerStarterController.hpp"
 
 #include "Logger.hpp"
+#include "config.hpp"
 
 #include <thread>
+#include <algorithm>
 
 // #include <unistd.h>
 
@@ -20,7 +22,7 @@ ServerStarterController::ServerStarterController(std::weak_ptr<models::IServerSt
 ServerStarterController::~ServerStarterController(void) {
     BDECLARE_TAG_SCOPE("ServerStarterController", __FUNCTION__);
     BLOG_INFO("destructor called on thread #", std::this_thread::get_id());
-
+    
     close();
 }
 
@@ -28,7 +30,9 @@ void ServerStarterController::start(void) {
     BDECLARE_TAG_SCOPE("ServerStarterController", __FUNCTION__);
     BLOG_INFO("called");
 
-    std::thread(&client_handler::controllers::ClientHandlerController::start, m_client_handler_controller.get()).detach();
+    run_server();
+
+    std::thread(&client_handler::controllers::ClientHandlerController::start, m_client_handler_controller.get()).join();
 }
 
 void ServerStarterController::close(void) {
@@ -37,14 +41,39 @@ void ServerStarterController::close(void) {
     std::int32_t err = 0;
 
     auto server_socket = m_server_starter_model->socket();
-    if (err = ::close(server_socket.m_socket_fd)) {
-        BLOG_ERROR("impossible to close the server fd: ", server_socket.m_socket_fd, ". Error #", err);
+
+    if (!server_socket.is_valid()) {
+        BLOG_WARNING("Server Socket is not valid");
+    }
+    if (server_socket.close()) {
+        BLOG_ERROR("impossible to close the server fd: ", server_socket.m_socket_fd, ". ", server_socket.latest_error());
         err = 0;
     } else {
         server_socket.m_socket_fd = 0;
         m_server_starter_model->set_socket(server_socket);
     }
 
+}
+
+void ServerStarterController::run_server() {
+    BDECLARE_TAG_SCOPE("ServerStarterController", __FUNCTION__);
+    BLOG_INFO("called");
+
+    auto server_socket = m_server_starter_model->socket();
+    server_socket.set_port(common::config::SERVER_PORT);
+
+    if (server_socket.init()) {
+        BLOG_FATAL("Server socket create error. ", server_socket.latest_error());
+        abort();
+    }
+    if (server_socket.bind()) {
+        BLOG_ERROR("impossible to bind", server_socket.latest_error());
+    }
+    if (server_socket.listen(common::config::SERVER_LISTEN_SIZE)) {
+        BLOG_ERROR("impossible to listen", server_socket.latest_error());
+    }
+
+    m_server_starter_model->set_socket(std::move(server_socket));
 }
 
 }   // !server::serverstarter::controllers;

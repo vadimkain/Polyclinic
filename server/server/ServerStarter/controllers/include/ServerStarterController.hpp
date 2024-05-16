@@ -18,6 +18,9 @@ public:
     void close(void);
 
 private:
+    void run_server();
+
+private:
     std::shared_ptr<models::IServerStarterModel> m_server_starter_model;
 
     // controllers;

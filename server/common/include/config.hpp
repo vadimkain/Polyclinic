@@ -14,6 +14,9 @@ const std::string   DB_NAME     {"polyclinic"};
 const std::uint16_t DB_PORT {5432};
 
 const std::uint16_t SERVER_PORT {8081};
+const std::uint8_t SERVER_LISTEN_SIZE = 10;
+
+const char STR_EOF = '\0';
 
 }   // !server::common::config;
 
