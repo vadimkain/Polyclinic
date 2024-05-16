@@ -61,9 +61,6 @@ std::int32_t Socket::init() {
     // сделать этот момент более гибким под разные протоколы
     m_socket_fd = ::socket(AF_INET, SOCK_STREAM, 0);
 
-    std::int32_t timeout = 5;
-    setsockopt(m_socket_fd, SOL_SOCKET, SO_LINGER, &timeout, sizeof(timeout));
-
     return m_socket_fd <= 0 ? -1 : 0;
 }
 
