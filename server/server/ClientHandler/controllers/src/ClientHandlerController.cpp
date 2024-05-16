@@ -1,9 +1,14 @@
 #include "ClientHandlerController.hpp"
 #include "ClientHandlerModel.hpp"
 
+#include "Socket.hpp"
+
 #include "Logger.hpp"
 
 #include <thread>
+
+#include <sys/socket.h>
+#include <arpa/inet.h>
 
 namespace server::client_handler::controllers {
 
@@ -25,7 +30,7 @@ void ClientHandlerController::catch_new_connection(void) {
     BDECLARE_TAG_SCOPE("ClientHandlerController", __FUNCTION__);
     BLOG_INFO("called");
 
-    while (m_SERVER_STARTER_MODEL->socket_fd()) {
+    while (m_SERVER_STARTER_MODEL->socket().m_socket_fd) {
         BLOG_DEBUG("waiting for connection");
         // handle_connect();
     }
@@ -44,7 +49,17 @@ void ClientHandlerController::handle_connect(std::int32_t client_fd) {
     BLOG_INFO("called");
 
     auto client = std::make_shared<models::ClientHandlerModel>();
-    client->set_socket_fd(client_fd);
+    common::Socket client_socket;
+    client_socket.m_socket_fd = client_fd;
+    socklen_t client_address_len = sizeof(client_socket.m_sock_address);
+    getsockname(client_socket.m_socket_fd, reinterpret_cast<sockaddr*>(&client_socket.m_sock_address), &client_address_len);
+
+    // inet_ntoa(client_socket.m_sock_address.sin_addr);
+    BLOG_INFO("connected client ip: ", inet_ntoa(client_socket.m_sock_address.sin_addr), "; client port: ", client_socket.m_sock_address.sin_port, 
+        "; client fd: ", client_socket.m_socket_fd
+    );
+
+    client->set_socket(std::move(client_socket));
     m_client_handler_model_container.insert(client);
 
     std::thread(&ClientHandlerController::read_data, this, client).detach();

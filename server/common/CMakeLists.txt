@@ -4,20 +4,15 @@ cmake_minimum_required(VERSION 3.6.0)
 set(PROJECT_NAME polyclinic_server_common)
 project(${PROJECT_NAME})
 
-
-set(
-    HEADERS_INCLUDES
-    config.hpp
-)
+file(GLOB LIB_SRC "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 
 add_library(
     ${PROJECT_NAME}
-    INTERFACE
-    ${HEADERS_INCLUDES}
+    ${LIB_SRC}
 )
 
 target_include_directories(
     ${PROJECT_NAME}
-    INTERFACE
-    ${CMAKE_CURRENT_SOURCE_DIR}
+    PUBLIC
+    include
 )

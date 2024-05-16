@@ -3,19 +3,19 @@
 
 #include "IServerStarterModel.hpp"
 
-#include <atomic>
+#include <mutex>
 
 namespace server::serverstarter::models {
 
 class ServerStarterModel : public IServerStarterModel {
 public:
-    ServerStarterModel(void);
-
-    std::int32_t socket_fd() const noexcept override;
-    void set_socket_fd(std::int32_t val) noexcept override;
+    common::Socket socket(void) const override;
+    void set_socket(const common::Socket& val) override;
+    void set_socket(common::Socket&& val) override;
 
 private:
-    std::atomic<std::int32_t> m_socket_fd;
+    mutable std::mutex m_socket_mutex;
+    common::Socket m_socket;
 };
 
 }   // !server::serverstarter::models;

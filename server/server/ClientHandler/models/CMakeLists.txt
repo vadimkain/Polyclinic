@@ -16,3 +16,15 @@ target_include_directories(
     PUBLIC
     include
 )
+
+#----------------------------- LINK LIBRARIES -----------------------------#
+
+set(
+    ALL_LIBS
+    polyclinic_server_common
+)
+
+target_link_libraries(
+    ${PROJECT_NAME}
+    ${ALL_LIBS}
+)

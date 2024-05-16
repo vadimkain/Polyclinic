@@ -1,3 +1,6 @@
+#ifndef POLYCLINIC_SERVER_COMMON_CONFIG_HPP
+#define POLYCLINIC_SERVER_COMMON_CONFIG_HPP
+
 #include <string>
 #include <cinttypes>
 
@@ -13,3 +16,5 @@ const std::uint16_t DB_PORT {5432};
 const std::uint16_t SERVER_PORT {8081};
 
 }   // !server::common::config;
+
+#endif  // !POLYCLINIC_SERVER_COMMON_CONFIG_HPP;

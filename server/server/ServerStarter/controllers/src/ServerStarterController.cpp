@@ -36,11 +36,15 @@ void ServerStarterController::close(void) {
     BLOG_INFO("called");
     std::int32_t err = 0;
 
-    if (err = ::close(m_server_starter_model->socket_fd())) {
-        BLOG_ERROR("impossible to close the server fd: ", m_server_starter_model->socket_fd(), ". Error #", err);
+    auto server_socket = m_server_starter_model->socket();
+    if (err = ::close(server_socket.m_socket_fd)) {
+        BLOG_ERROR("impossible to close the server fd: ", server_socket.m_socket_fd, ". Error #", err);
         err = 0;
+    } else {
+        server_socket.m_socket_fd = 0;
+        m_server_starter_model->set_socket(server_socket);
     }
-    m_server_starter_model->set_socket_fd(0);
+
 }
 
 }   // !server::serverstarter::controllers;
