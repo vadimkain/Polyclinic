@@ -17,10 +17,11 @@ public:
 
 private:
     void catch_new_connection(void);
-    void read_data(std::weak_ptr<models::IClientHandlerModel> client);
-    void send_data(std::weak_ptr<models::IClientHandlerModel> client);
+    void read_data(std::weak_ptr<models::IClientHandlerModel> weak_client);
+    void send_data(std::weak_ptr<models::IClientHandlerModel> weak_client);
 
     void handle_connect(const common::Socket& client_socket);
+    void handle_read(std::weak_ptr<models::IClientHandlerModel> weak_client, std::string&& read_data, std::int32_t bytes_read);
 
 private:
     std::shared_ptr<const serverstarter::models::IServerStarterModel> m_SERVER_STARTER_MODEL;

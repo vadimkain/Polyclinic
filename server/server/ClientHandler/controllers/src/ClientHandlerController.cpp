@@ -1,14 +1,11 @@
 #include "ClientHandlerController.hpp"
 #include "ClientHandlerModel.hpp"
 
+#include "config.hpp"
 #include "Socket.hpp"
-
 #include "Logger.hpp"
 
 #include <thread>
-
-#include <sys/socket.h>
-#include <arpa/inet.h>
 
 namespace server::client_handler::controllers {
 
@@ -58,29 +55,43 @@ void ClientHandlerController::catch_new_connection(void) {
     }
 }
 
-void ClientHandlerController::read_data(std::weak_ptr<models::IClientHandlerModel> client) {
+void ClientHandlerController::read_data(std::weak_ptr<models::IClientHandlerModel> weak_client) {
+    BDECLARE_TAG_SCOPE("ClientHandlerController", __FUNCTION__);
 
+    auto client = weak_client.lock();
+
+    BLOG_INFO("client: ", client->socket().to_string());
+
+    std::string read_buf;
+    auto bytes_read = client->socket().read(read_buf, common::config::BUFFER_SIZE);
+
+    handle_read(client, std::move(read_buf), bytes_read);
 }
 
-void ClientHandlerController::send_data(std::weak_ptr<models::IClientHandlerModel> client) {
+void ClientHandlerController::send_data(std::weak_ptr<models::IClientHandlerModel> weak_client) {
 
 }
 
 void ClientHandlerController::handle_connect(const common::Socket& client_socket) {
     BDECLARE_TAG_SCOPE("ClientHandlerController", __FUNCTION__);
-    BLOG_INFO("called");
 
     auto client = std::make_shared<models::ClientHandlerModel>();
 
-    // inet_ntoa(client_socket.m_sock_address.sin_addr);
-    BLOG_INFO("connected client ip: ", inet_ntoa(client_socket.m_sock_address.sin_addr), "; client port: ", client_socket.m_sock_address.sin_port, 
-        "; client fd: ", client_socket.m_socket_fd
-    );
+    BLOG_INFO("client: ", client->socket().to_string());
 
     client->set_socket(std::move(client_socket));
     m_client_handler_model_container.insert(client);
 
     std::thread(&ClientHandlerController::read_data, this, client).detach();
+}
+
+void ClientHandlerController::handle_read(std::weak_ptr<models::IClientHandlerModel> weak_client, std::string&& read_data, std::int32_t bytes_read) {
+    BDECLARE_TAG_SCOPE("ClientHandlerController", __FUNCTION__);
+
+    auto client = std::make_shared<models::ClientHandlerModel>();
+
+    BLOG_INFO("client: ", client->socket().to_string());
+    BLOG_DEBUG("bytes_read = ", bytes_read, "; data = ", read_data);
 }
 
 }   // !server::client_handler::controllers;

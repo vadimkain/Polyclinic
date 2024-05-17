@@ -16,14 +16,15 @@ public:
     ~Socket();
 
     constexpr Socket& operator= (const Socket& other) = default;
-    constexpr Socket& operator= (Socket&& other);
+    Socket& operator= (Socket&& other);
     constexpr bool operator== (const Socket& other);
     constexpr bool operator!= (const Socket& other);
     constexpr bool operator< (const Socket& other);
     constexpr bool operator> (const Socket& other);
 
-    std::int32_t init();
+    std::string to_string() const;
 
+    std::int32_t init();
     std::int32_t deinit();
 
     void set_port(uint16_t port);
@@ -32,11 +33,12 @@ public:
     Socket accept();
     // std::int32_t connect();
     // std::int32_t write();
-    // std::int32_t read();
+    std::int32_t read(std::string &ret_buf, std::int32_t max_buf_size);
     std::int32_t close();
 
     std::string latest_error() const;
     bool is_valid() const;
+    std::string ip_address_as_string() const;
 
 private:
     std::int32_t getsockname(Socket &sock) const;

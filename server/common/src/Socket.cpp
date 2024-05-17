@@ -3,10 +3,13 @@
 #include "Logger.hpp"
 
 #include <algorithm>
-
-#include <unistd.h>
-#include <cerrno>
 #include <cstring>
+#include <sstream>
+#include <memory>
+
+#include <arpa/inet.h>
+#include <cerrno>
+#include <unistd.h>
 
 namespace server::common {
 
@@ -32,7 +35,7 @@ Socket::~Socket() {
     // deinit();
 }
 
-constexpr Socket& Socket::operator= (Socket&& other) {
+Socket& Socket::operator= (Socket&& other) {
     this->m_socket_fd = other.m_socket_fd;
     other.m_socket_fd = 0;  // null the socket to escape the closing;
     this->m_sock_address = other.m_sock_address;
@@ -54,6 +57,14 @@ constexpr bool Socket::operator< (const Socket& other) {
 
 constexpr bool Socket::operator> (const Socket& other) {
     return this->m_socket_fd > other.m_socket_fd;
+}
+
+std::string Socket::to_string() const {
+    std::stringstream ret;
+    ret << "ip = " << ip_address_as_string() << "; port = " << m_sock_address.sin_port
+        << "; fd = " << m_socket_fd;
+
+    return ret.str();
 }
 
 std::int32_t Socket::init() {
@@ -96,9 +107,13 @@ Socket Socket::accept() {
 
 // }
 
-// int Socket::read() {
-
-// }
+std::int32_t Socket::read(std::string &ret_buf, std::int32_t max_buf_size) {
+    auto read_buf = std::make_unique<char[]>(max_buf_size);
+    std::int32_t bytes_read = ::read(m_socket_fd, read_buf.get(), max_buf_size);
+    ret_buf.assign(read_buf.get(), bytes_read);
+    
+    return bytes_read;
+}
 
 std::int32_t Socket::close() {
     std::int32_t ret = 0;
@@ -124,6 +139,10 @@ std::string Socket::latest_error() const {
 
 bool Socket::is_valid() const {
     return ::fcntl(m_socket_fd, F_GETFL) != -1 || errno != EBADF;
+}
+
+std::string Socket::ip_address_as_string() const {
+    return ::inet_ntoa(m_sock_address.sin_addr);
 }
 
 }   // !server::common;
