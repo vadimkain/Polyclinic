@@ -18,7 +18,7 @@
 
 namespace db = server::db;
 
-std::string currentDateTimeAsString() {
+std::string current_date_time_as_string() {
     // Get the current time using std::chrono
     auto now = std::chrono::system_clock::now();
     
@@ -37,7 +37,7 @@ std::string currentDateTimeAsString() {
 
 std::string generate_log_file_name(const std::string &first_name_part) {
     std::stringstream file_name_stream;
-    file_name_stream << first_name_part << "_" << currentDateTimeAsString() << ".log";
+    file_name_stream << first_name_part << "_" << current_date_time_as_string() << ".log";
 
     return std::move(file_name_stream.str());
 }
@@ -57,6 +57,8 @@ int main(int argc, char **argv) {
 
     thread_pull.push(std::thread(&server::serverstarter::controllers::ServerStarterController::start, &server_starter_controller));
 
+    // dbquery.output_all_users();
+
     while (!thread_pull.empty()) {
         if (thread_pull.front().joinable()) {
             thread_pull.front().join();
@@ -64,8 +66,6 @@ int main(int argc, char **argv) {
 
         thread_pull.pop();
     }
-    
-    // dbquery.output_all_users();
 
     return 0;
 }

@@ -28,7 +28,8 @@ DBQuery::DBQuery() {
     if (m_db_connection->is_open()) {
         BLOG_DEBUG("Connection success");    
     } else {
-        BLOG_DEBUG("Connection failed");
+        BLOG_FATAL("Connection failed");
+        abort();
     }
 
     m_db_transaction = std::make_unique<pqxx::work>(*m_db_connection);
