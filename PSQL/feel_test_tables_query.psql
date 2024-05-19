@@ -1,3 +1,4 @@
+-- вставка юзеров
 INSERT INTO users (name, surname, middle_name, email)
 VALUES ('Микита', 'Будкін', 'Олександрович', 'budova@gmail.com'),
        ('Володимир', 'Дудкін', 'Михайлович', 'dydkin@gmail.com'),
@@ -7,6 +8,7 @@ VALUES ('Микита', 'Будкін', 'Олександрович', 'budova@gm
        ('Олександр', 'Жгутов', 'Володимирович', 'olejgyt@gmail.com'),
        ('Петро', 'Петрович', 'Петрович', 'pepepe@pe.com');
 
+-- вставка номеров телефона
 INSERT INTO phone_numbers (user_id, country_code, number)
 VALUES (5, '+38', '0930236587'),
        (6, '+38', '0638751276'),
@@ -16,6 +18,13 @@ VALUES (5, '+38', '0930236587'),
        (10, '+38', '0674568753'),
        (11, '+38', '0994563481');
 
+-- Вставка ролей
+INSERT INTO roles (name, salary) 
+VALUES
+    ('patient', NULL),
+    ('doctor', 23000);
+
+-- Назначение ролей пользователям
 INSERT INTO users_roles (user_id, role_id)
 VALUES (5, 1),
        (6, 1),
@@ -25,7 +34,103 @@ VALUES (5, 1),
        (10, 1),
        (11, 2);
 
+-- Вставка аллергенов
+INSERT INTO allergens (name) 
+VALUES
+    ('Пыльца'),
+    ('Пыль'),
+    ('Шерсть');
+
+-- Назначение аллергенов пользователям
+INSERT INTO users_allergen (user_id, allergen_id) VALUES
+(5, 7),
+(6, 8),
+(5, 9),
+(9, 7),
+(11, 8);
+
+-- Вставка записей к врачам (appointments)
+INSERT INTO booked_doctors (patient_id, doctor_id, appointment_time) 
+VALUES
+    (5, 8, '2023-05-10 10:00:00+00'),
+    (6, 8, '2023-05-11 11:00:00+00'),
+    (5, 8, '2023-06-10 10:00:00+00'),
+    (5, 11, '2023-06-15 09:00:00+00'),
+    (7, 11, '2023-06-20 14:00:00+00'),
+    (10, 8, '2023-06-22 16:00:00+00'),
+    (6, 8, '2023-06-25 10:00:00+00');
+
+-- Вставка записей врачей (appointments) - детали
+INSERT INTO doctor_appointments (booked_doctor_id, complaint) 
+VALUES
+    (11, 'Головная боль'),
+    (12, 'Кашель'),
+    (13, 'Сердечная боль'),
+    (14, 'Боль в спине'),
+    (15, 'Высокое давление'),
+    (16, 'Боль в животе'),
+    (17, 'Головокружение');
+
+-- Вставка анализов
+INSERT INTO analyses (name) 
+VALUES
+    ('Общий анализ крови'),
+    ('Анализ мочи');
+
+-- Назначение анализов пользователям
+INSERT INTO analyse_appointments (analyse_id, doctor_appointment_id, is_completed) 
+VALUES
+    (1, 36, TRUE),
+    (2, 37, TRUE),
+    (1, 39, TRUE),
+    (2, 40, TRUE);
+
+-- Вставка лекарств
+INSERT INTO drugs (name, description) 
+VALUES
+    ('Аспирин', 'Препарат от боли и жара'),               
+    ('Кардиомагнил', 'Препарат от сердечных заболеваний'),
+    ('Парацетамол', 'Препарат от жара'),              
+    ('Бисопролол', 'Препарат для лечения гипертонии'),
+    ('Эналаприл', 'Препарат для лечения сердечной недостаточности');
+
+-- Назначение лекарств пользователям
+INSERT INTO prescription_drugs (drug_id, doctor_appointment_id) 
+VALUES
+    (1, 36),
+    (2, 39),
+    (3, 37),
+    (4, 40),
+    (5, 42);
+
+-- Вставка больничных листов
+INSERT INTO patient_sick_leave (doctor_appointment_id, start_date, end_date) 
+VALUES
+    (36, '2023-05-10', '2023-05-15'),
+    (37, '2023-05-11', '2023-05-20');
+
+-- Вставка сообщений
+INSERT INTO messages (user_1_id, user_2_id, destination_time, data) 
+VALUES
+    (5, 8, '2023-05-10 10:30:00+00', 'Спасибо, доктор!'),
+    (6, 8, '2023-05-11 11:30:00+00', 'Спасибо, доктор!'),
+    (5, 8, '2023-06-10 10:30:00+00', 'Спасибо, доктор!'),
+    (5, 11, '2023-06-15 09:30:00+00', 'Спасибо, доктор!'),
+    (9, 11, '2023-06-20 14:30:00+00', 'Спасибо, доктор!'),
+    (10, 8, '2023-06-22 16:30:00+00', 'Спасибо, доктор!'),
+    (6, 8, '2023-06-25 10:30:00+00', 'Спасибо, доктор!');
+
 SELECT * FROM users;
 SELECT * FROM phone_numbers;
 SELECT * FROM roles;
 SELECT * FROM users_roles;
+SELECT * FROM allergens;
+SELECT * FROM users_allergen;
+SELECT * FROM booked_doctors;
+SELECT * FROM doctor_appointments;
+SELECT * FROM analyses;
+SELECT * FROM analyse_appointments;
+SELECT * FROM patient_sick_leave;
+SELECT * FROM drugs;
+SELECT * FROM prescription_drugs;
+SELECT * FROM messages;
