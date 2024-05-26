@@ -1,0 +1,140 @@
+/* Description:
+ * Sampled Projection: Get a list of patients seen by a specified doctor on a specified date.
+ */
+CREATE OR REPLACE FUNCTION get_patients_by_doctor_and_date(doctor_id INT, appointment_date DATE) 
+RETURNS TABLE (
+    id BIGINT,
+    name VARCHAR(50),
+    surname VARCHAR(50),
+    middle_name VARCHAR(50),
+    email custom_email
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT u.id, u.name, u.surname, u.middle_name, u.email
+    FROM users u
+    JOIN booked_doctors bd ON u.id = bd.patient_id
+    JOIN users_roles ur ON bd.doctor_id = ur.user_id
+    JOIN roles r ON ur.role_id = r.id
+    WHERE r.name = 'doctor'
+      AND bd.doctor_id = get_patients_by_doctor_and_date.doctor_id
+      AND DATE(bd.appointment_time) = get_patients_by_doctor_and_date.appointment_date;
+END;
+$$ LANGUAGE plpgsql;
+
+/* Description:
+ * Get a list of doctors ranked by the number of patients admitted in the last month.
+ */
+CREATE OR REPLACE FUNCTION get_top_doctors_last_month() 
+RETURNS TABLE (
+    id BIGINT,
+    name VARCHAR(50),
+    surname VARCHAR(50),
+    middle_name VARCHAR(50),
+    email custom_email,
+    clients_count BIGINT
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT *
+    FROM get_patient_count_per_doctor_last_month() AS bd
+    ORDER BY bd.clients_count DESC;
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+
+/* Description:
+ * Get a list of patients who have been prescribed medications from the heart disease category.
+ */
+CREATE OR REPLACE FUNCTION get_patients_with_heart_disease_drugs() 
+RETURNS TABLE (
+    id BIGINT,
+    name VARCHAR(50),
+    surname VARCHAR(50),
+    middle_name VARCHAR(50),
+    email custom_email
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT DISTINCT u.id, u.name, u.surname, u.middle_name, u.email
+    FROM users u
+    JOIN booked_doctors bd ON u.id = bd.patient_id
+    JOIN doctor_appointments da ON bd.id = da.booked_doctor_id
+    JOIN prescription_drugs pd ON da.id = pd.doctor_appointment_id
+    JOIN drugs d ON pd.drug_id = d.id
+    WHERE LOWER(d.description) LIKE '%серд%';
+END;
+$$ LANGUAGE plpgsql;
+
+
+/* Description:
+ * Count the number of patients each physician has seen per appointment during the last month.
+ */
+CREATE OR REPLACE FUNCTION get_patient_count_per_doctor_last_month()
+RETURNS TABLE (
+    id BIGINT,
+    name VARCHAR(50),
+    surname VARCHAR(50),
+    middle_name VARCHAR(50),
+    email custom_email,
+    clients_count BIGINT
+) AS $$
+DECLARE
+    last_month_start DATE := date_trunc('month', CURRENT_DATE) - interval '1 month';
+    last_month_end DATE := date_trunc('month', CURRENT_DATE);
+BEGIN
+    RETURN QUERY
+    SELECT u.id, u.name, u.surname, u.middle_name, u.email, COUNT(bd.patient_id) AS patients_count
+    FROM users u
+    JOIN booked_doctors bd ON u.id = bd.doctor_id
+    WHERE bd.appointment_time >= last_month_start
+    AND bd.appointment_time < last_month_end
+    GROUP BY u.id;
+END;
+$$ LANGUAGE plpgsql;
+
+/* Description:
+ * Merge: Give a total list of medications and tests that have been prescribed for the specified 
+ * patient in the last six months, without repeats, with status.
+ */
+CREATE OR REPLACE FUNCTION get_medications_and_tests_for_patient(patient_id BIGINT)
+    RETURNS TABLE
+            (
+                name varchar(128),
+                type varchar(20)
+            )
+AS
+$$
+BEGIN
+    RETURN QUERY
+        -- Список анализов и лекарств которые были выписаны определенному пациенту за последние 6 месяцев
+        (
+            SELECT CAST(analyses.name AS varchar(128)) AS name, CAST('Анализы' AS varchar(20)) AS type
+            FROM users
+                     INNER JOIN booked_doctors ON booked_doctors.patient_id = users.id
+                     INNER JOIN doctor_appointments ON doctor_appointments.booked_doctor_id = booked_doctors.id
+                     INNER JOIN analyse_appointments ON analyse_appointments.doctor_appointment_id = doctor_appointments.id
+                     INNER JOIN analyses ON analyses.id = analyse_appointments.analyse_id
+            WHERE users.id = get_medications_and_tests_for_patient.patient_id
+              AND booked_doctors.appointment_time >= CURRENT_DATE - INTERVAL '6 months'
+            UNION
+            SELECT CAST(drugs.name AS varchar(128)) AS name, CAST('Лекарства' AS varchar(20)) AS type
+            FROM users
+                     INNER JOIN booked_doctors ON booked_doctors.patient_id = users.id
+                     INNER JOIN doctor_appointments ON doctor_appointments.booked_doctor_id = booked_doctors.id
+                     INNER JOIN prescription_drugs ON prescription_drugs.doctor_appointment_id = doctor_appointments.id
+                     INNER JOIN drugs ON drugs.id = prescription_drugs.drug_id
+            WHERE users.id = get_medications_and_tests_for_patient.patient_id
+              AND booked_doctors.appointment_time >= CURRENT_DATE - INTERVAL '6 months'
+        );
+END;
+$$ LANGUAGE plpgsql;
+
+
+SELECT * FROM get_patients_by_doctor_and_date(8, '2024-05-10');
+SELECT * FROM get_top_doctors_last_month();
+SELECT * FROM get_patients_with_heart_disease_drugs();
+SELECT * FROM get_patient_count_per_doctor_last_month();
+SELECT * FROM get_medications_and_tests_for_patient(5);
