@@ -13,11 +13,13 @@ add_library(
 
 add_subdirectory(ClientHandler)
 add_subdirectory(ServerStarter)
+add_subdirectory(ContextHandler)
 
 set(
     ALL_LIBS
     polyclinic_server_code_client_handler
     polyclinic_server_code_server_starter
+    polyclinic_server_code_context_handler
 )
 
 target_link_libraries(

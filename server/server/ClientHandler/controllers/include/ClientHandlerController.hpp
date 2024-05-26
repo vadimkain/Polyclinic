@@ -4,6 +4,10 @@
 #include "IClientHandlerModel.hpp"
 #include "IServerStarterModel.hpp"
 
+#include "IContextHandlerInterface.hpp"
+
+#include "HttpHeaders.hpp"
+
 #include <set>
 #include <memory>
 
@@ -11,7 +15,9 @@ namespace server::client_handler::controllers {
 
 class ClientHandlerController {
 public:
-    ClientHandlerController(std::weak_ptr<serverstarter::models::IServerStarterModel> server_model);
+    ClientHandlerController(std::weak_ptr<serverstarter::models::IServerStarterModel> server_model,
+        std::weak_ptr<context_handler::view::IContextHandlerInterface> context_handler_interface
+    );
     ~ClientHandlerController(void);
     void start(void);
 
@@ -22,10 +28,12 @@ private:
 
     void handle_connect(const common::Socket& client_socket);
     void handle_read(std::weak_ptr<models::IClientHandlerModel> weak_client, std::string&& read_data, std::int32_t bytes_read);
+    void handle_http_request(std::weak_ptr<models::IClientHandlerModel> weak_client, const common::HttpHeaders &header);
 
 private:
-    std::shared_ptr<const serverstarter::models::IServerStarterModel> m_SERVER_STARTER_MODEL;
+    std::shared_ptr<context_handler::view::IContextHandlerInterface> m_context_handler_interface;
 
+    std::shared_ptr<const serverstarter::models::IServerStarterModel> m_SERVER_STARTER_MODEL;
     std::set<std::shared_ptr<models::IClientHandlerModel>> m_client_handler_model_container;
 };
 

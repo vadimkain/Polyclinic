@@ -10,13 +10,16 @@
 
 namespace server::serverstarter::controllers {
 
-ServerStarterController::ServerStarterController(std::weak_ptr<models::IServerStarterModel> model)
-    : m_server_starter_model{model.lock()}
+ServerStarterController::ServerStarterController(std::weak_ptr<models::IServerStarterModel> model, 
+    std::weak_ptr<context_handler::view::IContextHandlerInterface> context_handler_interface
+) : m_server_starter_model{model.lock()}, m_context_handler_interface{context_handler_interface.lock()}
 {
     BDECLARE_TAG_SCOPE("ServerStarterController", __FUNCTION__);
     BLOG_INFO("constructor called on thread #", std::this_thread::get_id());
 
-    m_client_handler_controller = std::make_shared<client_handler::controllers::ClientHandlerController>(m_server_starter_model);
+    m_client_handler_controller = std::make_shared<client_handler::controllers::ClientHandlerController>(m_server_starter_model, 
+        m_context_handler_interface
+    );
 }
 
 ServerStarterController::~ServerStarterController(void) {

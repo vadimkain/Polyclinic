@@ -4,6 +4,7 @@
 
 #include "ServerStarterController.hpp"
 #include "ServerStarterModel.hpp"
+#include "ContextHandlerInterface.hpp"
 
 #include <cinttypes>
 #include <chrono>
@@ -50,9 +51,12 @@ int main(int argc, char **argv) {
 
     std::queue<std::thread> thread_pull;
 
-    auto server_starter_model = std::make_shared<server::serverstarter::models::ServerStarterModel>();
+    auto context_handler_interface = std::make_shared<server::context_handler::view::ContextHandlerInterface>();
 
-    server::serverstarter::controllers::ServerStarterController server_starter_controller(server_starter_model);
+    auto server_starter_model = std::make_shared<server::serverstarter::models::ServerStarterModel>();
+    server::serverstarter::controllers::ServerStarterController server_starter_controller(server_starter_model, 
+        context_handler_interface
+    );
     db::DBQuery dbquery;
 
     thread_pull.push(std::thread(&server::serverstarter::controllers::ServerStarterController::start, &server_starter_controller));

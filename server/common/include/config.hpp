@@ -19,6 +19,8 @@ const std::uint8_t SERVER_LISTEN_SIZE = 10;
 const char STR_EOF = '\0';
 const std::uint16_t BUFFER_SIZE = 2048;
 
+const std::string DEFAULT_HTML_FILE = "index.html";
+
 }   // !server::common::config;
 
 #endif  // !POLYCLINIC_SERVER_COMMON_CONFIG_HPP;

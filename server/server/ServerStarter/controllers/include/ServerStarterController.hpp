@@ -11,7 +11,9 @@ namespace server::serverstarter::controllers {
 
 class ServerStarterController {
 public:
-    ServerStarterController(std::weak_ptr<models::IServerStarterModel> model);
+    ServerStarterController(std::weak_ptr<models::IServerStarterModel> model, 
+        std::weak_ptr<context_handler::view::IContextHandlerInterface> context_handler_interface
+    );
     ~ServerStarterController(void);
 
     void start(void);
@@ -21,6 +23,8 @@ private:
     void run_server();
 
 private:
+    std::shared_ptr<context_handler::view::IContextHandlerInterface> m_context_handler_interface;
+
     std::shared_ptr<models::IServerStarterModel> m_server_starter_model;
 
     // controllers;

@@ -2,15 +2,19 @@
 #include "ClientHandlerModel.hpp"
 
 #include "config.hpp"
+#include "EnumStringConvertor.hpp"
+#include "HttpHeaders.hpp"
 #include "Socket.hpp"
 #include "Logger.hpp"
 
 #include <thread>
+#include <unordered_map>
 
 namespace server::client_handler::controllers {
 
-ClientHandlerController::ClientHandlerController(std::weak_ptr<serverstarter::models::IServerStarterModel> server_model)
-    : m_SERVER_STARTER_MODEL{server_model}
+ClientHandlerController::ClientHandlerController(std::weak_ptr<serverstarter::models::IServerStarterModel> server_model,
+    std::weak_ptr<context_handler::view::IContextHandlerInterface> context_handler_interface
+) : m_SERVER_STARTER_MODEL{server_model}, m_context_handler_interface{context_handler_interface.lock()}
 {
     BDECLARE_TAG_SCOPE("ClientHandlerController", __FUNCTION__);
     BLOG_INFO("constructor called on thread #", std::this_thread::get_id());
@@ -88,10 +92,23 @@ void ClientHandlerController::handle_connect(const common::Socket& client_socket
 void ClientHandlerController::handle_read(std::weak_ptr<models::IClientHandlerModel> weak_client, std::string&& read_data, std::int32_t bytes_read) {
     BDECLARE_TAG_SCOPE("ClientHandlerController", __FUNCTION__);
 
-    auto client = std::make_shared<models::ClientHandlerModel>();
+    auto client = weak_client.lock();
 
     BLOG_INFO("client: ", client->socket().to_string());
     BLOG_DEBUG("bytes_read = ", bytes_read, "; data = ", read_data);
+
+    common::HttpHeaders http_headers(read_data);
+
+    handle_http_request(client, http_headers);
+}
+
+void ClientHandlerController::handle_http_request(std::weak_ptr<models::IClientHandlerModel> weak_client, const common::HttpHeaders &header) {
+    BDECLARE_TAG_SCOPE("ClientHandlerController", __FUNCTION__);
+
+    auto client = weak_client.lock();
+
+    BLOG_INFO("client: ", client->socket().to_string(), "; http request type = ", common::EnumStringConvertor::init()->to_string(header.method), "; http body = ", header.body);
+    m_context_handler_interface->request_to_open_uri(header.uri);
 }
 
 }   // !server::client_handler::controllers;
