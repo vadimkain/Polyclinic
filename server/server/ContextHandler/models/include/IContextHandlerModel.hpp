@@ -12,6 +12,10 @@ public:
     virtual std::string current_uri(void) const = 0;
     virtual void set_current_uri(const std::string& val) = 0;
     virtual void set_current_uri(std::string&& val) = 0;
+
+    virtual std::string current_page_file(void) const = 0;
+    virtual void set_current_page_file(const std::string& val) = 0;
+    virtual void set_current_page_file(std::string&& val) = 0;
 };
 
 }   // !server::context_handler::models;

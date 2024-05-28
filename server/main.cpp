@@ -3,7 +3,9 @@
 #include "Logger.hpp"
 
 #include "ServerStarterController.hpp"
+#include "ContextHandlerController.hpp"
 #include "ServerStarterModel.hpp"
+#include "ContextHandlerModel.hpp"
 #include "ContextHandlerInterface.hpp"
 
 #include <cinttypes>
@@ -52,6 +54,8 @@ int main(int argc, char **argv) {
     std::queue<std::thread> thread_pull;
 
     auto context_handler_interface = std::make_shared<server::context_handler::view::ContextHandlerInterface>();
+    auto context_handler_model = std::make_shared<server::context_handler::models::ContextHandlerModel>();
+    auto context_handler_controller = std::make_shared<server::context_handler::controllers::ContextHandlerController>(context_handler_model, context_handler_interface);
 
     auto server_starter_model = std::make_shared<server::serverstarter::models::ServerStarterModel>();
     server::serverstarter::controllers::ServerStarterController server_starter_controller(server_starter_model, 

@@ -3,6 +3,8 @@
 
 #include "IContextHandlerInterface.hpp"
 
+#include "Signal"
+
 namespace server::context_handler::view {
 
 class ContextHandlerInterface : public IContextHandlerInterface {
@@ -10,6 +12,7 @@ public:
     void request_to_open_uri(std::string uri) override;
 
 private:
+
 };
 
 }   // !server::context_handler::view;

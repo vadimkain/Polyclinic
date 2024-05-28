@@ -22,6 +22,7 @@ target_include_directories(
 set(
     ALL_LIBS
     bukhtalogger
+    polyclinic_server_common
 )
 
 target_link_libraries(

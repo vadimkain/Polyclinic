@@ -14,7 +14,9 @@ namespace server::client_handler::controllers {
 
 ClientHandlerController::ClientHandlerController(std::weak_ptr<serverstarter::models::IServerStarterModel> server_model,
     std::weak_ptr<context_handler::view::IContextHandlerInterface> context_handler_interface
-) : m_SERVER_STARTER_MODEL{server_model}, m_context_handler_interface{context_handler_interface.lock()}
+)   : m_SERVER_STARTER_MODEL{server_model}, m_context_handler_interface{context_handler_interface.lock()}
+    // , on_page_address_updated_slot{std::bind<void(std::string)>(&ClientHandlerController::on_page_address_updated, this, std::placeholders::_1)}
+    , on_page_address_updated_slot{std::bind(&ClientHandlerController::on_page_address_updated, this, std::placeholders::_1)}
 {
     BDECLARE_TAG_SCOPE("ClientHandlerController", __FUNCTION__);
     BLOG_INFO("constructor called on thread #", std::this_thread::get_id());
@@ -38,7 +40,19 @@ void ClientHandlerController::start(void) {
     BDECLARE_TAG_SCOPE("ClientHandlerController", __FUNCTION__);
     BLOG_INFO("called");
 
+    init();
+
     catch_new_connection();
+}
+
+void ClientHandlerController::init() {
+    common::connect(&m_context_handler_interface->page_address_updated, &on_page_address_updated_slot);
+
+}
+
+void ClientHandlerController::on_page_address_updated(std::string address) {
+    BDECLARE_TAG_SCOPE("ClientHandlerController", __FUNCTION__);
+    BLOG_INFO("Page address = ", address);
 }
 
 void ClientHandlerController::catch_new_connection(void) {

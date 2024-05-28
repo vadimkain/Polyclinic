@@ -1,0 +1,7 @@
+#ifndef POLYCLINIC_SERVER_COMMON_SLOT
+#define POLYCLINIC_SERVER_COMMON_SLOT
+
+#include "Slot.hpp"
+#include "src/Slot.cpp"
+
+#endif  // !POLYCLINIC_SERVER_COMMON_SLOT;

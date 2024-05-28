@@ -89,3 +89,89 @@ FROM users
          INNER JOIN drugs ON drugs.id = prescription_drugs.drug_id
 WHERE users.id = 5
   AND booked_doctors.appointment_time >= CURRENT_DATE - INTERVAL '6 months';
+
+
+
+/* Description:
+ * Get the ranking of each doctor based on: 
+ *  - the number of patients seen;
+ *  - the number of analyses prescribed; 
+ *  - the number of drugs prescribed in the last quarter.
+ */
+WITH patient_count AS (
+    SELECT 
+        bd.doctor_id,
+        COUNT(DISTINCT bd.patient_id) AS patient_count
+    FROM 
+        booked_doctors bd
+    WHERE 
+        bd.appointment_time >= date_trunc('quarter', CURRENT_DATE) - interval '3 month'
+    GROUP BY 
+        bd.doctor_id
+),
+analyse_count AS (
+    SELECT 
+        bd.doctor_id,
+        COUNT(aa.id) AS analyse_count
+    FROM 
+        analyse_appointments aa
+    JOIN 
+        doctor_appointments da ON aa.doctor_appointment_id = da.id
+    JOIN 
+        booked_doctors bd ON da.booked_doctor_id = bd.id
+    WHERE 
+        aa.is_completed = TRUE
+        AND bd.appointment_time >= date_trunc('quarter', CURRENT_DATE) - interval '3 month'
+    GROUP BY 
+        bd.doctor_id
+),
+drug_count AS (
+    SELECT 
+        bd.doctor_id,
+        COUNT(pd.id) AS drug_count
+    FROM 
+        prescription_drugs pd
+    JOIN 
+        doctor_appointments da ON pd.doctor_appointment_id = da.id
+    JOIN 
+        booked_doctors bd ON da.booked_doctor_id = bd.id
+    WHERE 
+        bd.appointment_time >= date_trunc('quarter', CURRENT_DATE) - interval '3 month'
+    GROUP BY 
+        bd.doctor_id
+),
+combined AS (
+    SELECT 
+        u.id AS doctor_id,
+        u.name AS doctor_name,
+        u.surname AS doctor_surname,
+        u.middle_name AS doctor_middle_name,
+        COALESCE(pc.patient_count, 0) AS patient_count,
+        COALESCE(ac.analyse_count, 0) AS analyse_count,
+        COALESCE(dc.drug_count, 0) AS drug_count
+    FROM 
+        users u
+    LEFT JOIN 
+        patient_count pc ON u.id = pc.doctor_id
+    LEFT JOIN 
+        analyse_count ac ON u.id = ac.doctor_id
+    LEFT JOIN 
+        drug_count dc ON u.id = dc.doctor_id
+    WHERE 
+        EXISTS (SELECT 1 FROM users_roles ur WHERE ur.user_id = u.id AND ur.role_id = 2)
+)
+SELECT 
+    doctor_id,
+    doctor_name,
+    doctor_surname,
+    doctor_middle_name,
+    patient_count,
+    RANK() OVER (ORDER BY patient_count DESC) AS patient_rank,
+    analyse_count,
+    RANK() OVER (ORDER BY analyse_count DESC) AS analyse_rank,
+    drug_count,
+    RANK() OVER (ORDER BY drug_count DESC) AS drug_rank
+FROM 
+    combined
+ORDER BY 
+    doctor_id;

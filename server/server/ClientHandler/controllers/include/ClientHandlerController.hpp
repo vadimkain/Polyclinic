@@ -7,6 +7,7 @@
 #include "IContextHandlerInterface.hpp"
 
 #include "HttpHeaders.hpp"
+#include "Signal"
 
 #include <set>
 #include <memory>
@@ -19,9 +20,23 @@ public:
         std::weak_ptr<context_handler::view::IContextHandlerInterface> context_handler_interface
     );
     ~ClientHandlerController(void);
+
     void start(void);
 
+/*
+ * Slots starts;
+ */
+public:
+    common::Slot<std::string> on_page_address_updated_slot;
+    void on_page_address_updated(std::string address);
+
+/*
+ * Slots ends;
+ */
+
 private:
+    void init();
+
     void catch_new_connection(void);
     void read_data(std::weak_ptr<models::IClientHandlerModel> weak_client);
     void send_data(std::weak_ptr<models::IClientHandlerModel> weak_client);

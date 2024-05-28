@@ -1,0 +1,81 @@
+/* Descripiton:
+ * Create a view displaying the list of diseases for the maximum number of patients of each doctor.
+ */
+CREATE VIEW doctor_patient_diseases AS
+WITH max_patients_per_doctor AS (
+    SELECT 
+        bd.doctor_id,
+        COUNT(DISTINCT bd.patient_id) AS patient_count
+    FROM 
+        booked_doctors bd
+    GROUP BY 
+        bd.doctor_id
+    HAVING 
+        COUNT(DISTINCT bd.patient_id) = (
+            SELECT 
+                MAX(patient_count)
+            FROM (
+                SELECT 
+                    COUNT(DISTINCT patient_id) AS patient_count
+                FROM 
+                    booked_doctors
+                GROUP BY 
+                    doctor_id
+            ) AS subquery
+        )
+)
+SELECT 
+    d.name AS doctor_name,
+    d.surname AS doctor_surname,
+    d.middle_name AS doctor_middle_name,
+    p.name AS patient_name,
+    p.surname AS patient_surname,
+    p.middle_name AS patient_middle_name,
+    da.complaint AS disease
+FROM 
+    max_patients_per_doctor mpd
+JOIN 
+    users d ON mpd.doctor_id = d.id
+JOIN 
+    booked_doctors bd ON mpd.doctor_id = bd.doctor_id
+JOIN 
+    doctor_appointments da ON bd.id = da.booked_doctor_id
+JOIN 
+    users p ON bd.patient_id = p.id
+ORDER BY 
+    d.id, p.id;
+
+
+
+/* Description:
+ * Create a view to display the trend in the number of doctor visits (by visit dates).
+ */
+CREATE VIEW doctor_visit_trend AS
+WITH daily_visits AS (
+    SELECT
+        bd.doctor_id,
+        date_trunc('day', bd.appointment_time) AS visit_date,
+        COUNT(*) AS daily_visit_count
+    FROM
+        booked_doctors bd
+    GROUP BY
+        bd.doctor_id, date_trunc('day', bd.appointment_time)
+)
+SELECT
+    u.id AS doctor_id,
+    u.name AS doctor_name,
+    u.surname AS doctor_surname,
+    u.middle_name AS doctor_middle_name,
+    dv.visit_date,
+    dv.daily_visit_count,
+    SUM(dv.daily_visit_count) OVER (PARTITION BY dv.doctor_id ORDER BY dv.visit_date) AS cumulative_visits 
+FROM
+    daily_visits dv
+JOIN
+    users u ON dv.doctor_id = u.id
+ORDER BY
+    u.id, dv.visit_date;
+
+
+SELECT * FROM doctor_patient_diseases;
+SELECT * FROM doctor_visit_trend;

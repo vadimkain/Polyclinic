@@ -1,0 +1,7 @@
+#ifndef POLYCLINIC_SERVER_COMMON_SIGNAL
+#define POLYCLINIC_SERVER_COMMON_SIGNAL
+
+#include "Signal.hpp"
+#include "src/Signal.cpp"
+
+#endif  // !POLYCLINIC_SERVER_COMMON_SIGNAL;

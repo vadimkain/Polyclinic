@@ -23,6 +23,7 @@ set(
     ALL_LIBS
     bukhtalogger
     polyclinic_server_code_context_handler_models
+    polyclinic_server_code_context_handler_view
 )
 
 target_link_libraries(
