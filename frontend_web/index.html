@@ -1,88 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TemplateMonster Demo</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
-        nav {
-            background-color: #444;
-            padding: 10px 0;
-        }
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-        }
-        .hero {
-            background: url('https://cdn.templatemonster.com/359380/screenshot1.jpg') no-repeat center center/cover;
-            height: 400px;
-            text-align: center;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2em;
-        }
-        .content {
-            padding: 20px;
-        }
-        .content h2 {
-            text-align: center;
-        }
-        .content p {
-            text-align: justify;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-        }
-    </style>
+    <title>Медицинский Сайт</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>TemplateMonster Demo</h1>
+    <header class="header">
+        <div class="header-top">
+            <div class="contact-info">
+                <span>CALL US: +41 678-678-456 | +41 678-678-903</span>
+                <span>594 Sunset Ave. Manahawkin, NJ 08050</span>
+                <span>Email: jenniewilkerson@info.com</span>
+            </div>
+        </div>
+        <div class="header-main">
+            <img src="src/logo.svg" alt="Логотип" class="logo">
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#profile">PROFILE</a></li>
+                    <li><a href="#blog">BLOG</a></li>
+                    <li><a href="#team">TEAM</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#press">PRESS</a></li>
+                    <li><a href="#testimonials">TESTIMONIALS</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn-appointment">Book an Appointment</a>
+        </div>
     </header>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-    <div class="hero">
-        Welcome to our demo site!
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>WE VALUE YOUR</h1>
+                <h2>FAMILY'S HEALTH &</h2>
+                <h2>YOUR TIME.</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and<br>typesetting industry. Lorem Ipsum has been the industry's<br>standard dummy text.</p>
+            </div>
+            <div class="hero-image">
+                <img src="src/successful-medical-team.png" alt="Medical Team">
+            </div>
+        </section>        
+        
+        <section class="appointment-form">
+            <div class="appointment-title">
+                <h2>BOOK YOUR APPOINTMENT</h2>
+            </div>
+            <form>
+                <div class="form-row">
+                    <input type="text" placeholder="Full Name" value="Jennie Wilkerson">
+                    <input type="email" placeholder="Email" value="jenniewilkerson@info.com">
+                    <input type="text" placeholder="Phone Number" value="+41 678-678-456">
+                    <input type="text" placeholder="Requested Service" value="Dental Surgery">
+                </div>
+                <div class="form-row">
+                    <select>
+                        <option>Select Doctor</option>
+                        <option>Doctor A</option>
+                        <option>Doctor B</option>
+                        <option>Doctor C</option>
+                    </select>
+                    <input type="date">
+                    <input type="time">
+                </div>
+                <button type="submit">Book Now</button>
+            </form>
+        </section>
+    </main>
+
+    <div class="chat-widget">
+        <div class="chat-header">
+            <img src="src/young-asian-woman.png" alt="Profile" class="profile-image">
+            <span>Monster Bot</span>
+        </div>
+        <div class="chat-body">
+            <p>Здравствуйте! Обращайтесь к нам, если у вас возникли вопросы.</p>
+        </div>
+        <div class="chat-footer">
+            <button class="chat-button">Написать сейчас</button>
+        </div>
     </div>
-    <div class="content">
-        <h2>About Us</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</p>
-    </div>
-    <footer>
-        &copy; 2024 TemplateMonster Demo. All rights reserved.
-    </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
-
