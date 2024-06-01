@@ -1,50 +1,43 @@
 /* Descripiton:
  * Create a view displaying the list of diseases for the maximum number of patients of each doctor.
  */
-CREATE VIEW doctor_patient_diseases AS
-WITH max_patients_per_doctor AS (
-    SELECT 
+CREATE VIEW max_diseases_per_doctor AS
+WITH doctor_patient_disease AS (
+    SELECT
         bd.doctor_id,
+        da.complaint AS disease,
         COUNT(DISTINCT bd.patient_id) AS patient_count
-    FROM 
+    FROM
         booked_doctors bd
-    GROUP BY 
-        bd.doctor_id
-    HAVING 
-        COUNT(DISTINCT bd.patient_id) = (
-            SELECT 
-                MAX(patient_count)
-            FROM (
-                SELECT 
-                    COUNT(DISTINCT patient_id) AS patient_count
-                FROM 
-                    booked_doctors
-                GROUP BY 
-                    doctor_id
-            ) AS subquery
-        )
+    JOIN
+        doctor_appointments da ON bd.id = da.booked_doctor_id
+    GROUP BY
+        bd.doctor_id, da.complaint
+),
+max_patient_disease AS (
+    SELECT
+        doctor_id,
+        disease,
+        patient_count,
+        ROW_NUMBER() OVER (PARTITION BY doctor_id ORDER BY patient_count DESC, disease) AS rn
+    FROM
+        doctor_patient_disease
 )
-SELECT 
+SELECT
+    d.id AS doctor_id,
     d.name AS doctor_name,
     d.surname AS doctor_surname,
     d.middle_name AS doctor_middle_name,
-    p.name AS patient_name,
-    p.surname AS patient_surname,
-    p.middle_name AS patient_middle_name,
-    da.complaint AS disease
-FROM 
-    max_patients_per_doctor mpd
-JOIN 
-    users d ON mpd.doctor_id = d.id
-JOIN 
-    booked_doctors bd ON mpd.doctor_id = bd.doctor_id
-JOIN 
-    doctor_appointments da ON bd.id = da.booked_doctor_id
-JOIN 
-    users p ON bd.patient_id = p.id
-ORDER BY 
-    d.id, p.id;
+    m.disease AS most_popular_disease,
+    m.patient_count
+FROM
+    max_patient_disease m
+JOIN
+    users d ON m.doctor_id = d.id
+WHERE
+    m.rn = 1;
 
+-- DROP VIEW IF EXISTS max_diseases_per_doctor
 
 
 /* Description:
@@ -53,29 +46,34 @@ ORDER BY
 CREATE VIEW doctor_visit_trend AS
 WITH daily_visits AS (
     SELECT
-        bd.doctor_id,
         date_trunc('day', bd.appointment_time) AS visit_date,
         COUNT(*) AS daily_visit_count
     FROM
         booked_doctors bd
     GROUP BY
-        bd.doctor_id, date_trunc('day', bd.appointment_time)
+        date_trunc('day', bd.appointment_time)
+),
+visit_trend AS (
+    SELECT
+        visit_date,
+        daily_visit_count,
+        LAG(daily_visit_count) OVER (ORDER BY visit_date) AS previous_daily_visit_count,
+        LEAD(daily_visit_count) OVER (ORDER BY visit_date) AS next_daily_visit_count
+    FROM
+        daily_visits
 )
 SELECT
-    u.id AS doctor_id,
-    u.name AS doctor_name,
-    u.surname AS doctor_surname,
-    u.middle_name AS doctor_middle_name,
-    dv.visit_date,
-    dv.daily_visit_count,
-    SUM(dv.daily_visit_count) OVER (PARTITION BY dv.doctor_id ORDER BY dv.visit_date) AS cumulative_visits 
+    visit_date,
+    daily_visit_count,
+    COALESCE(daily_visit_count - previous_daily_visit_count, 0) AS difference_with_previous_day,
+    COALESCE(next_daily_visit_count - daily_visit_count, 0) AS difference_with_next_day
 FROM
-    daily_visits dv
-JOIN
-    users u ON dv.doctor_id = u.id
+    visit_trend
 ORDER BY
-    u.id, dv.visit_date;
+    visit_date;
+
+-- DROP VIEW IF EXISTS doctor_visit_trend
 
 
-SELECT * FROM doctor_patient_diseases;
+SELECT * FROM max_diseases_per_doctor;
 SELECT * FROM doctor_visit_trend;

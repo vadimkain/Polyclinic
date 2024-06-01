@@ -1,14 +1,15 @@
 /* Подключение шрифтов */
 @font-face {
-    font-family: 'FontSolid';
-    src: url('fonts/fa-solid-900.woff2') format('woff2');
+    font-family: 'fa-solid-900';
+    src: url('fonts/fa-solid-900.woff2') format('woff2'),
+         url('fonts/fa-solid-900.woff') format('woff');
     font-weight: 900;
     font-style: normal;
 }
-
 @font-face {
-    font-family: 'FontRegular';
-    src: url('fonts/fa-regular-400.woff2') format('woff2');
+    font-family: 'fa-regular-400';
+    src: url('fonts/fa-regular-400.woff2') format('woff2'),
+         url('fonts/fa-regular-400.woff') format('woff');
     font-weight: 400;
     font-style: normal;
 }
@@ -57,6 +58,7 @@ body {
 .nav a {
     text-decoration: none;
     color: #000;
+    font-family: 'fa-solid-900';
 }
 
 .btn-appointment {
@@ -65,6 +67,7 @@ body {
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
+    font-family: 'fa-solid-900';
 }
 
 .hero {
@@ -94,18 +97,21 @@ body {
     font-size: 48px;
     font-weight: bold;
     color: black;
+    font-family: 'fa-solid-900';
 }
 
 .hero-content h2 {
     font-size: 48px;
     font-weight: bold;
     color: #3498db;
+    font-family: 'fa-regular-400';
 }
 
 .hero-content p {
     color: #333333;
     font-size: 18px;
     margin-top: 10px;
+    font-family: 'fa-regular-400';
 }
 
 .hero-image {
