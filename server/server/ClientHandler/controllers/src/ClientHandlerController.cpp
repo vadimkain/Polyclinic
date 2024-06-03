@@ -10,6 +10,10 @@
 #include <thread>
 #include <unordered_map>
 
+#include <sys/stat.h>
+#include <unistd.h>
+#include <sys/sendfile.h>
+
 namespace server::client_handler::controllers {
 
 ClientHandlerController::ClientHandlerController(std::weak_ptr<serverstarter::models::IServerStarterModel> server_model,
@@ -80,10 +84,12 @@ void ClientHandlerController::read_data(std::weak_ptr<models::IClientHandlerMode
 
     BLOG_INFO("client: ", client->socket().to_string());
 
-    std::string read_buf;
-    auto bytes_read = client->socket().read(read_buf, common::config::BUFFER_SIZE);
-
-    handle_read(client, std::move(read_buf), bytes_read);
+    while (client->socket().is_valid()) {
+        BLOG_DEBUG("Reading client: ", client->socket().to_string());
+        std::string read_buf;
+        auto bytes_read = client->socket().read(read_buf, common::config::BUFFER_SIZE);
+        handle_read(client, std::move(read_buf), bytes_read);
+    }
 }
 
 void ClientHandlerController::send_data(std::weak_ptr<models::IClientHandlerModel> weak_client) {
@@ -108,12 +114,17 @@ void ClientHandlerController::handle_read(std::weak_ptr<models::IClientHandlerMo
 
     auto client = weak_client.lock();
 
-    BLOG_INFO("client: ", client->socket().to_string());
-    BLOG_DEBUG("bytes_read = ", bytes_read, "; data = ", read_data);
+    BLOG_INFO("client: ", client->socket().to_string(), "bytes_read = ", bytes_read, "; data = ", read_data);
 
-    common::HttpHeaders http_headers(read_data);
-
-    handle_http_request(client, http_headers);
+    if (bytes_read > 0) {
+        common::HttpHeaders http_headers(read_data);
+        handle_http_request(client, http_headers);
+    } else if (bytes_read == 0) {
+        BLOG_INFO("Disconnect client", client->socket().to_string());
+        // TODO: create signal-slot for disconnect client;
+    } else {
+        BLOG_ERROR("Error in reading data: ", client->socket().latest_error());
+    }
 }
 
 void ClientHandlerController::handle_http_request(std::weak_ptr<models::IClientHandlerModel> weak_client, const common::HttpHeaders &header) {
@@ -122,7 +133,52 @@ void ClientHandlerController::handle_http_request(std::weak_ptr<models::IClientH
     auto client = weak_client.lock();
 
     BLOG_INFO("client: ", client->socket().to_string(), "; http request type = ", common::EnumStringConvertor::init()->to_string(header.method), "; http body = ", header.body);
-    m_context_handler_interface->request_to_open_uri(header.uri);
+    // m_context_handler_interface->request_to_open_uri(header.uri);
+    
+    std::string request = "HTTP/1.1 200 Ok\r\nContent-Type: text/html\r\n\r\n";
+    std::string image_path = "./frontend_web/index.html";
+
+    ::write(client->socket().m_socket_fd, request.c_str(), strlen(request.c_str()));
+
+    int fdimg = open(image_path.c_str(), O_RDONLY);
+    
+    if(fdimg < 0){
+        printf("Cannot Open file path : %s with error %d\n", image_path, fdimg); 
+    }
+
+    struct stat stat_buf;  /* hold information about input file */
+     
+    fstat(fdimg, &stat_buf);
+    int img_total_size = stat_buf.st_size;
+    int block_size = stat_buf.st_blksize;
+    //printf("image block size: %d\n", stat_buf.st_blksize);  
+    //printf("image total byte st_size: %d\n", stat_buf.st_size);
+    if(fdimg >= 0){
+        ssize_t sent_size;
+
+        while(img_total_size > 0){
+            //if(img_total_size < block_size){
+             //   sent_size = sendfile(fd, fdimg, NULL, img_total_size);
+            //}
+            //else{
+            //    sent_size = sendfile(fd, fdimg, NULL, block_size);
+            //}          
+            //img_total_size = img_total_size - sent_size;
+        
+            //if(sent_size < 0){
+             //   printf("send file error --> file: %d, send size: %d , error: %s\n", fdimg, sent_size, strerror(errno));
+             //   img_total_size = -1;
+              int send_bytes = ((img_total_size < block_size) ? img_total_size : block_size);
+              int done_bytes = ::sendfile(client->socket().m_socket_fd, fdimg, NULL, block_size);
+              img_total_size = img_total_size - done_bytes;
+            //}
+        }
+        if(sent_size >= 0){
+            BLOG_INFO("Send file: ", image_path);
+            // printf("send file: %s \n" , image_path);
+        }
+        close(fdimg);
+    }
 }
 
 }   // !server::client_handler::controllers;

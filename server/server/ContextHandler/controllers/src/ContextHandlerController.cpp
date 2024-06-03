@@ -32,7 +32,7 @@ void ContextHandlerController::on_open_uri(std::string uri) {
 
     auto current_page_path = m_context_handler_model->current_uri() + m_context_handler_model->current_page_file();
     
-    m_context_handler_interface->page_address_updated.emit(current_page_path);
+    // m_context_handler_interface->page_address_updated.emit(current_page_path);
 }
 
 

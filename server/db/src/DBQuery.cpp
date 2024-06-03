@@ -36,7 +36,7 @@ DBQuery::DBQuery() {
 };
 
 DBQuery::~DBQuery(void) {
-    m_db_connection->close();
+    m_db_connection->disconnect();
 }
 
 void DBQuery::output_all_users(void) {

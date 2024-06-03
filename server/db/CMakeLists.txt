@@ -19,8 +19,11 @@ target_include_directories(
 
 #----------------------------- LINK LIBRARIES -----------------------------#
 
+
 set(
     ALL_LIBS
+    pqxx
+    pq
     polyclinic_server_common
     bukhtalogger
 )
