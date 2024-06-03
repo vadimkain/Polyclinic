@@ -11,11 +11,13 @@ add_library(
 
 #----------------------------- LINK LIBRARIES -----------------------------#
 
-add_subdirectory(controllers)
 add_subdirectory(models)
+add_subdirectory(view)
+add_subdirectory(controllers)
 
 set(
     ALL_LIBS
+    polyclinic_server_code_client_handler_view
     polyclinic_server_code_client_handler_controllers
     polyclinic_server_code_client_handler_models
 )

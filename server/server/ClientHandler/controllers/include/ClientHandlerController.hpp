@@ -3,8 +3,8 @@
 
 #include "IClientHandlerModel.hpp"
 #include "IServerStarterModel.hpp"
-
 #include "IContextHandlerInterface.hpp"
+#include "IClientHandlerInterface.hpp"
 
 #include "HttpHeaders.hpp"
 #include "Signal"
@@ -17,6 +17,7 @@ namespace server::client_handler::controllers {
 class ClientHandlerController {
 public:
     ClientHandlerController(std::weak_ptr<serverstarter::models::IServerStarterModel> server_model,
+        std::weak_ptr<view::IClientHandlerInterface> client_handler_interface,
         std::weak_ptr<context_handler::view::IContextHandlerInterface> context_handler_interface
     );
     ~ClientHandlerController(void);
@@ -38,6 +39,7 @@ private:
     void init();
 
     void catch_new_connection(void);
+    void disconnect(std::weak_ptr<models::IClientHandlerModel> weak_client);
     void read_data(std::weak_ptr<models::IClientHandlerModel> weak_client);
     void send_data(std::weak_ptr<models::IClientHandlerModel> weak_client);
 
@@ -47,6 +49,7 @@ private:
 
 private:
     std::shared_ptr<context_handler::view::IContextHandlerInterface> m_context_handler_interface;
+    std::shared_ptr<view::IClientHandlerInterface> m_client_handler_interface;
 
     std::shared_ptr<const serverstarter::models::IServerStarterModel> m_SERVER_STARTER_MODEL;
     std::set<std::shared_ptr<models::IClientHandlerModel>> m_client_handler_model_container;

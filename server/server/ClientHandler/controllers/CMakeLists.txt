@@ -24,6 +24,7 @@ set(
     bukhtalogger
     polyclinic_server_code_client_handler_models
     polyclinic_server_code_server_starter_models
+    polyclinic_server_code_client_handler_view
     polyclinic_server_code_context_handler_view
 )
 

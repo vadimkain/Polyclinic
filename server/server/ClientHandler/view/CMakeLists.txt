@@ -1,7 +1,7 @@
 #----------------------------- CREATE LIBRARY -----------------------------#
 
 cmake_minimum_required(VERSION 3.6.0)
-set(PROJECT_NAME polyclinic_server_code_server_starter_controllers)
+set(PROJECT_NAME polyclinic_server_code_client_handler_view)
 project(${PROJECT_NAME})
 
 file(GLOB LIB_SRC "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
@@ -22,9 +22,7 @@ target_include_directories(
 set(
     ALL_LIBS
     bukhtalogger
-    polyclinic_server_code_server_starter_models
-    polyclinic_server_code_client_handler_view
-    polyclinic_server_code_client_handler_controllers
+    polyclinic_server_common
 )
 
 target_link_libraries(

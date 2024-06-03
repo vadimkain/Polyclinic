@@ -23,8 +23,8 @@ public:
  * Slots starts;
  */
 public:
-    common::Slot<std::string> on_open_uri_slot;
-    void on_open_uri(std::string address);
+    common::Slot<std::string, common::Socket> on_open_uri_slot;
+    void on_open_uri(std::string address, common::Socket socket);
 
 /*
  * Slots ends;

@@ -9,7 +9,7 @@ namespace server::context_handler::view {
 
 class ContextHandlerInterface : public IContextHandlerInterface {
 public:
-    void request_to_open_uri(std::string uri) override;
+    void request_to_open_uri(std::string uri, common::Socket socket) override;
 
 private:
 

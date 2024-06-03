@@ -7,6 +7,7 @@
 #include "ServerStarterModel.hpp"
 #include "ContextHandlerModel.hpp"
 #include "ContextHandlerInterface.hpp"
+#include "ClientHandlerInterface.hpp"
 
 #include <cinttypes>
 #include <chrono>
@@ -58,8 +59,9 @@ int main(int argc, char **argv) {
     auto context_handler_controller = std::make_shared<server::context_handler::controllers::ContextHandlerController>(context_handler_model, context_handler_interface);
 
     auto server_starter_model = std::make_shared<server::serverstarter::models::ServerStarterModel>();
+    auto client_handler_interface = std::make_shared<server::client_handler::view::ClientHandlerInterface>();
     server::serverstarter::controllers::ServerStarterController server_starter_controller(server_starter_model, 
-        context_handler_interface
+        context_handler_interface, client_handler_interface
     );
     db::DBQuery dbquery;
 
