@@ -17,7 +17,7 @@ public:
  */
 public:
     common::Signal<std::string, common::Socket> open_uri;
-    common::Signal<std::string> page_address_updated;
+    common::Signal<std::string, common::Socket> page_updated;
 
 /*
  * Signals ends;

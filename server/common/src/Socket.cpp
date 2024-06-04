@@ -43,19 +43,19 @@ Socket& Socket::operator= (Socket&& other) {
     return *this;
 }
 
-constexpr bool Socket::operator== (const Socket& other) {
+bool Socket::operator== (const Socket& other) const {
     return this->m_socket_fd == other.m_socket_fd;
 }
 
-constexpr bool Socket::operator!= (const Socket& other) {
+bool Socket::operator!= (const Socket& other) const {
     return this->m_socket_fd != other.m_socket_fd;
 }
 
-constexpr bool Socket::operator< (const Socket& other) {
+bool Socket::operator< (const Socket& other) const {
     return this->m_socket_fd < other.m_socket_fd;
 }
 
-constexpr bool Socket::operator> (const Socket& other) {
+bool Socket::operator> (const Socket& other) const {
     return this->m_socket_fd > other.m_socket_fd;
 }
 
@@ -109,11 +109,16 @@ Socket Socket::accept() {
 
 std::int32_t Socket::read(std::string &ret_buf, std::int32_t max_buf_size) {
     auto read_buf = std::make_unique<char[]>(max_buf_size);
+    std::memset(read_buf.get(), 0, max_buf_size); // Обнуление буфера
     std::int32_t bytes_read = ::read(m_socket_fd, read_buf.get(), max_buf_size);
-    ret_buf.assign(read_buf.get(), bytes_read);
-    
+
+    if (bytes_read > 0) {
+        ret_buf.assign(read_buf.get(), bytes_read);
+    }
+
     return bytes_read;
 }
+
 
 std::int32_t Socket::close() {
     std::int32_t ret = 0;

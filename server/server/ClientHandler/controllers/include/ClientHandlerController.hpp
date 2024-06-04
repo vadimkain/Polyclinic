@@ -28,8 +28,8 @@ public:
  * Slots starts;
  */
 public:
-    common::Slot<std::string> on_page_address_updated_slot;
-    void on_page_address_updated(std::string address);
+    common::Slot<std::string, common::Socket> on_page_updated_slot;
+    void on_page_updated(std::string address, common::Socket socket);
 
 /*
  * Slots ends;

@@ -17,10 +17,10 @@ public:
 
     constexpr Socket& operator= (const Socket& other) = default;
     Socket& operator= (Socket&& other);
-    constexpr bool operator== (const Socket& other);
-    constexpr bool operator!= (const Socket& other);
-    constexpr bool operator< (const Socket& other);
-    constexpr bool operator> (const Socket& other);
+    bool operator== (const Socket& other) const;
+    bool operator!= (const Socket& other) const;
+    bool operator< (const Socket& other) const;
+    bool operator> (const Socket& other) const;
 
     std::string to_string() const;
 

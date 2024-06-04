@@ -21,7 +21,7 @@ ClientHandlerController::ClientHandlerController(std::weak_ptr<serverstarter::mo
     std::weak_ptr<context_handler::view::IContextHandlerInterface> context_handler_interface
 )   : m_SERVER_STARTER_MODEL{server_model}, m_client_handler_interface{client_handler_interface.lock()}
     , m_context_handler_interface{context_handler_interface.lock()}
-    , on_page_address_updated_slot{std::bind(&ClientHandlerController::on_page_address_updated, this, std::placeholders::_1)}   // TODO: depricated;
+    , on_page_updated_slot{std::bind(&ClientHandlerController::on_page_updated, this, std::placeholders::_1, std::placeholders::_2 )}
 {
     BDECLARE_TAG_SCOPE("ClientHandlerController", __FUNCTION__);
     BLOG_INFO("constructor called on thread #", std::this_thread::get_id());
@@ -51,13 +51,25 @@ void ClientHandlerController::start(void) {
 }
 
 void ClientHandlerController::init() {
-    common::connect(&m_context_handler_interface->page_address_updated, &on_page_address_updated_slot);
+    common::connect(&m_context_handler_interface->page_updated, &on_page_updated_slot);
 
 }
 
-void ClientHandlerController::on_page_address_updated(std::string address) {
+void ClientHandlerController::on_page_updated(std::string address, common::Socket socket) {
     BDECLARE_TAG_SCOPE("ClientHandlerController", __FUNCTION__);
     BLOG_INFO("Page address = ", address);
+
+    // auto client = std::find_if(std::begin(m_client_handler_model_container), std::end(m_client_handler_model_container), [&socket](std::weak_ptr<models::IClientHandlerModel> weak_client){
+    //         auto client = weak_client.lock();
+    //         return client->socket() == socket;
+    //     }
+    // );
+    
+    // if (client != std::end(m_client_handler_model_container)) {
+    //     disconnect(*client);
+    // } else {
+    //     BLOG_ERROR("Client doesn't found in list: ", client->to)
+    // }
 }
 
 void ClientHandlerController::catch_new_connection(void) {
@@ -151,11 +163,16 @@ void ClientHandlerController::handle_http_request(std::weak_ptr<models::IClientH
     auto client = weak_client.lock();
 
     BLOG_INFO("client: ", client->socket().to_string(), "; http request type = ", common::EnumStringConvertor::init()->to_string(header.method), "; http body = ", header.body);
-    // m_context_handler_interface->request_to_open_uri(header.uri);
 
-    // int fdimg = open(image_path.c_str(), O_RDONLY);
+    switch (header.method) {
+    case common::HttpHeaders::HttpRequestType::GET:
+        m_context_handler_interface->request_to_open_uri(header.uri, client->socket());
+        break;
 
-    m_context_handler_interface->request_to_open_uri("/", client->socket());
+    default:
+        BLOG_WARNING("HTTP request method \"", common::EnumStringConvertor::init()->to_string(header.method), "\" is not handledsss");
+        break;
+    }
     
 }
 
