@@ -34,9 +34,9 @@ ClientHandlerController::~ClientHandlerController(void) {
         client->socket().close();
 
         if (!client->socket().is_valid()) {
-            BLOG_DEBUG("client with fd ", client->socket().m_socket_fd, " is closed");
+            BLOG_DEBUG("client = ", client->socket().to_string(), " is closed");
         } else {
-            BLOG_WARNING("Impossible to close the client with fd ", client->socket().m_socket_fd);
+            BLOG_WARNING("Impossible to close the client = ", client->socket().to_string(), ". ", client->socket().latest_error());
         }
     }
 }
@@ -59,17 +59,6 @@ void ClientHandlerController::on_page_updated(std::string address, common::Socke
     BDECLARE_TAG_SCOPE("ClientHandlerController", __FUNCTION__);
     BLOG_INFO("Page address = ", address);
 
-    // auto client = std::find_if(std::begin(m_client_handler_model_container), std::end(m_client_handler_model_container), [&socket](std::weak_ptr<models::IClientHandlerModel> weak_client){
-    //         auto client = weak_client.lock();
-    //         return client->socket() == socket;
-    //     }
-    // );
-    
-    // if (client != std::end(m_client_handler_model_container)) {
-    //     disconnect(*client);
-    // } else {
-    //     BLOG_ERROR("Client doesn't found in list: ", client->to)
-    // }
 }
 
 void ClientHandlerController::catch_new_connection(void) {
@@ -77,11 +66,11 @@ void ClientHandlerController::catch_new_connection(void) {
     BLOG_INFO("called");
 
     auto server_socket = m_SERVER_STARTER_MODEL->socket();
-    while (server_socket.m_socket_fd > 0) {
+    while (server_socket.is_valid()) {
         BLOG_DEBUG("waiting for connection");
 
         auto client_socket = server_socket.accept();
-        if (client_socket.m_socket_fd < 0) {
+        if (!client_socket.is_valid()) {
             BLOG_ERROR("impossible to connect to client: ", client_socket.latest_error());
             continue;
         }

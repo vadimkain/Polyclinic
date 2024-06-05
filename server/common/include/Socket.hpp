@@ -45,7 +45,7 @@ public:
 private:
     std::int32_t getsockname(Socket &sock) const;
 
-public:
+private:
     std::int32_t m_socket_fd = 0;
     sockaddr_in m_sock_address;
 };

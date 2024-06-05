@@ -51,10 +51,9 @@ void ServerStarterController::close(void) {
         BLOG_WARNING("Server Socket is not valid");
     }
     if (server_socket.close()) {
-        BLOG_ERROR("impossible to close the server fd: ", server_socket.m_socket_fd, ". ", server_socket.latest_error());
+        BLOG_ERROR("impossible to close the server ", server_socket.to_string(),  ". ", server_socket.latest_error());
         err = 0;
     } else {
-        server_socket.m_socket_fd = 0;
         m_server_starter_model->set_socket(server_socket);
     }
 
