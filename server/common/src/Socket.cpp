@@ -10,6 +10,7 @@
 #include <arpa/inet.h>
 #include <cerrno>
 #include <unistd.h>
+#include <sys/sendfile.h>
 
 namespace server::common {
 
@@ -99,17 +100,25 @@ Socket Socket::accept() {
     return accepted_socket;
 }
 
-// int Socket::connect() {
+std::int32_t Socket::send(const std::string& data) {
+    return ::send(m_socket_fd, data.c_str(), data.size(), 0);
+}
 
-// }
+std::int32_t Socket::sendfile(const File& file) {
+    off_t offset{0};
 
-// int Socket::write() {
+    while (offset < file.size()) {
+        if(::sendfile(m_socket_fd, file.file_fd(), &offset, file.size() - offset) < 0) {
+            break;
+        }
+    }
 
-// }
+    return offset;
+}
 
 std::int32_t Socket::read(std::string &ret_buf, std::int32_t max_buf_size) {
     auto read_buf = std::make_unique<char[]>(max_buf_size);
-    std::memset(read_buf.get(), 0, max_buf_size); // Обнуление буфера
+    std::memset(read_buf.get(), 0, max_buf_size);
     std::int32_t bytes_read = ::read(m_socket_fd, read_buf.get(), max_buf_size);
 
     if (bytes_read > 0) {

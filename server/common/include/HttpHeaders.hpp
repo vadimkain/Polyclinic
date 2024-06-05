@@ -29,6 +29,8 @@ public:
 
     HttpHeaders(void) = default;
     HttpHeaders(const std::string& request);
+
+    std::string extension_to_content_type(const std::string& extension) const;
 };
 
 }   // !server::common;

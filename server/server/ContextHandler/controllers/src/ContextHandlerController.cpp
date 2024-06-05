@@ -1,6 +1,8 @@
 #include "ContextHandlerController.hpp"
 #include "Logger.hpp"
 #include "config.hpp"
+#include "HttpHeaders.hpp"
+#include "File.hpp"
 
 #include <sys/stat.h>
 #include <unistd.h>
@@ -29,7 +31,7 @@ void ContextHandlerController::init() {
 
 void ContextHandlerController::on_open_uri(std::string uri, common::Socket socket) {
     BDECLARE_TAG_SCOPE("ContextHandlerController", __FUNCTION__);
-    BLOG_INFO("uri = ", uri);
+    BLOG_INFO("uri = ", uri, "; socket = ", socket.to_string());
 
     m_context_handler_model->set_current_uri(uri);
 
@@ -39,82 +41,53 @@ void ContextHandlerController::on_open_uri(std::string uri, common::Socket socke
 
     std::int32_t extension_index_pos = uri.find_last_of(common::config::EXTENSTION_SEPARATOR);
     std::string extension = "html";
+
     if (extension_index_pos != std::string::npos && extension_index_pos < uri.size()) {
         extension = uri.substr(extension_index_pos + 1);
-        BLOG_DEBUG("take extension from ", extension_index_pos + 1, "; size = ", uri.size());
     }
 
+    common::HttpHeaders http_header;
+
+    request << http_header.extension_to_content_type(extension);
+    file_path += uri;
     if (extension == "html") {
-        request << "Content-Type: text/html\r\n";
-        file_path += uri + common::config::DEFAULT_HTML_FILE;
-    } else if (extension == "css") {
-        request << "Content-Type: text/css\r\n";
-        file_path += uri;
-    } else if (extension == "jpg" || extension == "jpeg") {
-        request << "Content-Type: image/jpeg\r\n";
-        file_path += uri;
-    } else if (extension == "png") {
-        request << "Content-Type: image/png\r\n";
-        file_path += uri;
-    } else if (extension == "svg") {
-        request << "Content-Type: image/svg+xml\r\n";
-        file_path += uri;
-    } else if (extension.find("wof") != std::string::npos) {
-        request << "Content-Type: font/woff\r\n";
-        file_path += uri;
-    } else if (extension == "ico") {
-        request << "Content-Type: image/vnd.microsoft.icon\r\n";
-        file_path += uri;
-    } else {
-        request << "Content-Type: application/octet-stream\r\n";
-        file_path += uri;
+        file_path += common::config::DEFAULT_HTML_FILE;
     }
 
     BLOG_DEBUG("request = ", request.str(), "; file_path = ", file_path);
 
-    int fdimg = open(file_path.c_str(), O_RDONLY);
-    if (fdimg < 0) {
-        BLOG_ERROR("Cannot open file path: ", file_path, ". Error: ", strerror(errno));
+    common::File requested_file;
+
+    if (requested_file.open(file_path, common::File::OpenTypeEnum::READ_ONLY) < 0) {
+        BLOG_ERROR("Cannot open file path: ", file_path, ". Error: ", requested_file.latest_error());
         std::string error_response = "HTTP/1.1 404 Not Found\r\nContent-Type: text/html\r\n\r\n<h1>404 Not Found</h1>";
-        ::write(socket.m_socket_fd, error_response.c_str(), error_response.size());
+        socket.send(error_response);
+
+        requested_file.close();
         return;
     }
 
-    struct stat stat_buf;
-    if (fstat(fdimg, &stat_buf) == -1) {
-        BLOG_ERROR("Cannot get file stats: ", strerror(errno));
-        close(fdimg);
-        return;
-    }
-
-    off_t offset = 0;
-    ssize_t sent_bytes = 0;
-
-    request << "Content-Length: " << stat_buf.st_size << "\r\n";
+    request << "Content-Length: " << requested_file.size() << "\r\n";
     request << "Connection: close\r\n\r\n";
 
     std::string response = request.str();
-    if (::write(socket.m_socket_fd, response.c_str(), response.size()) == -1) {
+    if (socket.send(response) < 0) {
         BLOG_ERROR("Failed to write HTTP headers: ", strerror(errno));
-        close(fdimg);
+        requested_file.close();
         return;
     }
 
-    while (offset < stat_buf.st_size) {
-        sent_bytes = ::sendfile(socket.m_socket_fd, fdimg, &offset, stat_buf.st_size - offset);
-        if (sent_bytes <= 0) {
-            BLOG_ERROR("Error sending file: ", strerror(errno));
-            break;
-        }
+    auto sent_bytes = socket.sendfile(requested_file);
+
+    if (sent_bytes == requested_file.size()) {
+        BLOG_DEBUG("Sent file: ", file_path, " happened successfull. Was sent ", sent_bytes, " bytes.");
+    } else {
+        BLOG_ERROR("Error sending file. Bytes sent = ", sent_bytes, "; total size = ", requested_file.size(), ". Error ", socket.latest_error());
     }
 
-    if (sent_bytes > 0) {
-        BLOG_INFO("Sent file: ", file_path);
-    }
+    requested_file.close();
 
-    // m_context_handler_interface->page_updated.emit(uri, socket);
-
-    close(fdimg);
+    m_context_handler_interface->page_updated.emit(uri, socket);
 }
 
 } // namespace server::context_handler::controllers
