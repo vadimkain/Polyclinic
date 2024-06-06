@@ -31,8 +31,6 @@ DBQuery::DBQuery() {
         BLOG_FATAL("Connection failed");
         abort();
     }
-
-    m_db_transaction = std::make_unique<pqxx::work>(*m_db_connection);
 };
 
 DBQuery::~DBQuery(void) {
@@ -42,9 +40,9 @@ DBQuery::~DBQuery(void) {
 void DBQuery::output_all_users(void) {
     BDECLARE_TAG_SCOPE("DBQuery", __FUNCTION__);
     BLOG_INFO("called");
-
-    pqxx::result res = m_db_transaction->exec("SELECT * FROM users");
-    m_db_transaction->commit();
+    auto db_transaction = std::make_unique<pqxx::work>(*m_db_connection);
+    pqxx::result res = db_transaction->exec("SELECT * FROM users");
+    db_transaction->commit();
 
     for (const auto &row : res) {
         std::stringstream table_info_output;
@@ -53,6 +51,23 @@ void DBQuery::output_all_users(void) {
         }
         BLOG_DEBUG(table_info_output.str());
     }
+}
+
+bool DBQuery::check_signin_is_valid(std::string email, std::string password) {
+    BDECLARE_TAG_SCOPE("DBQuery", __FUNCTION__);
+
+    std::stringstream db_request;
+    auto db_transaction = std::make_unique<pqxx::work>(*m_db_connection);
+
+    db_request << "SELECT * FROM check_user_login('"
+        << email << "', '" << password << "')";
+
+    BLOG_INFO("Current request: ", db_request.str());
+
+    pqxx::result res = db_transaction->exec(db_request.str());
+    db_transaction->commit();
+
+    return res.size() > 0 && res[0][0].as<bool>();
 }
 
 }   // !server::db;

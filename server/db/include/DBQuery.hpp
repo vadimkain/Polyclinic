@@ -17,10 +17,10 @@ public:
     void operator=(const DBQuery &other) = delete;
 
     void output_all_users(void);
+    bool check_signin_is_valid(std::string email, std::string password);
 
 private:
     std::unique_ptr<pqxx::connection> m_db_connection;
-    std::unique_ptr<pqxx::transaction_base> m_db_transaction;
 };
 
 }   // !server::db;

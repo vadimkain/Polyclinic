@@ -63,7 +63,6 @@ int main(int argc, char **argv) {
     server::serverstarter::controllers::ServerStarterController server_starter_controller(server_starter_model, 
         context_handler_interface, client_handler_interface
     );
-    db::DBQuery dbquery;
 
     thread_pull.push(std::thread(&server::serverstarter::controllers::ServerStarterController::start, &server_starter_controller));
 

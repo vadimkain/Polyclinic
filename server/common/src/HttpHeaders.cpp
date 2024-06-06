@@ -10,7 +10,6 @@ HttpHeaders::HttpHeaders(const std::string& request) {
     std::istringstream iss(request);
     std::string line;
 
-    // Парсим первую строку для извлечения метода запроса, URI и версии HTTP протокола
     // parse the first line to get request type (method), uri, http version
     std::getline(iss, line);
     std::istringstream first_line_stream(line);
@@ -22,11 +21,13 @@ HttpHeaders::HttpHeaders(const std::string& request) {
     // parse least;
     while (std::getline(iss, line) && !line.empty()) {
         size_t pos = line.find(':');
-        if (pos != std::string::npos) {
-            std::string name = line.substr(0, pos);
-            std::string value = line.substr(pos + 2); // to skip ": "
-            headers.emplace(name, value);
+
+        if (pos == std::string::npos) {
+            break;
         }
+        std::string name = line.substr(0, pos);
+        std::string value = line.substr(pos + 2); // to skip ": "
+        headers.emplace(name, value);
     }
 
     // Парсим тело сообщения
@@ -52,7 +53,10 @@ std::string HttpHeaders::extension_to_content_type(const std::string& extension)
         ret_ss << "Content-Type: font/woff\r\n";
     } else if (extension == "ico") {
         ret_ss << "Content-Type: image/vnd.microsoft.icon\r\n";
-    } else {
+    } else if (extension == "json") {
+        ret_ss << "Content-Type: application/json\r\n";
+    }
+    else {
         ret_ss << "Content-Type: application/octet-stream\r\n";
     }
 
