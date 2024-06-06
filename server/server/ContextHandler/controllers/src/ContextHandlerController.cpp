@@ -50,7 +50,7 @@ void ContextHandlerController::on_open_uri(std::string uri, common::Socket socke
 
     request << http_header.extension_to_content_type(extension);
     file_path += uri;
-    if (extension == "html") {
+    if (extension == "html" && extension_index_pos == std::string::npos) {
         file_path += common::config::DEFAULT_HTML_FILE;
     }
 
