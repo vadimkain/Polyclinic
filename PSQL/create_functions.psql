@@ -133,8 +133,35 @@ END;
 $$ LANGUAGE plpgsql;
 
 
+CREATE OR REPLACE FUNCTION check_user_login(user_email TEXT, user_password TEXT) RETURNS BOOLEAN AS $$
+DECLARE
+    stored_password TEXT;
+BEGIN
+    -- Извлечение пароля из таблицы паролей
+    SELECT p.pass INTO stored_password
+    FROM users u
+    JOIN passwords p ON u.id = p.user_id
+    WHERE u.email = user_email;
+    
+    -- Если пользователь не найден, вернуть false
+    IF NOT FOUND THEN
+        RETURN FALSE;
+    END IF;
+    
+    -- Проверка пароля
+    IF stored_password = user_password THEN
+        RETURN TRUE;
+    ELSE
+        RETURN FALSE;
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+
+
 SELECT * FROM get_patients_by_doctor_and_date(8, '2024-05-10');
 SELECT * FROM get_top_doctors_last_month();
 SELECT * FROM get_patients_with_heart_disease_drugs();
 SELECT * FROM get_patient_count_per_doctor_last_month();
 SELECT * FROM get_medications_and_tests_for_patient(5);
+SELECT * FROM check_user_login('ivan.ivanov1@example.com', '123456')

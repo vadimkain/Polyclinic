@@ -52,6 +52,59 @@ VALUES
 ('Роксолана', 'Роксоланівна', 'Роксоланівна', 'roxolana.roxolanivna49@example.com'),
 ('Ярослав', 'Ярославів', 'Ярославович', 'yaroslav.yaroslavov50@example.com');
 
+INSERT INTO passwords (user_id, pass) VALUES 
+(1, '123456'),
+(2, 'password'),
+(3, '123456789'),
+(4, '12345678'),
+(5, '12345'),
+(6, '1234567'),
+(7, 'qwerty'),
+(8, 'abc123'),
+(9, '111111'),
+(10, '123123'),
+(11, 'admin'),
+(12, 'letmein'),
+(13, 'welcome'),
+(14, 'monkey'),
+(15, 'login'),
+(16, '1234'),
+(17, 'passw0rd'),
+(18, 'starwars'),
+(19, 'iloveyou'),
+(20, '123321'),
+(21, '000000'),
+(22, 'superman'),
+(23, 'asdfgh'),
+(24, 'zxcvbn'),
+(25, 'password1'),
+(26, '1q2w3e4r'),
+(27, 'qwertyuiop'),
+(28, 'qwerty123'),
+(29, 'admin123'),
+(30, '654321'),
+(31, 'qazwsx'),
+(32, '1qaz2wsx'),
+(33, 'michael'),
+(34, 'football'),
+(35, 'sunshine'),
+(36, 'princess'),
+(37, 'trustno1'),
+(38, 'whatever'),
+(39, 'master'),
+(40, 'qwerty1'),
+(41, 'password!'),
+(42, '1q2w3e'),
+(43, 'mypassword'),
+(44, 'letmein123'),
+(45, '123qwe'),
+(46, 'abc123456'),
+(47, 'password2'),
+(48, 'asdf1234'),
+(49, 'pass1234'),
+(50, 'qwert12345');
+
+
 -- Заполнение таблицы users_roles
 -- Врачи
 INSERT INTO users_roles (user_id, role_id)
@@ -547,6 +600,7 @@ VALUES
 
 
 SELECT * FROM users;
+SELECT * FROM passwords;
 SELECT * FROM phone_numbers;
 SELECT * FROM roles;
 SELECT * FROM users_roles;
