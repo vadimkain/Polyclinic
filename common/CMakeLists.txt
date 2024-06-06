@@ -4,3 +4,4 @@ option(INSTALL_GTEST "Enable installation of googletest. (Projects embedding goo
 
 add_subdirectory(plog)
 add_subdirectory(googletest)
+add_subdirectory(jsoncpp)
