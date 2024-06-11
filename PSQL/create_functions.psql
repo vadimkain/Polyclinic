@@ -158,6 +158,162 @@ END;
 $$ LANGUAGE plpgsql;
 
 
+CREATE OR REPLACE FUNCTION get_last_appointments_by_surname(patient_surname VARCHAR(50))
+RETURNS TABLE (
+    doctor_name TEXT,
+    appointment_time TIMESTAMPTZ,
+    complaint VARCHAR(2048)
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT 
+        CONCAT(d.name, ' ', d.surname) AS doctor_name,
+        bd.appointment_time,
+        da.complaint
+    FROM 
+        users p
+        JOIN booked_doctors bd ON p.id = bd.patient_id
+        JOIN doctor_appointments da ON bd.id = da.booked_doctor_id
+        JOIN users d ON bd.doctor_id = d.id
+    WHERE 
+        p.surname = patient_surname
+    ORDER BY 
+        bd.appointment_time DESC
+    LIMIT 1;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_clinic_statistics(start_date DATE, end_date DATE)
+RETURNS TABLE (
+    total_patients INT,
+    infectious_diseases INT,
+    hypertension INT,
+    diabetes INT,
+    lung_diseases INT,
+    total_sick_leaves INT,
+    total_sick_leave_days INT
+) AS $$
+DECLARE
+    total_patients_count INT;
+    infectious_diseases_count INT;
+    hypertension_count INT;
+    diabetes_count INT;
+    lung_diseases_count INT;
+    total_sick_leaves_count INT;
+    total_sick_leave_days_count INT;
+BEGIN
+    -- Подсчет общего количества пациентов
+    SELECT COUNT(DISTINCT bd.patient_id)
+    INTO total_patients_count
+    FROM booked_doctors bd
+    WHERE bd.appointment_time BETWEEN get_clinic_statistics.start_date AND get_clinic_statistics.end_date;
+
+    -- Подсчет количества пациентов с инфекционными заболеваниями
+    SELECT COUNT(DISTINCT bd.patient_id)
+    INTO infectious_diseases_count
+    FROM booked_doctors bd
+    JOIN doctor_appointments da ON bd.id = da.booked_doctor_id
+    WHERE da.complaint ILIKE '%infection%'
+    AND bd.appointment_time BETWEEN get_clinic_statistics.start_date AND get_clinic_statistics.end_date;
+
+    -- Подсчет количества пациентов с гипертонией
+    SELECT COUNT(DISTINCT bd.patient_id)
+    INTO hypertension_count
+    FROM booked_doctors bd
+    JOIN doctor_appointments da ON bd.id = da.booked_doctor_id
+    WHERE da.complaint ILIKE '%hypertension%'
+    AND bd.appointment_time BETWEEN get_clinic_statistics.start_date AND get_clinic_statistics.end_date;
+
+    -- Подсчет количества пациентов с диабетом
+    SELECT COUNT(DISTINCT bd.patient_id)
+    INTO diabetes_count
+    FROM booked_doctors bd
+    JOIN doctor_appointments da ON bd.id = da.booked_doctor_id
+    WHERE da.complaint ILIKE '%diabetes%'
+    AND bd.appointment_time BETWEEN get_clinic_statistics.start_date AND get_clinic_statistics.end_date;
+
+    -- Подсчет количества пациентов с заболеваниями легких
+    SELECT COUNT(DISTINCT bd.patient_id)
+    INTO lung_diseases_count
+    FROM booked_doctors bd
+    JOIN doctor_appointments da ON bd.id = da.booked_doctor_id
+    WHERE da.complaint ILIKE '%lung%'
+    AND bd.appointment_time BETWEEN get_clinic_statistics.start_date AND get_clinic_statistics.end_date;
+
+    -- Подсчет общего количества выданных больничных
+    SELECT COUNT(*)
+    INTO total_sick_leaves_count
+    FROM patient_sick_leave psl
+    JOIN doctor_appointments da ON psl.doctor_appointment_id = da.id
+    JOIN booked_doctors bd ON da.booked_doctor_id = bd.id
+    WHERE bd.appointment_time BETWEEN get_clinic_statistics.start_date AND get_clinic_statistics.end_date;
+
+    -- Подсчет общего количества дней больничных
+    SELECT SUM(psl.end_date - psl.start_date)
+    INTO total_sick_leave_days_count
+    FROM patient_sick_leave psl
+    JOIN doctor_appointments da ON psl.doctor_appointment_id = da.id
+    JOIN booked_doctors bd ON da.booked_doctor_id = bd.id
+    WHERE bd.appointment_time BETWEEN get_clinic_statistics.start_date AND get_clinic_statistics.end_date;
+
+    RETURN QUERY SELECT
+        COALESCE(total_patients_count, 0),
+        COALESCE(infectious_diseases_count, 0),
+        COALESCE(hypertension_count, 0),
+        COALESCE(diabetes_count, 0),
+        COALESCE(lung_diseases_count, 0),
+        COALESCE(total_sick_leaves_count, 0),
+        COALESCE(total_sick_leave_days_count, 0);
+END;
+$$ LANGUAGE plpgsql;
+
+
+-- Создание функции триггера для проверки аллергенов
+CREATE OR REPLACE FUNCTION check_allergens() RETURNS TRIGGER AS $$
+DECLARE
+    patient_id BIGINT;
+    patient_allergens TEXT[];
+    allergen TEXT;
+    drug_description TEXT;
+BEGIN
+    -- Получение ID пациента
+    SELECT bd.patient_id INTO patient_id
+    FROM booked_doctors bd
+    JOIN doctor_appointments da ON bd.id = da.booked_doctor_id
+    WHERE da.id = NEW.doctor_appointment_id;
+
+    -- Получение описания лекарства
+    SELECT description INTO drug_description
+    FROM drugs
+    WHERE id = NEW.drug_id;
+    
+    -- Получение аллергенов пациента в виде массива
+    SELECT ARRAY_AGG(a.name)
+    INTO patient_allergens
+    FROM users_allergen ua
+    JOIN allergens a ON ua.allergen_id = a.id
+    WHERE ua.user_id = patient_id;
+
+    -- Проверка на наличие аллергенов в описании лекарства
+    IF patient_allergens IS NOT NULL THEN
+        FOR i IN ARRAY_LOWER(patient_allergens, 1) .. ARRAY_UPPER(patient_allergens, 1) LOOP
+            allergen := patient_allergens[i];
+            -- Отладочное сообщение для проверки значений
+            RAISE NOTICE 'Checking allergen: % in drug description: %', allergen, drug_description;
+            IF position(lower(allergen) IN lower(drug_description)) > 0 THEN
+                RAISE EXCEPTION 'Cannot prescribe drug with allergen %', allergen;
+            END IF;
+        END LOOP;
+    END IF;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+
 
 SELECT * FROM get_patients_by_doctor_and_date(8, '2024-05-10');
 SELECT * FROM get_top_doctors_last_month();
@@ -165,3 +321,5 @@ SELECT * FROM get_patients_with_heart_disease_drugs();
 SELECT * FROM get_patient_count_per_doctor_last_month();
 SELECT * FROM get_medications_and_tests_for_patient(5);
 SELECT * FROM check_user_login('ivan.ivanov1@example.com', '123456')
+SELECT * FROM get_last_appointments_by_surname('Павлов');
+SELECT * FROM get_clinic_statistics('2024-01-01', '2024-12-31');

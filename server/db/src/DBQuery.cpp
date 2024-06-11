@@ -53,7 +53,7 @@ void DBQuery::output_all_users(void) {
     }
 }
 
-bool DBQuery::check_signin_is_valid(std::string email, std::string password) {
+std::pair<bool, UserInfo> DBQuery::check_signin_is_valid(std::string email, std::string password) {
     BDECLARE_TAG_SCOPE("DBQuery", __FUNCTION__);
 
     std::stringstream db_request;
@@ -67,7 +67,47 @@ bool DBQuery::check_signin_is_valid(std::string email, std::string password) {
     pqxx::result res = db_transaction->exec(db_request.str());
     db_transaction->commit();
 
-    return res.size() > 0 && res[0][0].as<bool>();
+    bool first = res.size() > 0 && res[0][0].as<bool>();
+
+    if (first) {
+        return {first, get_user_info_by_email(email)};
+    }
+    
+    return {first, {}};
+}
+
+UserInfo DBQuery::get_user_info_by_email(const std::string& email) {
+    BDECLARE_TAG_SCOPE("DBQuery", __FUNCTION__);
+
+    std::stringstream db_request;
+    UserInfo ret;
+    auto db_transaction = std::make_unique<pqxx::work>(*m_db_connection);
+
+    db_request << "SELECT * FROM user_details_view WHERE email = '"
+        << email << "'";
+
+    BLOG_INFO("Current request: ", db_request.str());
+    pqxx::result res = db_transaction->exec(db_request.str());
+    db_transaction->commit();
+
+    for (const auto& row : res) {
+        ret.id = row["id"].as<std::uint64_t>();
+        ret.name = row["name"].as<std::string>();
+        ret.surname = row["surname"].as<std::string>();
+        ret.middle_name = row["middle_name"].as<std::string>();
+        ret.email = row["email"].as<std::string>();
+        ret.role = row["role"].as<std::string>();
+
+        // ret.phone_numbers = row["name"].as<std::string>();
+        std::stringstream phone_numbers_ss(row["phone_numbers"].as<std::string>());
+
+        std::string phone_number;
+        while(std::getline(phone_numbers_ss, phone_number, ',')) {
+            ret.phone_numbers.push_back(phone_number);
+        };
+    }
+
+    return ret;
 }
 
 }   // !server::db;

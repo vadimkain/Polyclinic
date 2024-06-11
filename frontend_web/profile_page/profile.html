@@ -14,15 +14,14 @@
         <div class="profile-header">
             <img src="../src/default_avatar.jpg" alt="User Avatar" class="avatar">
             <h1>Profile</h1>
-            <h2>Welcome, [User's Name]</h2>
-            <button class="btn-logout" onclick="logout()">Logout</button>
+            <h2 id="welcome-message">Welcome, [User's Name]</h2>
         </div>
         <div class="profile-content">
             <div class="personal-info">
                 <h3>Personal Information</h3>
-                <p><strong>Name:</strong> [User's Name]</p>
-                <p><strong>Email:</strong> [User's Email]</p>
-                <p><strong>Phone:</strong> [User's Phone Number]</p>
+                <p><strong>Name:</strong> <span id="user-name">[User's Name]</span></p>
+                <p><strong>Email:</strong> <span id="user-email">[User's Email]</span></p>
+                <p><strong>Phone:</strong> <span id="user-phone">[User's Phone Number]</span></p>
             </div>
             <div class="medical-info">
                 <h3>Medical Card</h3>
@@ -42,8 +41,23 @@
             </div>
         </div>
     </div>
+    <button id="logoutButton" class="btn-logout">Logout</button>
 
     <script src="../scripts/include.js"></script>
     <script src="../scripts/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const name = localStorage.getItem('name');
+            const surname = localStorage.getItem('surname');
+            const middleName = localStorage.getItem('middle_name');
+            const email = localStorage.getItem('email');
+            const phoneNumbers = JSON.parse(localStorage.getItem('phone_numbers') || '[]');
+
+            document.getElementById('welcome-message').textContent = `Welcome, ${name} ${surname}`;
+            document.getElementById('user-name').textContent = `${name} ${surname} ${middleName}`;
+            document.getElementById('user-email').textContent = email;
+            document.getElementById('user-phone').textContent = phoneNumbers.join(', ');
+        });
+    </script>
 </body>
 </html>

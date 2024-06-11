@@ -1,0 +1,24 @@
+-- Создание триггера для таблицы prescription_drugs
+CREATE TRIGGER trigger_check_allergens
+BEFORE INSERT ON prescription_drugs
+FOR EACH ROW
+EXECUTE FUNCTION check_allergens();
+
+
+
+-- Вставка данных в таблицу prescription_drugs для тестирования
+-- Этот запрос должен пройти, так как у пациента нет аллергии на компонент лекарства
+INSERT INTO prescription_drugs (drug_id, doctor_appointment_id) VALUES
+(1, 1); -- Парацетамол для пациента без аллергии
+
+-- Этот запрос должен вызвать исключение, так как у пациента аллергия на "Пилок"
+INSERT INTO prescription_drugs (drug_id, doctor_appointment_id) VALUES
+(1, 11); -- Парацетамол для пациента с аллергией на "Пилок"
+
+-- Этот запрос должен вызвать исключение, так как у пациента аллергия на "Пил"
+INSERT INTO prescription_drugs (drug_id, doctor_appointment_id) VALUES
+(2, 12); -- Ибупрофен для пациента с аллергией на "Пил"
+
+-- Этот запрос должен пройти, так как у пациента нет аллергии на компоненты лекарства
+INSERT INTO prescription_drugs (drug_id, doctor_appointment_id) VALUES
+(3, 13); -- Амоксицилін для пациента без аллергии на компоненты

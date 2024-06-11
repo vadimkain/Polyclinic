@@ -74,6 +74,31 @@ ORDER BY
 
 -- DROP VIEW IF EXISTS doctor_visit_trend
 
+CREATE OR REPLACE VIEW user_details_view AS
+SELECT
+    u.id,
+    u.name,
+    u.surname,
+    u.middle_name,
+    u.email,
+    STRING_AGG(pn.country_code || pn.number, ',') AS phone_numbers,
+    r.name AS role
+FROM
+    users u
+LEFT JOIN
+    phone_numbers pn ON u.id = pn.user_id
+LEFT JOIN
+    users_roles ur ON u.id = ur.user_id
+LEFT JOIN
+    roles r ON ur.role_id = r.id
+GROUP BY
+    u.id, u.name, u.surname, u.middle_name, u.email, r.name
+ORDER BY
+    u.surname, u.name;
+
+-- DROP VIEW IF EXISTS user_details_view
+
 
 SELECT * FROM max_diseases_per_doctor;
 SELECT * FROM doctor_visit_trend;
+SELECT * FROM user_details_view WHERE email = 'ivan.ivanov1@example.com';

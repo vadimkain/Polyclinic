@@ -193,8 +193,20 @@ void ClientHandlerController::handle_json_post(common::Socket socket, std::strin
     if (uri == "/api/login") {
         BLOG_DEBUG("email = ", json_data["email"].asString(), "; password = ", json_data["password"].asString());
 
-        bool is_successful = m_db_query->check_signin_is_valid(json_data["email"].asString(), json_data["password"].asString());
-        json_response["is_login_success"] = is_successful;
+
+        auto login_res = m_db_query->check_signin_is_valid(json_data["email"].asString(), json_data["password"].asString());
+        json_response["is_login_success"] = login_res.first;
+        json_response["token"] = login_res.second.id;
+        json_response["name"] = login_res.second.name;
+        json_response["surname"] = login_res.second.surname;
+        json_response["middle_name"] = login_res.second.middle_name;
+        json_response["email"] = login_res.second.email;
+        json_response["role"] = login_res.second.role;
+        Json::Value phone_numbers(Json::arrayValue);
+        for (const auto& number : login_res.second.phone_numbers) {
+            phone_numbers.append(number);
+        }
+        json_response["phone_numbers"] = phone_numbers;
         request << "HTTP/1.1 200 OK\r\n";
     } else {
         BLOG_WARNING("uri = ", uri, "; is not handled!");

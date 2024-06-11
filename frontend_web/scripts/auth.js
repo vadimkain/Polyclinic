@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const registerForm = document.getElementById('registerForm');
     const signinForm = document.getElementById('signinForm');
+    const logoutButton = document.getElementById('logoutButton');
 
     if (signinForm) {
         signinForm.addEventListener('submit', async (event) => {
@@ -21,6 +22,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 const data = await response.json();
                 if (response.ok && data.is_login_success) {
                     localStorage.setItem('isLoggedIn', 'true');
+                    localStorage.setItem('id', data.id);
+                    localStorage.setItem('name', data.name);
+                    localStorage.setItem('surname', data.surname);
+                    localStorage.setItem('middle_name', data.middle_name);
+                    localStorage.setItem('email', data.email);
+                    localStorage.setItem('role', data.role);
+                    localStorage.setItem('phone_numbers', JSON.stringify(data.phone_numbers));
                     window.location.href = 'profile.html';
                 } else {
                     alert(data.message || 'Login failed');
@@ -59,16 +67,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     localStorage.setItem('isLoggedIn', 'true');
                     window.location.href = 'profile.html';
                 } else {
-                    alert(data.message || 'Registration failed');
+                    alert(data.message);
                 }
             } catch (error) {
                 console.error('Error:', error);
             }
         });
     }
-});
 
-function logout() {
-    localStorage.setItem('isLoggedIn', 'false');
-    window.location.href = 'signin.html';
-}
+    if (logoutButton) {
+        logoutButton.addEventListener('click', () => {
+            localStorage.clear(); // Видаляємо всі дані
+            window.location.href = 'signin.html';
+        });
+    }
+});

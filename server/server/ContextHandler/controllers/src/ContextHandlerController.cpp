@@ -36,6 +36,28 @@ void ContextHandlerController::on_open_uri(std::string uri, common::Socket socke
     m_context_handler_model->set_current_uri(uri);
 
     std::stringstream request;
+
+    /*
+    [] -> [       ]
+    
+    0x04234324 - memory where std::string::char_ptr;
+    size = 234;
+    buf_size = 280;
+
+    std::string obj 
+
+    obj += ""       // 100 bytesl
+        234 + 100 - 280 < 0; // not enough memory;
+
+    tmp_char_ptr = new char (size + 100 + 20)   // allocate new buf;
+    strcat(char_ptr, tmp_char_ptr); // tmp_char_ptr = char_ptr;
+    strcat(new_additional_data, tmp_char_ptr + size + 1);
+    delete char_ptr;
+    char_ptr = tmp_char_ptr;
+    
+        */
+
+    
     request << "HTTP/1.1 200 OK\r\n";
     std::string file_path = "./frontend_web";
 
