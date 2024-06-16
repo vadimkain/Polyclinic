@@ -193,7 +193,6 @@ void ClientHandlerController::handle_json_post(common::Socket socket, std::strin
     if (uri == "/api/login") {
         BLOG_DEBUG("email = ", json_data["email"].asString(), "; password = ", json_data["password"].asString());
 
-
         auto login_res = m_db_query->check_signin_is_valid(json_data["email"].asString(), json_data["password"].asString());
         json_response["is_login_success"] = login_res.first;
         json_response["token"] = login_res.second.id;
@@ -207,6 +206,20 @@ void ClientHandlerController::handle_json_post(common::Socket socket, std::strin
             phone_numbers.append(number);
         }
         json_response["phone_numbers"] = phone_numbers;
+        request << "HTTP/1.1 200 OK\r\n";
+    } else if (uri == "/api/register") {
+        db::UserInfo registered_user;
+        registered_user.email = json_data["email"].asString();
+        registered_user.name = json_data["name"].asString();
+        registered_user.surname = json_data["surname"].asString();
+        registered_user.middle_name = json_data["middle_name"].asString();
+        registered_user.password = json_data["password"].asString();
+        registered_user.role_id = json_data["role_id"].asInt();
+
+        auto reg_res = m_db_query->register_new_user(registered_user);
+        
+        json_response["is_success"] = reg_res.first;
+        json_response["error_message"] = reg_res.second;
         request << "HTTP/1.1 200 OK\r\n";
     } else {
         BLOG_WARNING("uri = ", uri, "; is not handled!");

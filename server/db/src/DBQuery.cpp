@@ -13,6 +13,11 @@ namespace config = server::common::config;
 namespace server::db 
 {
 
+template<typename T>
+T convert_to_datatype(const pqxx::row& row, std::string column_name){
+    return row[column_name].is_null() ? T{} : row[column_name].as<T>();
+}
+
 DBQuery::DBQuery() {
     BDECLARE_TAG_SCOPE("DBQuery", __FUNCTION__);
 
@@ -91,15 +96,15 @@ UserInfo DBQuery::get_user_info_by_email(const std::string& email) {
     db_transaction->commit();
 
     for (const auto& row : res) {
-        ret.id = row["id"].as<std::uint64_t>();
-        ret.name = row["name"].as<std::string>();
-        ret.surname = row["surname"].as<std::string>();
-        ret.middle_name = row["middle_name"].as<std::string>();
-        ret.email = row["email"].as<std::string>();
-        ret.role = row["role"].as<std::string>();
+        ret.id = convert_to_datatype<uint64_t>(row, "id");
+        ret.name = convert_to_datatype<std::string>(row, "name");
+        ret.surname = convert_to_datatype<std::string>(row, "surname");
+        ret.middle_name = convert_to_datatype<std::string>(row, "middle_name");
+        ret.email = convert_to_datatype<std::string>(row, "email");
+        ret.role = convert_to_datatype<std::string>(row, "role");
 
         // ret.phone_numbers = row["name"].as<std::string>();
-        std::stringstream phone_numbers_ss(row["phone_numbers"].as<std::string>());
+        std::stringstream phone_numbers_ss(convert_to_datatype<std::string>(row, "phone_numbers"));
 
         std::string phone_number;
         while(std::getline(phone_numbers_ss, phone_number, ',')) {
@@ -108,6 +113,33 @@ UserInfo DBQuery::get_user_info_by_email(const std::string& email) {
     }
 
     return ret;
+}
+
+std::pair<bool, std::string> DBQuery::register_new_user(const UserInfo& info) {
+    BDECLARE_TAG_SCOPE("DBQuery", __FUNCTION__);
+
+    std::stringstream db_request;
+    UserInfo ret;
+    auto db_transaction = std::make_unique<pqxx::work>(*m_db_connection);
+
+    db_request << "SELECT * FROM add_new_user("
+        << "'" << info.name << "',"
+        << "'" << info.surname << "',"
+        << "'" << info.middle_name << "',"
+        << "'" << info.email << "',"
+        << "'" << info.password << "',"
+        << info.role_id
+        << ");";
+
+    BLOG_INFO("Current request: ", db_request.str());
+    pqxx::result res = db_transaction->exec(db_request.str());
+    db_transaction->commit();
+
+    if (res.size() > 0) {
+        return {res[0]["is_success"].as<bool>(), convert_to_datatype<std::string>(res[0], "message")};
+    } else {
+        return {false, std::string{"Query result is empty"}};
+    }
 }
 
 }   // !server::db;

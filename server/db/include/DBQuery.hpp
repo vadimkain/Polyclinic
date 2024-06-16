@@ -12,12 +12,14 @@ namespace server::db {
 
 struct UserInfo {
     std::uint64_t id;
+    std::string role;
+    std::uint16_t role_id;
     std::string name;
     std::string surname;
     std::string middle_name;
     std::string email;
-    std::string role;
     std::vector<std::string> phone_numbers;
+    std::string password;
 };
 
 class DBQuery {
@@ -32,6 +34,7 @@ public:
     std::pair<bool, UserInfo> check_signin_is_valid(std::string email, std::string password);
 
     UserInfo get_user_info_by_email(const std::string& email);
+    std::pair<bool, std::string> register_new_user(const UserInfo& info);
 
 private:
     std::unique_ptr<pqxx::connection> m_db_connection;

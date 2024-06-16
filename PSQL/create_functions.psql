@@ -312,6 +312,64 @@ END;
 $$ LANGUAGE plpgsql;
 
 
+CREATE OR REPLACE FUNCTION add_new_user(
+    p_name VARCHAR(50),
+    p_surname VARCHAR(50),
+    p_middle_name VARCHAR(50),
+    p_email custom_email,
+    p_password TEXT,
+    p_role_id INTEGER
+) RETURNS TABLE (
+    is_success BOOLEAN,
+    message TEXT
+) AS $$
+DECLARE
+    new_user_id BIGINT;
+    role_exists BOOLEAN;
+BEGIN
+    -- Проверка существования роли
+    SELECT EXISTS (SELECT 1 FROM roles WHERE id = p_role_id) INTO role_exists;
+    
+    IF NOT role_exists THEN
+        RETURN QUERY SELECT FALSE, 'Role with ID ' || p_role_id || ' does not exist';
+        RETURN;
+    END IF;
+
+    -- Вставка нового пользователя в таблицу users
+    BEGIN
+        INSERT INTO users (name, surname, middle_name, email)
+        VALUES (p_name, p_surname, p_middle_name, p_email)
+        RETURNING id INTO new_user_id;
+    EXCEPTION WHEN others THEN
+        RETURN QUERY SELECT FALSE, 'Failed to insert user into users table: ' || SQLERRM;
+        RETURN;
+    END;
+
+    -- Вставка пароля пользователя в таблицу passwords
+    BEGIN
+        INSERT INTO passwords (user_id, pass)
+        VALUES (new_user_id, p_password);
+    EXCEPTION WHEN others THEN
+        RETURN QUERY SELECT FALSE, 'Failed to insert password into passwords table: ' || SQLERRM;
+        RETURN;
+    END;
+
+    -- Назначение роли пользователю
+    BEGIN
+        INSERT INTO users_roles (user_id, role_id)
+        VALUES (new_user_id, p_role_id);
+    EXCEPTION WHEN others THEN
+        RETURN QUERY SELECT FALSE, 'Failed to insert role into users_roles table: ' || SQLERRM;
+        RETURN;
+    END;
+
+    RETURN QUERY SELECT TRUE, 'User added successfully';
+END;
+$$ LANGUAGE plpgsql;
+
+
+
+
 
 
 
@@ -323,3 +381,12 @@ SELECT * FROM get_medications_and_tests_for_patient(5);
 SELECT * FROM check_user_login('ivan.ivanov1@example.com', '123456')
 SELECT * FROM get_last_appointments_by_surname('Павлов');
 SELECT * FROM get_clinic_statistics('2024-01-01', '2024-12-31');
+
+SELECT * FROM add_new_user(
+    'Іван',
+    'Іванов',
+    'Іванович',
+    'ivan.ivanov@example.com',
+    'password123',
+    1 -- ID роли
+);

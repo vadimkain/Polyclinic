@@ -9,8 +9,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 80px); /* Учитывая высоту топбара */
-    padding-top: 60px; /* Высота топбара с небольшим подъемом */
+    height: calc(100vh - 80px); 
+    padding-top: 60px;
 }
 
 .container {
