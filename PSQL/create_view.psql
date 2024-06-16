@@ -81,6 +81,7 @@ SELECT
     u.surname,
     u.middle_name,
     u.email,
+    p.pass AS password,
     STRING_AGG(pn.country_code || pn.number, ',') AS phone_numbers,
     r.name AS role
 FROM
@@ -91,14 +92,105 @@ LEFT JOIN
     users_roles ur ON u.id = ur.user_id
 LEFT JOIN
     roles r ON ur.role_id = r.id
+LEFT JOIN
+    passwords p ON u.id = p.user_id
 GROUP BY
-    u.id, u.name, u.surname, u.middle_name, u.email, r.name
+    u.id, u.name, u.surname, u.middle_name, u.email, p.pass, r.name
 ORDER BY
     u.surname, u.name;
 
--- DROP VIEW IF EXISTS user_details_view
+
+CREATE OR REPLACE VIEW booked_doctor_view AS
+SELECT
+    bd.id AS booked_id,
+    bd.patient_id AS user_id,
+    d.name AS doctor_name,
+    d.surname AS doctor_surname,
+    d.middle_name AS doctor_middle_name,
+    bd.book_time AS booked_time,
+    bd.appointment_time IS NOT NULL AS appointment_status
+FROM
+    booked_doctors bd
+JOIN
+    users d ON bd.doctor_id = d.id
+ORDER BY
+    d.surname, d.name;
+
+
+CREATE OR REPLACE VIEW doctor_appointment_view AS
+SELECT
+    bd.id AS booked_id,
+    bd.patient_id AS user_id,
+    da.id AS appointment_id,
+    bd.appointment_time,
+    d.name AS doctor_name,
+    d.surname AS doctor_surname,
+    d.middle_name AS doctor_middle_name,
+    da.complaint
+FROM
+    doctor_appointments da
+JOIN
+    booked_doctors bd ON da.booked_doctor_id = bd.id
+JOIN
+    users d ON bd.doctor_id = d.id
+ORDER BY
+    bd.appointment_time;
+
+
+CREATE OR REPLACE VIEW descriptioned_drugs_view AS
+SELECT
+    da.id AS appointment_id,
+    bd.patient_id AS user_id,
+    d.name AS doctor_name,
+    d.surname AS doctor_surname,
+    d.middle_name AS doctor_middle_name,
+    dr.name AS drug_name
+FROM
+    prescription_drugs pd
+JOIN
+    doctor_appointments da ON pd.doctor_appointment_id = da.id
+JOIN
+    booked_doctors bd ON da.booked_doctor_id = bd.id
+JOIN
+    users d ON bd.doctor_id = d.id
+JOIN
+    drugs dr ON pd.drug_id = dr.id
+ORDER BY
+    da.id;
+
+
+CREATE OR REPLACE VIEW analyse_appointments_view AS
+SELECT
+    da.id AS appointment_id,
+    bd.patient_id AS user_id,
+    d.name AS doctor_name,
+    d.surname AS doctor_surname,
+    d.middle_name AS doctor_middle_name,
+    aa.is_completed
+FROM
+    analyse_appointments aa
+JOIN
+    doctor_appointments da ON aa.doctor_appointment_id = da.id
+JOIN
+    booked_doctors bd ON da.booked_doctor_id = bd.id
+JOIN
+    users d ON bd.doctor_id = d.id
+ORDER BY
+    da.id;
+
+
 
 
 SELECT * FROM max_diseases_per_doctor;
 SELECT * FROM doctor_visit_trend;
-SELECT * FROM user_details_view WHERE email = 'ivan.ivanov1@example.com';
+SELECT * FROM user_details_view WHERE id = 11;
+SELECT * FROM booked_doctor_view ORDER BY user_id;
+SELECT * FROM doctor_appointment_view;
+SELECT * FROM descriptioned_drugs_view;
+SELECT * FROM analyse_appointments_view;
+
+SELECT * FROM booked_doctor_view WHERE user_id = 11;
+SELECT * FROM booked_doctor_view 
+WHERE user_id = 11
+ORDER BY booked_time DESC
+LIMIT 1;

@@ -149,6 +149,36 @@ UserInfo DBQuery::get_user_info_by_id(std::uint64_t id) {
     return ret;
 }
 
+BookedDoctorInfo DBQuery::get_last_booked_doctor(std::uint64_t user_id) {
+    BDECLARE_TAG_SCOPE("DBQuery", __FUNCTION__);
+
+    std::stringstream db_request;
+    BookedDoctorInfo ret;
+    auto db_transaction = std::make_unique<pqxx::work>(*m_db_connection);
+
+    db_request << "SELECT * FROM booked_doctor_view"
+        << " WHERE user_id = " << user_id
+        << " ORDER BY booked_time DESC"
+        << " LIMIT 1;";
+
+    BLOG_INFO("Current request: ", db_request.str());
+    pqxx::result res = db_transaction->exec(db_request.str());
+    db_transaction->commit();
+
+    if (res.size() > 0) {
+        ret.id = convert_to_datatype<std::uint64_t>(res[0], "booked_id");
+        ret.user_id = convert_to_datatype<std::uint64_t>(res[0], "user_id");
+        ret.doc_name = convert_to_datatype<std::string>(res[0], "doctor_name");
+        ret.doc_surname = convert_to_datatype<std::string>(res[0], "doctor_surname");
+        ret.doc_middle_name = convert_to_datatype<std::string>(res[0], "doctor_middle_name");
+        ret.is_compited = convert_to_datatype<bool>(res[0], "appointment_status");
+
+        string_to_time(convert_to_datatype<std::string>(res[0], "booked_time"), ret.booked_time);
+    }
+
+    return ret;
+}
+
 std::pair<bool, std::string> DBQuery::register_new_user(const UserInfo& info) {
     BDECLARE_TAG_SCOPE("DBQuery", __FUNCTION__);
 
@@ -174,6 +204,13 @@ std::pair<bool, std::string> DBQuery::register_new_user(const UserInfo& info) {
     } else {
         return {false, std::string{"Query result is empty"}};
     }
+}
+
+void DBQuery::string_to_time(const std::string& time_str, std::time_t& time) {
+    std::tm tm = {};
+    std::stringstream ss{time_str};
+    ss >> std::get_time(&tm, "%Y-%M-%d %H:%M:%S");
+    time = std::mktime(&tm);
 }
 
 }   // !server::db;

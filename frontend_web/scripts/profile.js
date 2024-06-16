@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     try {
         const response = await fetch('/api/user', {
-            method: 'POST',  // Изменено на POST
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token // Передаём токен как число
+                'Authorization': token
             },
             credentials: 'include',
-            body: JSON.stringify({ token: parseInt(token) }) // Отправляем токен как число в теле запроса
+            body: JSON.stringify({ token: parseInt(token) })
         });
 
         if (response.ok) {
@@ -37,14 +37,19 @@ document.addEventListener('DOMContentLoaded', async function() {
 
             // Обработка последней записи к врачу
             if (data.latest_booked_doctor) {
-                document.getElementById('latestBookedDoctor').textContent = 
-                    `Врач: ${data.latest_booked_doctor.doctor_name}, Назначенное время: ${data.latest_booked_doctor.appointment_time}, Посещение: ${data.latest_booked_doctor.was_visited ? 'Да' : 'Нет'}, Номер записи: ${data.latest_booked_doctor.book_id}`;
+                const docName = `${data.latest_booked_doctor.doc_name} ${data.latest_booked_doctor.doc_middle_name} ${data.latest_booked_doctor.doc_surname}`;
+                const bookedTime = formatDate(new Date(data.latest_booked_doctor.booked_time * 1000));
+                const isCompleted = data.latest_booked_doctor.is_compited ? 'Yes' : 'No';
+                const bookId = String(data.latest_booked_doctor.book_id);
+
+                document.getElementById('latestBookedDoctor').innerHTML = 
+                    `Book №${bookId}, Doctor: ${docName}, Appointment Time: ${bookedTime}, Completed: ${isCompleted} <a href="#" class="more-link">More...</a>`;
             }
 
             // Обработка последнего приёма у доктора
             if (data.latest_doctor_appointment) {
                 document.getElementById('latestDoctorAppointment').textContent = 
-                    `Номер записи: ${data.latest_doctor_appointment.book_id}, Время приёма: ${data.latest_doctor_appointment.appointment_time}, Врач: ${data.latest_doctor_appointment.doctor_name}, Жалоба: ${data.latest_doctor_appointment.complaint}`;
+                    `Номер записи: ${data.latest_doctor_appointment.book_id}, Время приёма: ${formatDate(new Date(data.latest_doctor_appointment.appointment_time * 1000))}, Врач: ${data.latest_doctor_appointment.doctor_name}, Жалоба: ${data.latest_doctor_appointment.complaint}`;
             }
 
             // Обработка последнего выписанного лекарства
@@ -69,3 +74,10 @@ document.addEventListener('DOMContentLoaded', async function() {
         window.location.href = 'signin.html';
     }
 });
+
+function formatDate(date) {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Месяц начинается с 0
+    const year = date.getFullYear();
+    return `${day}.${month}.${year}`;
+}

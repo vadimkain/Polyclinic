@@ -238,6 +238,9 @@ void ClientHandlerController::handle_json_post(common::Socket socket, std::strin
             }
             json_response["phone_numbers"] = phone_numbers;
 
+            auto last_booked_doc_info = m_db_query->get_last_booked_doctor(id);
+            json_response["latest_booked_doctor"] = last_booked_doc_info.to_json();
+
             request << "HTTP/1.1 200 OK\r\n";
         } catch (std::exception& err) {
             BLOG_ERROR("Cannot to get info with token: ", json_data["token"].asString(), ". Error: ", err.what());

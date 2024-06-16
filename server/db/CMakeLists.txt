@@ -26,6 +26,8 @@ set(
     pq
     polyclinic_server_common
     bukhtalogger
+    # external libs:
+    jsoncpp_lib
 )
 
 target_link_libraries(
