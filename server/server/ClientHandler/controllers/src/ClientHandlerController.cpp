@@ -196,11 +196,6 @@ void ClientHandlerController::handle_json_post(common::Socket socket, std::strin
         auto login_res = m_db_query->check_signin_is_valid(json_data["email"].asString(), json_data["password"].asString());
         json_response["is_login_success"] = login_res.first;
         json_response["token"] = login_res.second.id;
-        json_response["name"] = login_res.second.name;
-        json_response["surname"] = login_res.second.surname;
-        json_response["middle_name"] = login_res.second.middle_name;
-        json_response["email"] = login_res.second.email;
-        json_response["role"] = login_res.second.role;
         Json::Value phone_numbers(Json::arrayValue);
         for (const auto& number : login_res.second.phone_numbers) {
             phone_numbers.append(number);
@@ -220,7 +215,33 @@ void ClientHandlerController::handle_json_post(common::Socket socket, std::strin
         
         json_response["is_success"] = reg_res.first;
         json_response["error_message"] = reg_res.second;
+
+        if (reg_res.first) {
+            registered_user = m_db_query->get_user_info_by_email(registered_user.email);
+            json_response["token"] = registered_user.id;
+        }
+
         request << "HTTP/1.1 200 OK\r\n";
+    } else if (uri == "/api/user") {
+        try {
+            std::uint64_t id = json_data["token"].asUInt64();
+            auto user_info = m_db_query->get_user_info_by_id(id);
+            json_response["token"] = user_info.id;
+            json_response["name"] = user_info.name;
+            json_response["surname"] = user_info.surname;
+            json_response["middle_name"] = user_info.middle_name;
+            json_response["email"] = user_info.email;
+            json_response["role"] = user_info.role;
+            Json::Value phone_numbers(Json::arrayValue);
+            for (const auto& number : user_info.phone_numbers) {
+                phone_numbers.append(number);
+            }
+            json_response["phone_numbers"] = phone_numbers;
+
+            request << "HTTP/1.1 200 OK\r\n";
+        } catch (std::exception& err) {
+            BLOG_ERROR("Cannot to get info with token: ", json_data["token"].asString(), ". Error: ", err.what());
+        }
     } else {
         BLOG_WARNING("uri = ", uri, "; is not handled!");
     }

@@ -34,6 +34,7 @@ public:
     std::pair<bool, UserInfo> check_signin_is_valid(std::string email, std::string password);
 
     UserInfo get_user_info_by_email(const std::string& email);
+    UserInfo get_user_info_by_id(std::uint64_t id);
     std::pair<bool, std::string> register_new_user(const UserInfo& info);
 
 private:

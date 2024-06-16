@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-
+    
             try {
                 const response = await fetch('/api/login', {
                     method: 'POST',
@@ -18,18 +18,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     body: JSON.stringify({ email, password }),
                     credentials: 'include'
                 });
-
+    
                 const data = await response.json();
                 if (response.ok && data.is_login_success) {
                     localStorage.setItem('isLoggedIn', 'true');
-                    localStorage.setItem('id', data.id);
-                    localStorage.setItem('name', data.name);
-                    localStorage.setItem('surname', data.surname);
-                    localStorage.setItem('middle_name', data.middle_name);
-                    localStorage.setItem('email', data.email);
-                    localStorage.setItem('role', data.role); // Зберігання ролі у локальному сховищі
-                    localStorage.setItem('phone_numbers', JSON.stringify(data.phone_numbers));
-                    window.location.href = 'profile.html';
+                    localStorage.setItem('token', data.token); // Зберігаємо токен
+                    window.location.href = 'index.html';
                 } else {
                     alert(data.message || 'Login failed');
                 }
@@ -37,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error:', error);
             }
         });
-    }
+    }    
 
     if (registerForm) {
         registerForm.addEventListener('submit', async (event) => {
@@ -54,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             const nameParts = fullname.trim().split(' ');
-            const name = nameParts[0];
-            const surname = nameParts[1] || '';
+            const surname = nameParts[0];
+            const name = nameParts[1] || '';
             const middle_name = nameParts[2] || '';
 
             try {
@@ -71,9 +65,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 const data = await response.json();
                 if (response.ok && data.is_success) {
                     localStorage.setItem('isLoggedIn', 'true');
+                    localStorage.setItem('token', data.token); // Зберігаємо токен
                     window.location.href = 'profile.html';
                 } else {
-                    alert('Registration failed');
+                    alert(data.error_message || 'Registration failed');
                 }
             } catch (error) {
                 console.error('Error:', error);

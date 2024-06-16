@@ -115,6 +115,40 @@ UserInfo DBQuery::get_user_info_by_email(const std::string& email) {
     return ret;
 }
 
+UserInfo DBQuery::get_user_info_by_id(std::uint64_t id) {
+    BDECLARE_TAG_SCOPE("DBQuery", __FUNCTION__);
+
+    std::stringstream db_request;
+    UserInfo ret;
+    auto db_transaction = std::make_unique<pqxx::work>(*m_db_connection);
+
+    db_request << "SELECT * FROM user_details_view WHERE id = '"
+        << id << "'";
+
+    BLOG_INFO("Current request: ", db_request.str());
+    pqxx::result res = db_transaction->exec(db_request.str());
+    db_transaction->commit();
+
+    for (const auto& row : res) {
+        ret.id = convert_to_datatype<uint64_t>(row, "id");
+        ret.name = convert_to_datatype<std::string>(row, "name");
+        ret.surname = convert_to_datatype<std::string>(row, "surname");
+        ret.middle_name = convert_to_datatype<std::string>(row, "middle_name");
+        ret.email = convert_to_datatype<std::string>(row, "email");
+        ret.role = convert_to_datatype<std::string>(row, "role");
+
+        // ret.phone_numbers = row["name"].as<std::string>();
+        std::stringstream phone_numbers_ss(convert_to_datatype<std::string>(row, "phone_numbers"));
+
+        std::string phone_number;
+        while(std::getline(phone_numbers_ss, phone_number, ',')) {
+            ret.phone_numbers.push_back(phone_number);
+        };
+    }
+
+    return ret;
+}
+
 std::pair<bool, std::string> DBQuery::register_new_user(const UserInfo& info) {
     BDECLARE_TAG_SCOPE("DBQuery", __FUNCTION__);
 
