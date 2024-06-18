@@ -38,30 +38,38 @@ document.addEventListener('DOMContentLoaded', async function() {
             // Обработка последней записи к врачу
             if (data.latest_booked_doctor) {
                 const docName = `${data.latest_booked_doctor.doc_name} ${data.latest_booked_doctor.doc_middle_name} ${data.latest_booked_doctor.doc_surname}`;
-                const bookedTime = formatDate(new Date(data.latest_booked_doctor.booked_time * 1000));
+                const bookedTime = formatDateTime(new Date(data.latest_booked_doctor.booked_time * 1000));
                 const isCompleted = data.latest_booked_doctor.is_compited ? 'Yes' : 'No';
-                const bookId = String(data.latest_booked_doctor.book_id);
+                const bookId = data.latest_booked_doctor.book_id;
 
                 document.getElementById('latestBookedDoctor').innerHTML = 
                     `Book №${bookId}, Doctor: ${docName}, Appointment Time: ${bookedTime}, Completed: ${isCompleted} <a href="#" class="more-link">More...</a>`;
             }
 
             // Обработка последнего приёма у доктора
-            if (data.latest_doctor_appointment) {
-                document.getElementById('latestDoctorAppointment').textContent = 
-                    `Номер записи: ${data.latest_doctor_appointment.book_id}, Время приёма: ${formatDate(new Date(data.latest_doctor_appointment.appointment_time * 1000))}, Врач: ${data.latest_doctor_appointment.doctor_name}, Жалоба: ${data.latest_doctor_appointment.complaint}`;
+            if (data.last_appointment_info) {
+                const docName = `${data.last_appointment_info.doc_name} ${data.last_appointment_info.doc_middle_name} ${data.last_appointment_info.doc_surname}`;
+                const appointmentTime = formatDateTime(new Date(data.last_appointment_info.appointment_time * 1000));
+
+                document.getElementById('latestDoctorAppointment').innerHTML = 
+                    `Book №${data.last_appointment_info.book_id}, Doctor: ${docName}, Appointment Time: ${appointmentTime}, Complaint: ${data.last_appointment_info.complaint} <a href="#" class="more-link">More...</a>`;
             }
 
             // Обработка последнего выписанного лекарства
-            if (data.latest_prescription_drug) {
-                document.getElementById('latestPrescriptionDrug').textContent = 
-                    `Номер записи: ${data.latest_prescription_drug.book_id}, Врач: ${data.latest_prescription_drug.doctor_name}, Название лекарства: ${data.latest_prescription_drug.drug_name}`;
+            if (data.last_descriptioned_drug_info) {
+                const docName = `${data.last_descriptioned_drug_info.doc_name} ${data.last_descriptioned_drug_info.doc_middle_name} ${data.last_descriptioned_drug_info.doc_surname}`;
+
+                document.getElementById('latestPrescriptionDrug').innerHTML = 
+                    `Book №${data.last_descriptioned_drug_info.appointment_id}, Doctor: ${docName}, Drug Name: ${data.last_descriptioned_drug_info.drug_name} <a href="#" class="more-link">More...</a>`;
             }
 
             // Обработка последнего назначенного анализа
-            if (data.latest_analyse_appointment) {
-                document.getElementById('latestAnalyseAppointment').textContent = 
-                    `Номер записи: ${data.latest_analyse_appointment.book_id}, Врач: ${data.latest_analyse_appointment.doctor_name}, Выполнено: ${data.latest_analyse_appointment.is_completed ? 'Да' : 'Нет'}`;
+            if (data.last_analyse_appointment_info) {
+                const docName = `${data.last_analyse_appointment_info.doc_name} ${data.last_analyse_appointment_info.doc_middle_name} ${data.last_analyse_appointment_info.doc_surname}`;
+                const isCompleted = data.last_analyse_appointment_info.is_completed ? 'Yes' : 'No';
+
+                document.getElementById('latestAnalyseAppointment').innerHTML = 
+                    `Book №${data.last_analyse_appointment_info.appointment_id}, Doctor: ${docName}, Analyse: ${data.last_analyse_appointment_info.analyse_name}, Completed: ${isCompleted} <a href="#" class="more-link">More...</a>`;
             }
         } else {
             const errorData = await response.json();
@@ -75,9 +83,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 });
 
-function formatDate(date) {
+function formatDateTime(date) {
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0'); // Месяц начинается с 0
     const year = date.getFullYear();
-    return `${day}.${month}.${year}`;
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    return `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`;
 }

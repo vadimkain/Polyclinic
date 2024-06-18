@@ -241,6 +241,15 @@ void ClientHandlerController::handle_json_post(common::Socket socket, std::strin
             auto last_booked_doc_info = m_db_query->get_last_booked_doctor(id);
             json_response["latest_booked_doctor"] = last_booked_doc_info.to_json();
 
+            auto last_analyse_appointment_info = m_db_query->get_last_analyse_appointment(id);
+            json_response["last_analyse_appointment_info"] = last_analyse_appointment_info.to_json();
+
+            auto last_appointment_info = m_db_query->get_last_appointment(id);
+            json_response["last_appointment_info"] = last_appointment_info.to_json();
+
+            auto last_descriptioned_drug_info = m_db_query->get_last_descriptioned_drug(id);
+            json_response["last_descriptioned_drug_info"] = last_descriptioned_drug_info.to_json();
+
             request << "HTTP/1.1 200 OK\r\n";
         } catch (std::exception& err) {
             BLOG_ERROR("Cannot to get info with token: ", json_data["token"].asString(), ". Error: ", err.what());

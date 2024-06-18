@@ -161,6 +161,7 @@ ORDER BY
 
 CREATE OR REPLACE VIEW analyse_appointments_view AS
 SELECT
+    a.name as analyse_name,
     da.id AS appointment_id,
     bd.patient_id AS user_id,
     d.name AS doctor_name,
@@ -175,9 +176,13 @@ JOIN
     booked_doctors bd ON da.booked_doctor_id = bd.id
 JOIN
     users d ON bd.doctor_id = d.id
+JOIN 
+    analyses a ON aa.analyse_id = a.id
 ORDER BY
     da.id;
 
+
+DROP VIEW analyse_appointments_view
 
 
 
@@ -193,4 +198,19 @@ SELECT * FROM booked_doctor_view WHERE user_id = 11;
 SELECT * FROM booked_doctor_view 
 WHERE user_id = 11
 ORDER BY booked_time DESC
+LIMIT 1;
+
+SELECT * FROM doctor_appointment_view 
+WHERE user_id = 11
+ORDER BY appointment_time DESC
+LIMIT 1;
+
+SELECT * FROM descriptioned_drugs_view 
+WHERE user_id = 11
+ORDER BY appointment_id DESC
+LIMIT 1;
+
+SELECT * FROM analyse_appointments_view 
+WHERE user_id = 11
+ORDER BY appointment_id DESC
 LIMIT 1;

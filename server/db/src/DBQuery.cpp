@@ -179,6 +179,94 @@ BookedDoctorInfo DBQuery::get_last_booked_doctor(std::uint64_t user_id) {
     return ret;
 }
 
+DoctorAppointmentInfo DBQuery::get_last_appointment(std::uint64_t user_id) {
+    BDECLARE_TAG_SCOPE("DBQuery", __FUNCTION__);
+
+    std::stringstream db_request;
+    DoctorAppointmentInfo ret;
+    auto db_transaction = std::make_unique<pqxx::work>(*m_db_connection);
+
+    db_request << "SELECT * FROM doctor_appointment_view"
+        << " WHERE user_id = " << user_id
+        << " ORDER BY appointment_time DESC"
+        << " LIMIT 1;";
+
+    BLOG_INFO("Current request: ", db_request.str());
+    pqxx::result res = db_transaction->exec(db_request.str());
+    db_transaction->commit();
+
+    if (res.size() > 0) {
+        ret.id = convert_to_datatype<std::uint64_t>(res[0], "appointment_id");
+        ret.user_id = convert_to_datatype<std::uint64_t>(res[0], "user_id");
+        ret.booked_id = convert_to_datatype<std::uint64_t>(res[0], "booked_id");
+        ret.doc_name = convert_to_datatype<std::string>(res[0], "doctor_name");
+        ret.doc_surname = convert_to_datatype<std::string>(res[0], "doctor_surname");
+        ret.doc_middle_name = convert_to_datatype<std::string>(res[0], "doctor_middle_name");
+        ret.complaint = convert_to_datatype<std::string>(res[0], "complaint");
+
+        string_to_time(convert_to_datatype<std::string>(res[0], "appointment_time"), ret.appointment_time);
+    }
+
+    return ret;
+}
+
+DescriptionedDrugInfo DBQuery::get_last_descriptioned_drug(std::uint64_t user_id) {
+    BDECLARE_TAG_SCOPE("DBQuery", __FUNCTION__);
+
+    std::stringstream db_request;
+    DescriptionedDrugInfo ret;
+    auto db_transaction = std::make_unique<pqxx::work>(*m_db_connection);
+
+    db_request << "SELECT * FROM descriptioned_drugs_view"
+        << " WHERE user_id = " << user_id
+        << " ORDER BY appointment_id DESC"
+        << " LIMIT 1;";
+
+    BLOG_INFO("Current request: ", db_request.str());
+    pqxx::result res = db_transaction->exec(db_request.str());
+    db_transaction->commit();
+
+    if (res.size() > 0) {
+        ret.appointment_id = convert_to_datatype<std::uint64_t>(res[0], "appointment_id");
+        ret.user_id = convert_to_datatype<std::uint64_t>(res[0], "user_id");
+        ret.doc_name = convert_to_datatype<std::string>(res[0], "doctor_name");
+        ret.doc_surname = convert_to_datatype<std::string>(res[0], "doctor_surname");
+        ret.doc_middle_name = convert_to_datatype<std::string>(res[0], "doctor_middle_name");
+        ret.drug_name = convert_to_datatype<std::string>(res[0], "drug_name");
+    }
+
+    return ret;
+}
+
+AnalyseAppointmentInfo DBQuery::get_last_analyse_appointment(std::uint64_t user_id) {
+    BDECLARE_TAG_SCOPE("DBQuery", __FUNCTION__);
+
+    std::stringstream db_request;
+    AnalyseAppointmentInfo ret;
+    auto db_transaction = std::make_unique<pqxx::work>(*m_db_connection);
+
+    db_request << "SELECT * FROM analyse_appointments_view"
+        << " WHERE user_id = " << user_id
+        << " ORDER BY appointment_id DESC"
+        << " LIMIT 1;";
+
+    BLOG_INFO("Current request: ", db_request.str());
+    pqxx::result res = db_transaction->exec(db_request.str());
+    db_transaction->commit();
+
+    if (res.size() > 0) {
+        ret.appointment_id = convert_to_datatype<std::uint64_t>(res[0], "appointment_id");
+        ret.user_id = convert_to_datatype<std::uint64_t>(res[0], "user_id");
+        ret.doc_name = convert_to_datatype<std::string>(res[0], "doctor_name");
+        ret.doc_surname = convert_to_datatype<std::string>(res[0], "doctor_surname");
+        ret.doc_middle_name = convert_to_datatype<std::string>(res[0], "doctor_middle_name");
+        ret.analyse_name = convert_to_datatype<std::string>(res[0], "analyse_name");
+        ret.is_completed = convert_to_datatype<bool>(res[0], "is_completed");
+    }
+
+    return ret;
+}
+
 std::pair<bool, std::string> DBQuery::register_new_user(const UserInfo& info) {
     BDECLARE_TAG_SCOPE("DBQuery", __FUNCTION__);
 
