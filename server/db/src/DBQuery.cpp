@@ -7,6 +7,7 @@
 
 #include <sstream>
 #include <thread>
+#include <algorithm>
 
 namespace config = server::common::config;
 
@@ -263,6 +264,136 @@ AnalyseAppointmentInfo DBQuery::get_last_analyse_appointment(std::uint64_t user_
         ret.analyse_name = convert_to_datatype<std::string>(res[0], "analyse_name");
         ret.is_completed = convert_to_datatype<bool>(res[0], "is_completed");
     }
+
+    return ret;
+}
+
+std::vector<BookedDoctorInfo> DBQuery::get_booked_doctors(std::uint64_t user_id) {
+    BDECLARE_TAG_SCOPE("DBQuery", __FUNCTION__);
+
+    std::stringstream db_request;
+    std::vector<BookedDoctorInfo> ret;
+    auto db_transaction = std::make_unique<pqxx::work>(*m_db_connection);
+
+    db_request << "SELECT * FROM booked_doctor_view"
+        << " WHERE user_id = " << user_id;
+
+    BLOG_INFO("Current request: ", db_request.str());
+    pqxx::result res = db_transaction->exec(db_request.str());
+    db_transaction->commit();
+
+    ret.resize(res.size());
+    std::transform(std::begin(res), std::end(res), std::begin(ret), [this](const pqxx::row& row) {
+        BookedDoctorInfo elem;
+
+        elem.id = convert_to_datatype<std::uint64_t>(row, "booked_id");
+        elem.user_id = convert_to_datatype<std::uint64_t>(row, "user_id");
+        elem.doc_name = convert_to_datatype<std::string>(row, "doctor_name");
+        elem.doc_surname = convert_to_datatype<std::string>(row, "doctor_surname");
+        elem.doc_middle_name = convert_to_datatype<std::string>(row, "doctor_middle_name");
+        elem.is_compited = convert_to_datatype<bool>(row, "appointment_status");
+
+        string_to_time(convert_to_datatype<std::string>(row, "booked_time"), elem.booked_time);
+
+        return elem;
+    });
+
+    return ret;
+}
+
+std::vector<DoctorAppointmentInfo> DBQuery::get_appointments(std::uint64_t user_id) {
+    BDECLARE_TAG_SCOPE("DBQuery", __FUNCTION__);
+
+    std::stringstream db_request;
+    std::vector<DoctorAppointmentInfo> ret;
+    auto db_transaction = std::make_unique<pqxx::work>(*m_db_connection);
+
+    db_request << "SELECT * FROM doctor_appointment_view"
+        << " WHERE user_id = " << user_id;
+
+    BLOG_INFO("Current request: ", db_request.str());
+    pqxx::result res = db_transaction->exec(db_request.str());
+    db_transaction->commit();
+
+    ret.resize(res.size());
+    std::transform(std::begin(res), std::end(res), std::begin(ret), [this](const pqxx::row& row) {
+        DoctorAppointmentInfo elem;
+
+        elem.id = convert_to_datatype<std::uint64_t>(row, "appointment_id");
+        elem.user_id = convert_to_datatype<std::uint64_t>(row, "user_id");
+        elem.booked_id = convert_to_datatype<std::uint64_t>(row, "booked_id");
+        elem.doc_name = convert_to_datatype<std::string>(row, "doctor_name");
+        elem.doc_surname = convert_to_datatype<std::string>(row, "doctor_surname");
+        elem.doc_middle_name = convert_to_datatype<std::string>(row, "doctor_middle_name");
+        elem.complaint = convert_to_datatype<std::string>(row, "complaint");
+
+        string_to_time(convert_to_datatype<std::string>(row, "appointment_time"), elem.appointment_time);
+
+        return elem;
+    });
+
+    return ret;
+}
+
+std::vector<DescriptionedDrugInfo> DBQuery::get_descriptioned_drugs(std::uint64_t user_id) {
+    BDECLARE_TAG_SCOPE("DBQuery", __FUNCTION__);
+
+    std::stringstream db_request;
+    std::vector<DescriptionedDrugInfo> ret;
+    auto db_transaction = std::make_unique<pqxx::work>(*m_db_connection);
+
+    db_request << "SELECT * FROM descriptioned_drugs_view"
+        << " WHERE user_id = " << user_id;
+    
+    BLOG_INFO("Current request: ", db_request.str());
+    pqxx::result res = db_transaction->exec(db_request.str());
+    db_transaction->commit();
+
+    ret.resize(res.size());
+    std::transform(std::begin(res), std::end(res), std::begin(ret), [this](const pqxx::row& row) {
+        DescriptionedDrugInfo elem;
+
+        elem.appointment_id = convert_to_datatype<std::uint64_t>(row, "appointment_id");
+        elem.user_id = convert_to_datatype<std::uint64_t>(row, "user_id");
+        elem.doc_name = convert_to_datatype<std::string>(row, "doctor_name");
+        elem.doc_surname = convert_to_datatype<std::string>(row, "doctor_surname");
+        elem.doc_middle_name = convert_to_datatype<std::string>(row, "doctor_middle_name");
+        elem.drug_name = convert_to_datatype<std::string>(row, "drug_name");
+
+        return elem;
+    });
+
+    return ret;
+}
+
+std::vector<AnalyseAppointmentInfo> DBQuery::get_analyse_appointments(std::uint64_t user_id) {
+    BDECLARE_TAG_SCOPE("DBQuery", __FUNCTION__);
+
+    std::stringstream db_request;
+    std::vector<AnalyseAppointmentInfo> ret;
+    auto db_transaction = std::make_unique<pqxx::work>(*m_db_connection);
+
+    db_request << "SELECT * FROM analyse_appointments_view"
+        << " WHERE user_id = " << user_id;
+
+    BLOG_INFO("Current request: ", db_request.str());
+    pqxx::result res = db_transaction->exec(db_request.str());
+    db_transaction->commit();
+
+    ret.resize(res.size());
+    std::transform(std::begin(res), std::end(res), std::begin(ret), [this](const pqxx::row& row) {
+        AnalyseAppointmentInfo elem;
+
+        elem.appointment_id = convert_to_datatype<std::uint64_t>(row, "appointment_id");
+        elem.user_id = convert_to_datatype<std::uint64_t>(row, "user_id");
+        elem.doc_name = convert_to_datatype<std::string>(row, "doctor_name");
+        elem.doc_surname = convert_to_datatype<std::string>(row, "doctor_surname");
+        elem.doc_middle_name = convert_to_datatype<std::string>(row, "doctor_middle_name");
+        elem.analyse_name = convert_to_datatype<std::string>(row, "analyse_name");
+        elem.is_completed = convert_to_datatype<bool>(row, "is_completed");
+
+        return elem;
+    });
 
     return ret;
 }

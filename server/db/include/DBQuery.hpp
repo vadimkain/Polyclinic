@@ -136,6 +136,11 @@ public:
     DescriptionedDrugInfo get_last_descriptioned_drug(std::uint64_t user_id);
     AnalyseAppointmentInfo get_last_analyse_appointment(std::uint64_t user_id);
 
+    std::vector<BookedDoctorInfo> get_booked_doctors(std::uint64_t user_id);
+    std::vector<DoctorAppointmentInfo> get_appointments(std::uint64_t user_id);
+    std::vector<DescriptionedDrugInfo> get_descriptioned_drugs(std::uint64_t user_id);
+    std::vector<AnalyseAppointmentInfo> get_analyse_appointments(std::uint64_t user_id);
+
     std::pair<bool, std::string> register_new_user(const UserInfo& info);
 
 private:

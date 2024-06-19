@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 const bookId = data.latest_booked_doctor.book_id;
 
                 document.getElementById('latestBookedDoctor').innerHTML = 
-                    `Book №${bookId}, Doctor: ${docName}, Appointment Time: ${bookedTime}, Completed: ${isCompleted} <a href="#" class="more-link">More...</a>`;
+                    `Book №${bookId}, Doctor: ${docName}, Appointment Time: ${bookedTime}, Completed: ${isCompleted} <a href="booked_doctors/" class="more-link">More...</a>`;
             }
 
             // Обработка последнего приёма у доктора
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 const appointmentTime = formatDateTime(new Date(data.last_appointment_info.appointment_time * 1000));
 
                 document.getElementById('latestDoctorAppointment').innerHTML = 
-                    `Book №${data.last_appointment_info.book_id}, Doctor: ${docName}, Appointment Time: ${appointmentTime}, Complaint: ${data.last_appointment_info.complaint} <a href="#" class="more-link">More...</a>`;
+                    `Book №${data.last_appointment_info.book_id}, Doctor: ${docName}, Appointment Time: ${appointmentTime}, Complaint: ${data.last_appointment_info.complaint} <a href="appointments/" class="more-link">More...</a>`;
             }
 
             // Обработка последнего выписанного лекарства
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 const docName = `${data.last_descriptioned_drug_info.doc_name} ${data.last_descriptioned_drug_info.doc_middle_name} ${data.last_descriptioned_drug_info.doc_surname}`;
 
                 document.getElementById('latestPrescriptionDrug').innerHTML = 
-                    `Book №${data.last_descriptioned_drug_info.appointment_id}, Doctor: ${docName}, Drug Name: ${data.last_descriptioned_drug_info.drug_name} <a href="#" class="more-link">More...</a>`;
+                    `Book №${data.last_descriptioned_drug_info.appointment_id}, Doctor: ${docName}, Drug Name: ${data.last_descriptioned_drug_info.drug_name} <a href="prescription_drugs/" class="more-link">More...</a>`;
             }
 
             // Обработка последнего назначенного анализа
@@ -69,17 +69,17 @@ document.addEventListener('DOMContentLoaded', async function() {
                 const isCompleted = data.last_analyse_appointment_info.is_completed ? 'Yes' : 'No';
 
                 document.getElementById('latestAnalyseAppointment').innerHTML = 
-                    `Book №${data.last_analyse_appointment_info.appointment_id}, Doctor: ${docName}, Analyse: ${data.last_analyse_appointment_info.analyse_name}, Completed: ${isCompleted} <a href="#" class="more-link">More...</a>`;
+                    `Book №${data.last_analyse_appointment_info.appointment_id}, Doctor: ${docName}, Analyse: ${data.last_analyse_appointment_info.analyse_name}, Completed: ${isCompleted} <a href="analyses/" class="more-link">More...</a>`;
             }
         } else {
             const errorData = await response.json();
             alert(errorData.message || 'Failed to fetch profile data');
-            window.location.href = 'signin.html';
+            window.location.href = './';
         }
     } catch (error) {
         console.error('Error:', error);
         alert(error);
-        window.location.href = 'signin.html';
+        window.location.href = './';
     }
 });
 

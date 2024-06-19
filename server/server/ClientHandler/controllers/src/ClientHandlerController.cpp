@@ -254,6 +254,72 @@ void ClientHandlerController::handle_json_post(common::Socket socket, std::strin
         } catch (std::exception& err) {
             BLOG_ERROR("Cannot to get info with token: ", json_data["token"].asString(), ". Error: ", err.what());
         }
+    } else if (uri == "/api/booked_doctors") {
+        std::uint64_t id = json_data["token"].asUInt64();
+        auto db_response = m_db_query->get_booked_doctors(id);
+
+        Json::Value json_db_response(Json::arrayValue);
+        json_db_response.resize(db_response.size());
+        std::transform(std::begin(db_response), std::end(db_response), std::begin(json_db_response), [](const db::BookedDoctorInfo& it){
+            return it.to_json();
+        });
+
+        json_response["bookedDoctorsList"] = json_db_response;
+        request << "HTTP/1.1 200 OK\r\n";
+
+    } else if (uri == "/api/appointments") {
+        std::uint64_t id = json_data["token"].asUInt64();
+        auto db_response = m_db_query->get_appointments(id);
+
+        Json::Value json_db_response(Json::arrayValue);
+        json_db_response.resize(db_response.size());
+        std::transform(std::begin(db_response), std::end(db_response), std::begin(json_db_response), [](const db::DoctorAppointmentInfo& it){
+            return it.to_json();
+        });
+
+        json_response["appointmentsList"] = json_db_response;
+        request << "HTTP/1.1 200 OK\r\n";
+
+    } else if (uri == "/api/analyses") {
+        std::uint64_t id = json_data["token"].asUInt64();
+        auto db_response = m_db_query->get_analyse_appointments(id);
+
+        Json::Value json_db_response(Json::arrayValue);
+        json_db_response.resize(db_response.size());
+        std::transform(std::begin(db_response), std::end(db_response), std::begin(json_db_response), [](const db::AnalyseAppointmentInfo& it){
+            return it.to_json();
+        });
+
+        json_response["analysesList"] = json_db_response;
+        request << "HTTP/1.1 200 OK\r\n";
+
+    } else if (uri == "/api/allergens") {
+        std::uint64_t id = json_data["token"].asUInt64();
+        BLOG_WARNING("NO LOGIC IMPLEMENTED");
+        // auto db_response = m_db_query->get_db_response(id);
+
+        // Json::Value json_db_response(Json::arrayValue);
+        // json_db_response.resize(db_response.size());
+        // std::transform(std::begin(db_response), std::end(db_response), std::begin(json_db_response), [](const db::BookedDoctorInfo& it){
+        //     return it.to_json();
+        // });
+
+        // json_response["allergensList"] = json_db_response;
+        // request << "HTTP/1.1 200 OK\r\n";
+
+    } else if (uri == "/api/prescription_drugs") {
+        std::uint64_t id = json_data["token"].asUInt64();
+        auto db_response = m_db_query->get_descriptioned_drugs(id);
+
+        Json::Value json_db_response(Json::arrayValue);
+        json_db_response.resize(db_response.size());
+        std::transform(std::begin(db_response), std::end(db_response), std::begin(json_db_response), [](const db::DescriptionedDrugInfo& it){
+            return it.to_json();
+        });
+
+        json_response["prescriptionDrugsList"] = json_db_response;
+        request << "HTTP/1.1 200 OK\r\n";request << "HTTP/1.1 200 OK\r\n";
+
     } else {
         BLOG_WARNING("uri = ", uri, "; is not handled!");
     }
