@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Doctor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/bars/top_bar.css">
+</head>
+<body>
+    <header class="header" w3-include-html="/bars/top_bar.html"></header>
+    <div class="container">
+        <h1>Book a Doctor</h1>
+        <form id="bookDoctorForm">
+            <div class="form-group">
+                <label for="doctorSelect">Choose a Doctor:</label>
+                <select id="doctorSelect" required>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="appointmentTime">Choose a Time:</label>
+                <input type="datetime-local" id="appointmentTime" required>
+            </div>
+            <button type="submit" class="btn">Book Appointment</button>
+        </form>
+    </div>
+    <script src="/scripts/include.js"></script>
+    <script src="/scripts/book_doc.js"></script>
+</body>
+</html>
