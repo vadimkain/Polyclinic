@@ -1,0 +1,1161 @@
+﻿2024-06-28 12:19:00.868 INFO  [8638] [bukhtalog::Logger::log@139] [ContextHandlerController][ContextHandlerController] Constructor called
+2024-06-28 12:19:00.868 INFO  [8638] [bukhtalog::Logger::log@139] [ServerStarterController][ServerStarterController] constructor called on thread #140325343672640
+2024-06-28 12:19:00.868 INFO  [8638] [bukhtalog::Logger::log@139] [ClientHandlerController][ClientHandlerController] constructor called on thread #140325343672640
+2024-06-28 12:19:00.868 INFO  [8638] [bukhtalog::Logger::log@139] [DBQuery][DBQuery] constructor called on thread #140325343672640
+2024-06-28 12:19:00.868 INFO  [8638] [bukhtalog::Logger::log@139] [DBQuery][DBQuery] Make connection to db. host=127.0.0.1 port=5432 user=mbukhta password=1qa@WS3ed dbname=polyclinic
+2024-06-28 12:19:00.878 DEBUG [8638] [bukhtalog::Logger::log@139] [DBQuery][DBQuery] Connection success
+2024-06-28 12:19:00.878 INFO  [8640] [bukhtalog::Logger::log@139] [ServerStarterController][start] called
+2024-06-28 12:19:00.878 INFO  [8640] [bukhtalog::Logger::log@139] [ServerStarterController][run_server] called
+2024-06-28 12:19:00.879 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][start] called
+2024-06-28 12:19:00.879 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] called
+2024-06-28 12:19:00.879 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:02.444 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.444 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:02.444 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.444 INFO  [8647] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.444 DEBUG [8647] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.444 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:02.444 INFO  [8648] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.444 DEBUG [8648] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.447 INFO  [8647] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 798; data = GET / HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+Cache-Control: max-age=0
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:02.447 INFO  [8647] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 6; http request type = GET; http body = 
+2024-06-28 12:19:02.447 VERB  [8647] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /
+2024-06-28 12:19:02.447 DEBUG [8647] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.447 INFO  [8650] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /; socket = ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.447 DEBUG [8650] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: text/html
+; file_path = ./frontend_web/index.html
+2024-06-28 12:19:02.447 DEBUG [8650] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/index.html happened successfull. Was sent 2614 bytes.
+2024-06-28 12:19:02.447 INFO  [8651] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /
+2024-06-28 12:19:02.449 INFO  [8647] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 0; data = 
+2024-06-28 12:19:02.449 INFO  [8647] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.449 INFO  [8647] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.498 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.498 INFO  [8648] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 712; data = GET /src/successful-medical-team.png HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: http://localhost:8081/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:02.498 INFO  [8648] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 7; http request type = GET; http body = 
+2024-06-28 12:19:02.498 VERB  [8648] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /src/successful-medical-team.png
+2024-06-28 12:19:02.498 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:02.498 INFO  [8665] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.498 DEBUG [8648] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.498 DEBUG [8665] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.498 INFO  [8666] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /src/successful-medical-team.png; socket = ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.498 INFO  [8665] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 8bytes_read = 706; data = GET /src/young-asian-woman.png HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: http://localhost:8081/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:02.498 DEBUG [8666] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: image/png
+; file_path = ./frontend_web/src/successful-medical-team.png
+2024-06-28 12:19:02.499 INFO  [8665] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 8; http request type = GET; http body = 
+2024-06-28 12:19:02.499 VERB  [8665] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /src/young-asian-woman.png
+2024-06-28 12:19:02.499 DEBUG [8665] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.499 INFO  [8667] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /src/young-asian-woman.png; socket = ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.499 DEBUG [8667] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: image/png
+; file_path = ./frontend_web/src/young-asian-woman.png
+2024-06-28 12:19:02.499 DEBUG [8666] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/src/successful-medical-team.png happened successfull. Was sent 1352820 bytes.
+2024-06-28 12:19:02.499 DEBUG [8667] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/src/young-asian-woman.png happened successfull. Was sent 421415 bytes.
+2024-06-28 12:19:02.499 INFO  [8668] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /src/successful-medical-team.png
+2024-06-28 12:19:02.499 INFO  [8669] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /src/young-asian-woman.png
+2024-06-28 12:19:02.502 INFO  [8665] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 8bytes_read = 0; data = 
+2024-06-28 12:19:02.502 INFO  [8665] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.502 INFO  [8665] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.503 INFO  [8648] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 0; data = 
+2024-06-28 12:19:02.503 INFO  [8648] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.503 INFO  [8648] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.505 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.505 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:02.505 INFO  [8670] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.505 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.505 DEBUG [8670] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.505 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:02.505 INFO  [8671] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.505 DEBUG [8671] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.505 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.506 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:02.506 INFO  [8670] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 645; data = GET /styles.css HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: text/css,*/*;q=0.1
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: style
+Referer: http://localhost:8081/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:02.506 INFO  [8672] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.506 INFO  [8671] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 651; data = GET /bars/top_bar.css HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: text/css,*/*;q=0.1
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: style
+Referer: http://localhost:8081/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:02.506 DEBUG [8672] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.506 INFO  [8670] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 6; http request type = GET; http body = 
+2024-06-28 12:19:02.506 INFO  [8671] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 7; http request type = GET; http body = 
+2024-06-28 12:19:02.506 INFO  [8672] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 8bytes_read = 639; data = GET /scripts/include.js HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: script
+Referer: http://localhost:8081/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:02.506 VERB  [8670] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /styles.css
+2024-06-28 12:19:02.506 VERB  [8671] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /bars/top_bar.css
+2024-06-28 12:19:02.506 INFO  [8672] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 8; http request type = GET; http body = 
+2024-06-28 12:19:02.506 DEBUG [8670] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.506 INFO  [8673] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /styles.css; socket = ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.506 VERB  [8672] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /scripts/include.js
+2024-06-28 12:19:02.506 DEBUG [8673] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: text/css
+; file_path = ./frontend_web/styles.css
+2024-06-28 12:19:02.506 DEBUG [8671] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.506 INFO  [8674] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /bars/top_bar.css; socket = ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.506 DEBUG [8672] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.506 DEBUG [8674] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: text/css
+; file_path = ./frontend_web/bars/top_bar.css
+2024-06-28 12:19:02.506 INFO  [8675] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /scripts/include.js; socket = ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.506 DEBUG [8673] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/styles.css happened successfull. Was sent 2984 bytes.
+2024-06-28 12:19:02.506 DEBUG [8675] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: application/octet-stream
+; file_path = ./frontend_web/scripts/include.js
+2024-06-28 12:19:02.506 DEBUG [8674] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/bars/top_bar.css happened successfull. Was sent 741 bytes.
+2024-06-28 12:19:02.506 DEBUG [8675] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/scripts/include.js happened successfull. Was sent 580 bytes.
+2024-06-28 12:19:02.506 INFO  [8676] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /styles.css
+2024-06-28 12:19:02.506 INFO  [8677] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /bars/top_bar.css
+2024-06-28 12:19:02.506 INFO  [8678] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /scripts/include.js
+2024-06-28 12:19:02.507 INFO  [8670] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 0; data = 
+2024-06-28 12:19:02.507 INFO  [8670] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.507 INFO  [8670] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.509 INFO  [8671] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 0; data = 
+2024-06-28 12:19:02.509 INFO  [8671] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.509 INFO  [8671] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.509 INFO  [8672] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 8bytes_read = 0; data = 
+2024-06-28 12:19:02.509 INFO  [8672] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.509 INFO  [8672] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.516 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:02.516 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:02.516 INFO  [8679] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:02.516 DEBUG [8679] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:02.516 INFO  [8679] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 9bytes_read = 634; data = GET /bars/top_bar.html HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://localhost:8081/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:02.516 INFO  [8679] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 9; http request type = GET; http body = 
+2024-06-28 12:19:02.516 VERB  [8679] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /bars/top_bar.html
+2024-06-28 12:19:02.516 DEBUG [8679] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:02.516 INFO  [8680] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /bars/top_bar.html; socket = ip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:02.516 DEBUG [8680] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: text/html
+; file_path = ./frontend_web/bars/top_bar.html
+2024-06-28 12:19:02.516 DEBUG [8680] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/bars/top_bar.html happened successfull. Was sent 877 bytes.
+2024-06-28 12:19:02.516 INFO  [8681] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /bars/top_bar.html
+2024-06-28 12:19:02.518 INFO  [8679] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 9bytes_read = 0; data = 
+2024-06-28 12:19:02.518 INFO  [8679] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:02.518 INFO  [8679] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:02.525 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.525 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:02.525 INFO  [8682] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.525 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.525 DEBUG [8682] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.525 INFO  [8682] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 681; data = GET /fonts/fa-solid-900.woff2 HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+Origin: http://localhost:8081
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: font
+Referer: http://localhost:8081/styles.css
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:02.525 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:02.525 INFO  [8683] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.525 INFO  [8682] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 6; http request type = GET; http body = 
+2024-06-28 12:19:02.525 DEBUG [8683] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.525 VERB  [8682] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /fonts/fa-solid-900.woff2
+2024-06-28 12:19:02.525 INFO  [8683] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 683; data = GET /fonts/fa-regular-400.woff2 HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+Origin: http://localhost:8081
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: font
+Referer: http://localhost:8081/styles.css
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:02.525 DEBUG [8682] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.525 INFO  [8685] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /fonts/fa-solid-900.woff2; socket = ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.525 INFO  [8683] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 7; http request type = GET; http body = 
+2024-06-28 12:19:02.525 DEBUG [8685] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: font/woff
+; file_path = ./frontend_web/fonts/fa-solid-900.woff2
+2024-06-28 12:19:02.525 VERB  [8683] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /fonts/fa-regular-400.woff2
+2024-06-28 12:19:02.525 DEBUG [8683] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.525 INFO  [8687] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /fonts/fa-regular-400.woff2; socket = ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.525 DEBUG [8685] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/fonts/fa-solid-900.woff2 happened successfull. Was sent 78268 bytes.
+2024-06-28 12:19:02.525 DEBUG [8687] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: font/woff
+; file_path = ./frontend_web/fonts/fa-regular-400.woff2
+2024-06-28 12:19:02.525 DEBUG [8687] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/fonts/fa-regular-400.woff2 happened successfull. Was sent 13224 bytes.
+2024-06-28 12:19:02.525 INFO  [8688] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /fonts/fa-solid-900.woff2
+2024-06-28 12:19:02.525 INFO  [8689] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /fonts/fa-regular-400.woff2
+2024-06-28 12:19:02.532 INFO  [8683] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 0; data = 
+2024-06-28 12:19:02.532 INFO  [8683] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.532 INFO  [8683] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:02.532 INFO  [8682] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 0; data = 
+2024-06-28 12:19:02.533 INFO  [8682] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.533 INFO  [8682] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.582 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.582 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:02.582 INFO  [8690] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.582 DEBUG [8690] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.582 INFO  [8690] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 8bytes_read = 693; data = GET /src/logo.svg HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: http://localhost:8081/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:02.582 INFO  [8690] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 8; http request type = GET; http body = 
+2024-06-28 12:19:02.582 VERB  [8690] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /src/logo.svg
+2024-06-28 12:19:02.582 DEBUG [8690] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.582 INFO  [8691] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /src/logo.svg; socket = ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.582 DEBUG [8691] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: image/svg+xml
+; file_path = ./frontend_web/src/logo.svg
+2024-06-28 12:19:02.582 DEBUG [8691] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/src/logo.svg happened successfull. Was sent 3101 bytes.
+2024-06-28 12:19:02.582 INFO  [8692] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /src/logo.svg
+2024-06-28 12:19:02.584 INFO  [8690] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 8bytes_read = 0; data = 
+2024-06-28 12:19:02.584 INFO  [8690] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.584 INFO  [8690] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:02.601 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.601 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:02.601 INFO  [8693] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.601 DEBUG [8693] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.602 INFO  [8693] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 692; data = GET /favicon.ico HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: http://localhost:8081/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:02.602 INFO  [8693] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 6; http request type = GET; http body = 
+2024-06-28 12:19:02.602 VERB  [8693] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /favicon.ico
+2024-06-28 12:19:02.602 DEBUG [8693] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.602 INFO  [8694] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /favicon.ico; socket = ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.602 DEBUG [8694] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: image/vnd.microsoft.icon
+; file_path = ./frontend_web/favicon.ico
+2024-06-28 12:19:02.602 DEBUG [8694] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/favicon.ico happened successfull. Was sent 1878 bytes.
+2024-06-28 12:19:02.602 INFO  [8695] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /favicon.ico
+2024-06-28 12:19:02.603 INFO  [8693] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 0; data = 
+2024-06-28 12:19:02.603 INFO  [8693] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:02.603 INFO  [8693] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:03.839 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:03.839 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:03.839 INFO  [8696] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:03.839 DEBUG [8696] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:03.927 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:03.927 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:03.927 INFO  [8697] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:03.927 DEBUG [8697] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:03.929 INFO  [8696] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 819; data = GET /profile_page/ HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Referer: http://localhost:8081/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:03.929 INFO  [8696] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 7; http request type = GET; http body = 
+2024-06-28 12:19:03.929 VERB  [8696] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /profile_page/
+2024-06-28 12:19:03.929 DEBUG [8696] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:03.929 INFO  [8698] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /profile_page/; socket = ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:03.929 DEBUG [8698] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: text/html
+; file_path = ./frontend_web/profile_page/index.html
+2024-06-28 12:19:03.929 DEBUG [8698] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/profile_page/index.html happened successfull. Was sent 247 bytes.
+2024-06-28 12:19:03.929 INFO  [8699] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /profile_page/
+2024-06-28 12:19:03.934 INFO  [8696] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 0; data = 
+2024-06-28 12:19:03.934 INFO  [8696] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:03.934 INFO  [8696] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:03.976 INFO  [8697] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 653; data = GET /scripts/redirect.js HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: script
+Referer: http://localhost:8081/profile_page/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:03.977 INFO  [8697] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 6; http request type = GET; http body = 
+2024-06-28 12:19:03.977 VERB  [8697] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /scripts/redirect.js
+2024-06-28 12:19:03.977 DEBUG [8697] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:03.977 INFO  [8700] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /scripts/redirect.js; socket = ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:03.977 DEBUG [8700] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: application/octet-stream
+; file_path = ./frontend_web/scripts/redirect.js
+2024-06-28 12:19:03.977 DEBUG [8700] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/scripts/redirect.js happened successfull. Was sent 282 bytes.
+2024-06-28 12:19:03.977 INFO  [8701] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /scripts/redirect.js
+2024-06-28 12:19:03.978 INFO  [8697] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 0; data = 
+2024-06-28 12:19:03.978 INFO  [8697] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:03.978 INFO  [8697] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:03.983 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:03.983 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:03.983 INFO  [8702] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:03.983 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:03.983 DEBUG [8702] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:03.983 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:03.983 INFO  [8703] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:03.983 DEBUG [8703] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:03.983 INFO  [8702] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 8bytes_read = 824; data = GET /profile_page/profile.html HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Dest: document
+Referer: http://localhost:8081/profile_page/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:03.983 INFO  [8702] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 8; http request type = GET; http body = 
+2024-06-28 12:19:03.983 VERB  [8702] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /profile_page/profile.html
+2024-06-28 12:19:03.983 DEBUG [8702] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:03.983 INFO  [8704] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /profile_page/profile.html; socket = ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:03.983 DEBUG [8704] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: text/html
+; file_path = ./frontend_web/profile_page/profile.html
+2024-06-28 12:19:03.983 DEBUG [8704] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/profile_page/profile.html happened successfull. Was sent 2489 bytes.
+2024-06-28 12:19:03.983 INFO  [8705] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /profile_page/profile.html
+2024-06-28 12:19:03.985 INFO  [8702] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 8bytes_read = 0; data = 
+2024-06-28 12:19:03.985 INFO  [8702] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:03.985 INFO  [8702] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:04.028 INFO  [8703] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 684; data = GET /profile_page/profile.css HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: text/css,*/*;q=0.1
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: style
+Referer: http://localhost:8081/profile_page/profile.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:04.028 INFO  [8703] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 6; http request type = GET; http body = 
+2024-06-28 12:19:04.028 VERB  [8703] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /profile_page/profile.css
+2024-06-28 12:19:04.028 DEBUG [8703] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:04.028 INFO  [8706] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /profile_page/profile.css; socket = ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:04.028 DEBUG [8706] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: text/css
+; file_path = ./frontend_web/profile_page/profile.css
+2024-06-28 12:19:04.028 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:04.028 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:04.028 DEBUG [8706] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/profile_page/profile.css happened successfull. Was sent 1979 bytes.
+2024-06-28 12:19:04.028 INFO  [8707] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:04.028 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:04.028 DEBUG [8707] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:04.028 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:04.028 INFO  [8709] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:04.028 INFO  [8708] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /profile_page/profile.css
+2024-06-28 12:19:04.028 DEBUG [8709] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:04.028 INFO  [8707] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 676; data = GET /bars/top_bar.css HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: text/css,*/*;q=0.1
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: style
+Referer: http://localhost:8081/profile_page/profile.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:04.028 INFO  [8709] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 9bytes_read = 664; data = GET /scripts/include.js HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: script
+Referer: http://localhost:8081/profile_page/profile.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:04.028 INFO  [8707] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 7; http request type = GET; http body = 
+2024-06-28 12:19:04.028 INFO  [8709] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 9; http request type = GET; http body = 
+2024-06-28 12:19:04.028 VERB  [8707] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /bars/top_bar.css
+2024-06-28 12:19:04.028 VERB  [8709] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /scripts/include.js
+2024-06-28 12:19:04.028 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:04.028 DEBUG [8707] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:04.028 INFO  [8710] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /bars/top_bar.css; socket = ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:04.029 DEBUG [8709] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:04.029 DEBUG [8710] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: text/css
+; file_path = ./frontend_web/bars/top_bar.css
+2024-06-28 12:19:04.029 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:04.029 INFO  [8712] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:04.029 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 11
+2024-06-28 12:19:04.029 INFO  [8711] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /scripts/include.js; socket = ip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:04.029 DEBUG [8712] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:04.029 DEBUG [8711] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: application/octet-stream
+; file_path = ./frontend_web/scripts/include.js
+2024-06-28 12:19:04.029 DEBUG [8710] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/bars/top_bar.css happened successfull. Was sent 741 bytes.
+2024-06-28 12:19:04.029 INFO  [8712] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 8bytes_read = 728; data = GET /src/default_avatar.jpg HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: http://localhost:8081/profile_page/profile.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:04.029 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:04.029 DEBUG [8711] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/scripts/include.js happened successfull. Was sent 580 bytes.
+2024-06-28 12:19:04.029 INFO  [8712] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 8; http request type = GET; http body = 
+2024-06-28 12:19:04.029 INFO  [8713] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 11
+2024-06-28 12:19:04.029 VERB  [8712] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /src/default_avatar.jpg
+2024-06-28 12:19:04.029 DEBUG [8713] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 11
+2024-06-28 12:19:04.029 INFO  [8714] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /bars/top_bar.css
+2024-06-28 12:19:04.029 INFO  [8715] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /scripts/include.js
+2024-06-28 12:19:04.029 INFO  [8716] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /src/default_avatar.jpg; socket = ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:04.029 DEBUG [8712] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:04.029 DEBUG [8716] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: image/jpeg
+; file_path = ./frontend_web/src/default_avatar.jpg
+2024-06-28 12:19:04.029 DEBUG [8716] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/src/default_avatar.jpg happened successfull. Was sent 1876 bytes.
+2024-06-28 12:19:04.029 INFO  [8717] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /src/default_avatar.jpg
+2024-06-28 12:19:04.030 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 10
+2024-06-28 12:19:04.030 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:04.030 INFO  [8718] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 10
+2024-06-28 12:19:04.030 DEBUG [8718] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 10
+2024-06-28 12:19:04.030 INFO  [8703] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 0; data = 
+2024-06-28 12:19:04.030 INFO  [8703] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:04.030 INFO  [8703] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:04.030 INFO  [8718] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 10bytes_read = 661; data = GET /scripts/auth.js HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: script
+Referer: http://localhost:8081/profile_page/profile.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:04.030 INFO  [8718] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 10; http request type = GET; http body = 
+2024-06-28 12:19:04.030 INFO  [8713] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 11bytes_read = 664; data = GET /scripts/profile.js HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: script
+Referer: http://localhost:8081/profile_page/profile.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:04.030 VERB  [8718] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /scripts/auth.js
+2024-06-28 12:19:04.030 INFO  [8713] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 11; http request type = GET; http body = 
+2024-06-28 12:19:04.030 VERB  [8713] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /scripts/profile.js
+2024-06-28 12:19:04.030 DEBUG [8718] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 10
+2024-06-28 12:19:04.030 INFO  [8719] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /scripts/auth.js; socket = ip = 127.0.0.1; port = 37151; fd = 10
+2024-06-28 12:19:04.030 DEBUG [8713] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 11
+2024-06-28 12:19:04.030 DEBUG [8719] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: application/octet-stream
+; file_path = ./frontend_web/scripts/auth.js
+2024-06-28 12:19:04.030 INFO  [8720] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /scripts/profile.js; socket = ip = 127.0.0.1; port = 37151; fd = 11
+2024-06-28 12:19:04.030 DEBUG [8719] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/scripts/auth.js happened successfull. Was sent 3443 bytes.
+2024-06-28 12:19:04.030 DEBUG [8720] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: application/octet-stream
+; file_path = ./frontend_web/scripts/profile.js
+2024-06-28 12:19:04.030 INFO  [8721] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /scripts/auth.js
+2024-06-28 12:19:04.030 DEBUG [8720] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/scripts/profile.js happened successfull. Was sent 5318 bytes.
+2024-06-28 12:19:04.030 INFO  [8722] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /scripts/profile.js
+2024-06-28 12:19:04.031 INFO  [8707] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 0; data = 
+2024-06-28 12:19:04.031 INFO  [8707] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:04.031 INFO  [8707] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:04.032 INFO  [8709] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 9bytes_read = 0; data = 
+2024-06-28 12:19:04.032 INFO  [8709] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:04.032 INFO  [8709] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:04.032 INFO  [8712] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 8bytes_read = 0; data = 
+2024-06-28 12:19:04.033 INFO  [8712] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:04.033 INFO  [8712] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:04.034 INFO  [8718] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 10bytes_read = 0; data = 
+2024-06-28 12:19:04.034 INFO  [8718] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 10
+2024-06-28 12:19:04.034 INFO  [8718] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 10
+2024-06-28 12:19:04.034 INFO  [8713] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 11bytes_read = 0; data = 
+2024-06-28 12:19:04.034 INFO  [8713] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 11
+2024-06-28 12:19:04.034 INFO  [8713] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 11
+2024-06-28 12:19:04.048 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 12
+2024-06-28 12:19:04.048 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:04.048 INFO  [8724] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 12
+2024-06-28 12:19:04.048 DEBUG [8724] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 12
+2024-06-28 12:19:04.048 INFO  [8724] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 12bytes_read = 659; data = GET /bars/top_bar.html HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://localhost:8081/profile_page/profile.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:04.048 INFO  [8724] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 12; http request type = GET; http body = 
+2024-06-28 12:19:04.048 VERB  [8724] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /bars/top_bar.html
+2024-06-28 12:19:04.048 DEBUG [8724] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 12
+2024-06-28 12:19:04.048 INFO  [8725] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /bars/top_bar.html; socket = ip = 127.0.0.1; port = 37151; fd = 12
+2024-06-28 12:19:04.048 DEBUG [8725] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: text/html
+; file_path = ./frontend_web/bars/top_bar.html
+2024-06-28 12:19:04.048 DEBUG [8725] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/bars/top_bar.html happened successfull. Was sent 877 bytes.
+2024-06-28 12:19:04.049 INFO  [8726] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /bars/top_bar.html
+2024-06-28 12:19:04.051 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:04.051 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:04.051 INFO  [8727] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:04.051 DEBUG [8727] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:04.051 INFO  [8727] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 765; data = POST /api/user HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+Content-Length: 12
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+Content-Type: application/json
+sec-ch-ua-mobile: ?0
+Authorization: 11
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Origin: http://localhost:8081
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://localhost:8081/profile_page/profile.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+{"token":11}
+2024-06-28 12:19:04.051 INFO  [8727] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 6; http request type = POST; http body = {"token":11}
+2024-06-28 12:19:04.051 WARN  [8727] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] Tmp logic for the POST request
+2024-06-28 12:19:04.051 DEBUG [8727] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:04.051 INFO  [8728] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] Socket = ip = 127.0.0.1; port = 37151; fd = 6; uri = /api/user json content = {"token":11}
+2024-06-28 12:19:04.052 INFO  [8728] [bukhtalog::Logger::log@139] [DBQuery][get_user_info_by_id] Current request: SELECT * FROM user_details_view WHERE id = '11'
+2024-06-28 12:19:04.052 INFO  [8724] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 12bytes_read = 0; data = 
+2024-06-28 12:19:04.052 INFO  [8724] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 12
+2024-06-28 12:19:04.052 INFO  [8724] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 12
+2024-06-28 12:19:04.055 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:04.055 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:04.055 INFO  [8729] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:04.055 DEBUG [8729] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:04.055 INFO  [8729] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 718; data = GET /src/logo.svg HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: http://localhost:8081/profile_page/profile.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:04.055 INFO  [8729] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 7; http request type = GET; http body = 
+2024-06-28 12:19:04.055 VERB  [8729] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /src/logo.svg
+2024-06-28 12:19:04.055 DEBUG [8729] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:04.055 INFO  [8730] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /src/logo.svg; socket = ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:04.055 DEBUG [8730] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: image/svg+xml
+; file_path = ./frontend_web/src/logo.svg
+2024-06-28 12:19:04.055 DEBUG [8730] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/src/logo.svg happened successfull. Was sent 3101 bytes.
+2024-06-28 12:19:04.055 INFO  [8731] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /src/logo.svg
+2024-06-28 12:19:04.056 INFO  [8729] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 0; data = 
+2024-06-28 12:19:04.056 INFO  [8729] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:04.056 INFO  [8729] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:04.067 INFO  [8728] [bukhtalog::Logger::log@139] [DBQuery][get_last_booked_doctor] Current request: SELECT * FROM booked_doctor_view WHERE user_id = 11 ORDER BY booked_time DESC LIMIT 1;
+2024-06-28 12:19:04.069 INFO  [8728] [bukhtalog::Logger::log@139] [DBQuery][get_last_analyse_appointment] Current request: SELECT * FROM analyse_appointments_view WHERE user_id = 11 ORDER BY appointment_id DESC LIMIT 1;
+2024-06-28 12:19:04.071 INFO  [8728] [bukhtalog::Logger::log@139] [DBQuery][get_last_appointment] Current request: SELECT * FROM doctor_appointment_view WHERE user_id = 11 ORDER BY appointment_time DESC LIMIT 1;
+2024-06-28 12:19:04.071 INFO  [8728] [bukhtalog::Logger::log@139] [DBQuery][get_last_descriptioned_drug] Current request: SELECT * FROM descriptioned_drugs_view WHERE user_id = 11 ORDER BY appointment_id DESC LIMIT 1;
+2024-06-28 12:19:04.073 DEBUG [8728] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] Send http response : HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 1814
+Connection: close
+
+{
+	"email" : "olga.olgina11@example.com",
+	"last_analyse_appointment_info" : 
+	{
+		"analyse_name" : "\u0410\u043d\u0430\u043b\u0456\u0437 \u043a\u0440\u043e\u0432\u0456",
+		"appointment_id" : 41,
+		"doc_middle_name" : "\u041f\u0435\u0442\u0440\u043e\u0432\u0438\u0447",
+		"doc_name" : "\u041f\u0435\u0442\u0440\u043e",
+		"doc_surname" : "\u041f\u0435\u0442\u0440\u043e\u0432",
+		"is_completed" : true,
+		"user_id" : 11
+	},
+	"last_appointment_info" : 
+	{
+		"appointment_id" : 41,
+		"appointment_time" : 1704268800,
+		"book_id" : 41,
+		"complaint" : "\u0421\u0435\u0440\u0446\u0435\u0432\u0430 \u043d\u0435\u0434\u043e\u0441\u0442\u0430\u0442\u043d\u0456\u0441\u0442\u044c",
+		"doc_middle_name" : "\u041f\u0435\u0442\u0440\u043e\u0432\u0438\u0447",
+		"doc_name" : "\u041f\u0435\u0442\u0440\u043e",
+		"doc_surname" : "\u041f\u0435\u0442\u0440\u043e\u0432",
+		"user_id" : 11
+	},
+	"last_descriptioned_drug_info" : 
+	{
+		"appointment_id" : 41,
+		"doc_middle_name" : "\u041f\u0435\u0442\u0440\u043e\u0432\u0438\u0447",
+		"doc_name" : "\u041f\u0435\u0442\u0440\u043e",
+		"doc_surname" : "\u041f\u0435\u0442\u0440\u043e\u0432",
+		"drug_name" : "\u041f\u0430\u0440\u0430\u0446\u0435\u0442\u0430\u043c\u043e\u043b",
+		"user_id" : 11
+	},
+	"latest_booked_doctor" : 
+	{
+		"book_id" : 53,
+		"booked_time" : 1705745127,
+		"doc_middle_name" : "\u0414\u043c\u0438\u0442\u0440\u043e\u0432\u0438\u0447",
+		"doc_name" : "\u0414\u043c\u0438\u0442\u0440\u043e",
+		"doc_surname" : "\u0414\u043c\u0438\u0442\u0440\u0456\u0454\u0432",
+		"is_compited" : true,
+		"user_id" : 11
+	},
+	"middle_name" : "\u041e\u043b\u044c\u0433\u0456\u0432\u043d\u0430",
+	"name" : "\u041e\u043b\u044c\u0433\u0430",
+	"phone_numbers" : 
+	[
+		"+380931234567"
+	],
+	"role" : "patient",
+	"surname" : "\u041e\u043b\u044c\u0433\u0456\u0432\u043d\u0430",
+	"token" : 11
+}
+
+2024-06-28 12:19:04.075 INFO  [8727] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 0; data = 
+2024-06-28 12:19:04.075 INFO  [8727] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:04.075 INFO  [8727] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:05.564 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:05.564 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:05.564 INFO  [8733] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:05.564 DEBUG [8733] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:05.685 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:05.685 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:05.685 INFO  [8734] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:05.685 DEBUG [8734] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:05.693 INFO  [8733] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 8bytes_read = 859; data = GET /profile_page/booked_doctors/ HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Referer: http://localhost:8081/profile_page/profile.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:05.693 INFO  [8733] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 8; http request type = GET; http body = 
+2024-06-28 12:19:05.693 VERB  [8733] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /profile_page/booked_doctors/
+2024-06-28 12:19:05.693 DEBUG [8733] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:05.693 INFO  [8735] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /profile_page/booked_doctors/; socket = ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:05.693 DEBUG [8735] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: text/html
+; file_path = ./frontend_web/profile_page/booked_doctors/index.html
+2024-06-28 12:19:05.693 DEBUG [8735] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/profile_page/booked_doctors/index.html happened successfull. Was sent 594 bytes.
+2024-06-28 12:19:05.693 INFO  [8736] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /profile_page/booked_doctors/
+2024-06-28 12:19:05.694 INFO  [8733] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 8bytes_read = 0; data = 
+2024-06-28 12:19:05.694 INFO  [8733] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:05.694 INFO  [8733] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:05.739 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:05.739 INFO  [8734] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 679; data = GET /bars/top_bar.css HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: text/css,*/*;q=0.1
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: style
+Referer: http://localhost:8081/profile_page/booked_doctors/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:05.739 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:05.739 INFO  [8737] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:05.739 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:05.740 DEBUG [8737] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:05.739 INFO  [8734] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 6; http request type = GET; http body = 
+2024-06-28 12:19:05.740 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:05.740 VERB  [8734] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /bars/top_bar.css
+2024-06-28 12:19:05.740 INFO  [8738] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:05.740 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:05.740 DEBUG [8734] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:05.740 INFO  [8739] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /bars/top_bar.css; socket = ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:05.740 DEBUG [8738] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:05.740 DEBUG [8739] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: text/css
+; file_path = ./frontend_web/bars/top_bar.css
+2024-06-28 12:19:05.740 INFO  [8737] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 700; data = GET /profile_page/booked_doctors/style.css HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: text/css,*/*;q=0.1
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: style
+Referer: http://localhost:8081/profile_page/booked_doctors/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:05.740 INFO  [8738] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 8bytes_read = 667; data = GET /scripts/include.js HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: script
+Referer: http://localhost:8081/profile_page/booked_doctors/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:05.740 DEBUG [8739] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/bars/top_bar.css happened successfull. Was sent 741 bytes.
+2024-06-28 12:19:05.740 INFO  [8738] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 8; http request type = GET; http body = 
+2024-06-28 12:19:05.740 INFO  [8737] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 7; http request type = GET; http body = 
+2024-06-28 12:19:05.740 VERB  [8738] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /scripts/include.js
+2024-06-28 12:19:05.740 VERB  [8737] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /profile_page/booked_doctors/style.css
+2024-06-28 12:19:05.740 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:05.740 INFO  [8740] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:05.740 DEBUG [8740] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:05.740 DEBUG [8738] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:05.740 INFO  [8741] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /bars/top_bar.css
+2024-06-28 12:19:05.740 INFO  [8742] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /scripts/include.js; socket = ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:05.740 INFO  [8743] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /profile_page/booked_doctors/style.css; socket = ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:05.740 DEBUG [8737] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:05.740 INFO  [8740] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 9bytes_read = 674; data = GET /scripts/booked_doctors.js HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: script
+Referer: http://localhost:8081/profile_page/booked_doctors/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:05.740 DEBUG [8742] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: application/octet-stream
+; file_path = ./frontend_web/scripts/include.js
+2024-06-28 12:19:05.740 DEBUG [8743] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: text/css
+; file_path = ./frontend_web/profile_page/booked_doctors/style.css
+2024-06-28 12:19:05.740 INFO  [8740] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 9; http request type = GET; http body = 
+2024-06-28 12:19:05.740 VERB  [8740] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /scripts/booked_doctors.js
+2024-06-28 12:19:05.740 DEBUG [8742] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/scripts/include.js happened successfull. Was sent 580 bytes.
+2024-06-28 12:19:05.740 DEBUG [8743] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/profile_page/booked_doctors/style.css happened successfull. Was sent 458 bytes.
+2024-06-28 12:19:05.740 DEBUG [8740] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:05.740 INFO  [8745] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /scripts/include.js
+2024-06-28 12:19:05.740 INFO  [8744] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /scripts/booked_doctors.js; socket = ip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:05.740 DEBUG [8744] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: application/octet-stream
+; file_path = ./frontend_web/scripts/booked_doctors.js
+2024-06-28 12:19:05.740 DEBUG [8744] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/scripts/booked_doctors.js happened successfull. Was sent 2563 bytes.
+2024-06-28 12:19:05.740 INFO  [8746] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /scripts/booked_doctors.js
+2024-06-28 12:19:05.740 INFO  [8747] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /profile_page/booked_doctors/style.css
+2024-06-28 12:19:05.741 INFO  [8734] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 0; data = 
+2024-06-28 12:19:05.741 INFO  [8734] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:05.741 INFO  [8734] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:05.742 INFO  [8738] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 8bytes_read = 0; data = 
+2024-06-28 12:19:05.743 INFO  [8738] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:05.743 INFO  [8738] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:19:05.743 INFO  [8737] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 0; data = 
+2024-06-28 12:19:05.743 INFO  [8737] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:05.743 INFO  [8737] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:05.744 INFO  [8740] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 9bytes_read = 0; data = 
+2024-06-28 12:19:05.744 INFO  [8740] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:05.744 INFO  [8740] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 9
+2024-06-28 12:19:05.746 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 10
+2024-06-28 12:19:05.746 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:05.746 INFO  [8748] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 10
+2024-06-28 12:19:05.746 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:05.746 DEBUG [8748] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 10
+2024-06-28 12:19:05.746 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:05.746 INFO  [8748] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 10bytes_read = 662; data = GET /bars/top_bar.html HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://localhost:8081/profile_page/booked_doctors/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:05.746 INFO  [8749] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:05.746 DEBUG [8749] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:05.746 INFO  [8749] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 778; data = POST /api/booked_doctors HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+Content-Length: 12
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+Content-Type: application/json
+sec-ch-ua-mobile: ?0
+Authorization: 11
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Origin: http://localhost:8081
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://localhost:8081/profile_page/booked_doctors/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+{"token":11}
+2024-06-28 12:19:05.746 INFO  [8748] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 10; http request type = GET; http body = 
+2024-06-28 12:19:05.746 VERB  [8748] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /bars/top_bar.html
+2024-06-28 12:19:05.746 INFO  [8749] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 6; http request type = POST; http body = {"token":11}
+2024-06-28 12:19:05.746 WARN  [8749] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] Tmp logic for the POST request
+2024-06-28 12:19:05.746 DEBUG [8748] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 10
+2024-06-28 12:19:05.746 DEBUG [8749] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:05.746 INFO  [8750] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /bars/top_bar.html; socket = ip = 127.0.0.1; port = 37151; fd = 10
+2024-06-28 12:19:05.746 INFO  [8751] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] Socket = ip = 127.0.0.1; port = 37151; fd = 6; uri = /api/booked_doctors json content = {"token":11}
+2024-06-28 12:19:05.746 DEBUG [8750] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: text/html
+; file_path = ./frontend_web/bars/top_bar.html
+2024-06-28 12:19:05.746 DEBUG [8750] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/bars/top_bar.html happened successfull. Was sent 877 bytes.
+2024-06-28 12:19:05.746 INFO  [8752] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /bars/top_bar.html
+2024-06-28 12:19:05.747 INFO  [8751] [bukhtalog::Logger::log@139] [DBQuery][get_booked_doctors] Current request: SELECT * FROM booked_doctor_view WHERE user_id = 11
+2024-06-28 12:19:05.748 INFO  [8748] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 10bytes_read = 0; data = 
+2024-06-28 12:19:05.748 INFO  [8748] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 10
+2024-06-28 12:19:05.748 DEBUG [8751] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] Send http response : HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 1528
+Connection: close
+
+{
+	"bookedDoctorsList" : 
+	[
+		{
+			"book_id" : 52,
+			"booked_time" : 1705733953,
+			"doc_middle_name" : "\u0410\u043d\u0434\u0440\u0456\u0439\u043e\u0432\u0438\u0447",
+			"doc_name" : "\u0410\u043d\u0434\u0440\u0456\u0439",
+			"doc_surname" : "\u0410\u043d\u0434\u0440\u0435\u0454\u0432",
+			"is_compited" : true,
+			"user_id" : 11
+		},
+		{
+			"book_id" : 51,
+			"booked_time" : 1705731884,
+			"doc_middle_name" : "\u0410\u043d\u0434\u0440\u0456\u0439\u043e\u0432\u0438\u0447",
+			"doc_name" : "\u0410\u043d\u0434\u0440\u0456\u0439",
+			"doc_surname" : "\u0410\u043d\u0434\u0440\u0435\u0454\u0432",
+			"is_compited" : true,
+			"user_id" : 11
+		},
+		{
+			"book_id" : 53,
+			"booked_time" : 1705745127,
+			"doc_middle_name" : "\u0414\u043c\u0438\u0442\u0440\u043e\u0432\u0438\u0447",
+			"doc_name" : "\u0414\u043c\u0438\u0442\u0440\u043e",
+			"doc_surname" : "\u0414\u043c\u0438\u0442\u0440\u0456\u0454\u0432",
+			"is_compited" : true,
+			"user_id" : 11
+		},
+		{
+			"book_id" : 1,
+			"booked_time" : 1704196962,
+			"doc_middle_name" : "\u0406\u0432\u0430\u043d\u043e\u0432\u0438\u0447",
+			"doc_name" : "\u0406\u0432\u0430\u043d",
+			"doc_surname" : "\u0406\u0432\u0430\u043d\u043e\u0432",
+			"is_compited" : true,
+			"user_id" : 11
+		},
+		{
+			"book_id" : 41,
+			"booked_time" : 1704196962,
+			"doc_middle_name" : "\u041f\u0435\u0442\u0440\u043e\u0432\u0438\u0447",
+			"doc_name" : "\u041f\u0435\u0442\u0440\u043e",
+			"doc_surname" : "\u041f\u0435\u0442\u0440\u043e\u0432",
+			"is_compited" : true,
+			"user_id" : 11
+		}
+	]
+}
+
+2024-06-28 12:19:05.748 INFO  [8748] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 10
+2024-06-28 12:19:05.751 INFO  [8749] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 0; data = 
+2024-06-28 12:19:05.751 INFO  [8749] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:05.751 INFO  [8749] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:19:05.759 INFO  [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:05.760 DEBUG [8641] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:19:05.760 INFO  [8753] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:05.760 DEBUG [8753] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:05.760 INFO  [8753] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 721; data = GET /src/logo.svg HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Dest: image
+Referer: http://localhost:8081/profile_page/booked_doctors/
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:19:05.760 INFO  [8753] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 7; http request type = GET; http body = 
+2024-06-28 12:19:05.760 VERB  [8753] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /src/logo.svg
+2024-06-28 12:19:05.760 DEBUG [8753] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:05.760 INFO  [8754] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /src/logo.svg; socket = ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:05.760 DEBUG [8754] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: image/svg+xml
+; file_path = ./frontend_web/src/logo.svg
+2024-06-28 12:19:05.760 DEBUG [8754] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/src/logo.svg happened successfull. Was sent 3101 bytes.
+2024-06-28 12:19:05.760 INFO  [8755] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /src/logo.svg
+2024-06-28 12:19:05.761 INFO  [8753] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 0; data = 
+2024-06-28 12:19:05.761 INFO  [8753] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:19:05.761 INFO  [8753] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 7

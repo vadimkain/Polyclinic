@@ -1,0 +1,11 @@
+﻿2024-06-24 16:27:03.695 INFO  [10431] [bukhtalog::Logger::log@139] [ContextHandlerController][ContextHandlerController] Constructor called
+2024-06-24 16:27:03.696 INFO  [10431] [bukhtalog::Logger::log@139] [ServerStarterController][ServerStarterController] constructor called on thread #140549835344192
+2024-06-24 16:27:03.696 INFO  [10431] [bukhtalog::Logger::log@139] [ClientHandlerController][ClientHandlerController] constructor called on thread #140549835344192
+2024-06-24 16:27:03.696 INFO  [10431] [bukhtalog::Logger::log@139] [DBQuery][DBQuery] constructor called on thread #140549835344192
+2024-06-24 16:27:03.696 INFO  [10431] [bukhtalog::Logger::log@139] [DBQuery][DBQuery] Make connection to db. host=127.0.0.1 port=5432 user=mbukhta password=1qa@WS3ed dbname=polyclinic
+2024-06-24 16:27:03.705 DEBUG [10431] [bukhtalog::Logger::log@139] [DBQuery][DBQuery] Connection success
+2024-06-24 16:27:03.706 INFO  [10433] [bukhtalog::Logger::log@139] [ServerStarterController][start] called
+2024-06-24 16:27:03.706 INFO  [10433] [bukhtalog::Logger::log@139] [ServerStarterController][run_server] called
+2024-06-24 16:27:03.706 INFO  [10434] [bukhtalog::Logger::log@139] [ClientHandlerController][start] called
+2024-06-24 16:27:03.706 INFO  [10434] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] called
+2024-06-24 16:27:03.706 DEBUG [10434] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection

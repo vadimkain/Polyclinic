@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Медицинский Сайт</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="bars/top_bar.css">
+</head>
+<body>
+    <header class="header" w3-include-html="bars/top_bar.html"></header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>WE VALUE YOUR</h1>
+                <h2>FAMILY'S HEALTH & <br> YOUR TIME.</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and <br> typesetting industry. Lorem Ipsum has been the industry's <br> standard dummy text.</p>
+            </div>
+            <div class="hero-image">
+                <img src="src/successful-medical-team.png" alt="Medical Team">
+            </div>
+        </section>        
+        
+        <section class="appointment-form">
+            <div class="appointment-title">
+                <h2>BOOK YOUR APPOINTMENT</h2>
+            </div>
+            <form>
+                <div class="form-row">
+                    <input type="text" placeholder="Full Name" value="Jennie Wilkerson">
+                    <input type="email" placeholder="Email" value="jenniewilkerson@info.com">
+                    <input type="text" placeholder="Phone Number" value="+41 678-678-456">
+                    <input type="text" placeholder="Requested Service" value="Dental Surgery">
+                </div>
+                <div class="form-row">
+                    <select>
+                        <option>Select Doctor</option>
+                        <option>Doctor A</option>
+                        <option>Doctor B</option>
+                        <option>Doctor C</option>
+                    </select>
+                    <input type="date">
+                    <input type="time">
+                </div>
+                <button type="submit">Book Now</button>
+            </form>
+        </section>
+    </main>
+
+    <div class="chat-widget">
+        <div class="chat-header">
+            <img src="src/young-asian-woman.png" alt="Profile" class="profile-image">
+            <span>Monster Bot</span>
+        </div>
+        <div class="chat-body">
+            <p>Здравствуйте! Обращайтесь к нам, если у вас возникли вопросы.</p>
+        </div>
+        <div class="chat-footer">
+            <button class="chat-button">Написать сейчас</button>
+        </div>
+    </div>
+
+    <script src="scripts/include.js"></script>
+</body>
+</html>

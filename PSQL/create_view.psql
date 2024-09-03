@@ -188,7 +188,7 @@ DROP VIEW analyse_appointments_view
 
 SELECT * FROM max_diseases_per_doctor;
 SELECT * FROM doctor_visit_trend;
-SELECT * FROM user_details_view WHERE id = 11;
+SELECT * FROM user_details_view ORDER BY id;
 SELECT * FROM booked_doctor_view ORDER BY user_id;
 SELECT * FROM doctor_appointment_view;
 SELECT * FROM descriptioned_drugs_view;

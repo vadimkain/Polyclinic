@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/jsontestrunner_exe.dir/main.cpp.o -o jsontestrunner_exe  -Wl,-rpath,/home/mbukhta/Documents/Polyclinic/build/common/jsoncpp/src/lib_json ../lib_json/libjsoncpp.so.1.9.5 

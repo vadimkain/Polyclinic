@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="/bars/top_bar.css">
+</head>
+<body>
+    <header class="header" w3-include-html="/bars/top_bar.html"></header>
+    <div class="container">
+        <div class="profile-header">
+            <img src="/src/default_avatar.jpg" alt="User Avatar" class="avatar">
+            <h1 id="profileNameHeader">Profile</h1>
+            <h2 id="profileEmailHeader">Welcome, [User's Email]</h2>
+            <button id="logoutButton" class="btn-logout" onclick="logout()">Logout</button>
+        </div>
+        <div class="profile-content">
+            <div class="personal-info">
+                <h3>Personal Information</h3>
+                <p><strong>Name:</strong> <span id="profileName"></span></p>
+                <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+                <p><strong>Phone:</strong> <span id="profilePhoneNumbers"></span></p>
+            </div>
+            <div class="medical-info">
+                <h3>Medical Card</h3>
+                <p><strong>Allergens:</strong> <span id="latestAllergen"></span> <a href="allergens/" class="more-link">More...</a></p>
+                <h4>Booked Doctors</h4>
+                <ul>
+                    <li id="latestBookedDoctor">Doctor: [Doctor's Name], Appointment: latest... <a href="booked_doctors/" class="more-link">More...</a></li>
+                </ul>
+                <h4>Doctor Appointments</h4>
+                <ul>
+                    <li id="latestDoctorAppointment">Complaint: latest..., Date: latest... <a href="appointments/" class="more-link">More...</a></li>
+                </ul>
+                <h4>Prescription Drugs</h4>
+                <ul>
+                    <li id="latestPrescriptionDrug">Drug: latest..., Description: latest... <a href=prescription_drugs/" class="more-link">More...</a></li>
+                </ul>
+                <h4>Analyse Appointments</h4>
+                <ul>
+                    <li id="latestAnalyseAppointment">Analyse: latest..., Status: latest... <a href="analyses/" class="more-link">More...</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="/scripts/include.js"></script>
+    <script src="/scripts/profile.js"></script>
+    <script src="/scripts/auth.js"></script>
+</body>
+</html>

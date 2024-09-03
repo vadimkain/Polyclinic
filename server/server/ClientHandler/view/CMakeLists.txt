@@ -8,6 +8,7 @@ file(GLOB LIB_SRC "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 
 add_library(
     ${PROJECT_NAME}
+    STATIC
     ${LIB_SRC}
 )
 

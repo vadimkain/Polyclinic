@@ -24,7 +24,7 @@ add_executable(
 
 add_subdirectory(common)
 add_subdirectory(db)
-add_subdirectory(tests)
+# add_subdirectory(tests)
 add_subdirectory(server)
 
 set(

@@ -367,18 +367,12 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-
-
-
-
-
-
 SELECT * FROM get_patients_by_doctor_and_date(8, '2024-05-10');
 SELECT * FROM get_top_doctors_last_month();
 SELECT * FROM get_patients_with_heart_disease_drugs();
 SELECT * FROM get_patient_count_per_doctor_last_month();
 SELECT * FROM get_medications_and_tests_for_patient(5);
-SELECT * FROM check_user_login('ivan.ivanov1@example.com', '123456')
+SELECT * FROM check_user_login('ivan.ivanov1@example.com', '123456');
 SELECT * FROM get_last_appointments_by_surname('Павлов');
 SELECT * FROM get_clinic_statistics('2024-01-01', '2024-12-31');
 

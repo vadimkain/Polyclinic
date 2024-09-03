@@ -189,8 +189,8 @@ void ClientHandlerController::handle_json_post(common::Socket socket, std::strin
         BLOG_ERROR("Impossible to read json data: ", err);
         return;
     }
-
-    if (uri == "/api/login") {
+    try {
+        if (uri == "/api/login") {
         BLOG_DEBUG("email = ", json_data["email"].asString(), "; password = ", json_data["password"].asString());
 
         auto login_res = m_db_query->check_signin_is_valid(json_data["email"].asString(), json_data["password"].asString());
@@ -323,6 +323,10 @@ void ClientHandlerController::handle_json_post(common::Socket socket, std::strin
     } else {
         BLOG_WARNING("uri = ", uri, "; is not handled!");
     }
+    } catch(...) {
+        BLOG_ERROR("ПОШЁЛ НАХЕР, ПИДОРАС");
+    }
+    
 
     request << http_header.extension_to_content_type("json");
     auto json_response_str = std::move(json_response.toStyledString());

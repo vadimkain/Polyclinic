@@ -1,0 +1,12 @@
+﻿2024-06-28 12:16:01.073 INFO  [7986] [bukhtalog::Logger::log@139] [ServerStarterController][ServerStarterController] constructor called on thread #140044358859072
+2024-06-28 12:16:01.073 INFO  [7986] [bukhtalog::Logger::log@139] [ClientHandlerController][ClientHandlerController] constructor called on thread #140044358859072
+2024-06-28 12:16:01.073 INFO  [7986] [bukhtalog::Logger::log@139] [DBQuery][DBQuery] constructor called on thread #140044358859072
+2024-06-28 12:16:01.074 INFO  [7986] [bukhtalog::Logger::log@139] [DBQuery][DBQuery] Make connection to db. host=127.0.0.1 port=5432 user=mbukhta password=1qa@WS3ed dbname=polyclinic
+2024-06-28 12:16:01.083 DEBUG [7986] [bukhtalog::Logger::log@139] [DBQuery][DBQuery] Connection success
+2024-06-28 12:16:01.083 INFO  [7986] [bukhtalog::Logger::log@139] [ContextHandlerController][ContextHandlerController] Constructor called
+2024-06-28 12:16:01.084 INFO  [7988] [bukhtalog::Logger::log@139] [ServerStarterController][start] called
+2024-06-28 12:16:01.084 INFO  [7988] [bukhtalog::Logger::log@139] [ServerStarterController][run_server] called
+2024-06-28 12:16:01.084 ERROR [7988] [bukhtalog::Logger::log@139] [ServerStarterController][run_server] impossible to bindAddress already in use
+2024-06-28 12:16:01.084 INFO  [7989] [bukhtalog::Logger::log@139] [ClientHandlerController][start] called
+2024-06-28 12:16:01.084 INFO  [7989] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] called
+2024-06-28 12:16:01.084 DEBUG [7989] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection

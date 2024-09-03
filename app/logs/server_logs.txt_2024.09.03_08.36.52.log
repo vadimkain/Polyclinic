@@ -1,0 +1,5 @@
+﻿2024-09-03 08:36:52.743 INFO  [1] [bukhtalog::Logger::log@139] [ContextHandlerController][ContextHandlerController] Constructor called
+2024-09-03 08:36:52.744 INFO  [1] [bukhtalog::Logger::log@139] [ServerStarterController][ServerStarterController] constructor called on thread #139660165294400
+2024-09-03 08:36:52.745 INFO  [1] [bukhtalog::Logger::log@139] [ClientHandlerController][ClientHandlerController] constructor called on thread #139660165294400
+2024-09-03 08:36:52.745 INFO  [1] [bukhtalog::Logger::log@139] [DBQuery][DBQuery] constructor called on thread #139660165294400
+2024-09-03 08:36:52.745 INFO  [1] [bukhtalog::Logger::log@139] [DBQuery][DBQuery] Make connection to db. host=polyclinic-db port=5432 user=mbukhta password=1qa@WS3ed dbname=polyclinic

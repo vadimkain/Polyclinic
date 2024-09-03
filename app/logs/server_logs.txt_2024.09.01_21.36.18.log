@@ -1,0 +1,277 @@
+﻿2024-09-01 21:36:18.184 INFO  [25351] [bukhtalog::Logger::log@139] [ContextHandlerController][ContextHandlerController] Constructor called
+2024-09-01 21:36:18.184 INFO  [25351] [bukhtalog::Logger::log@139] [ServerStarterController][ServerStarterController] constructor called on thread #140160933353792
+2024-09-01 21:36:18.184 INFO  [25351] [bukhtalog::Logger::log@139] [ClientHandlerController][ClientHandlerController] constructor called on thread #140160933353792
+2024-09-01 21:36:18.184 INFO  [25351] [bukhtalog::Logger::log@139] [DBQuery][DBQuery] constructor called on thread #140160933353792
+2024-09-01 21:36:18.184 INFO  [25351] [bukhtalog::Logger::log@139] [DBQuery][DBQuery] Make connection to db. host=127.0.0.1 port=5432 user=mbukhta password=1qa@WS3ed dbname=polyclinic
+2024-09-01 21:36:18.192 DEBUG [25351] [bukhtalog::Logger::log@139] [DBQuery][DBQuery] Connection success
+2024-09-01 21:36:18.192 INFO  [25353] [bukhtalog::Logger::log@139] [ServerStarterController][start] called
+2024-09-01 21:36:18.192 INFO  [25353] [bukhtalog::Logger::log@139] [ServerStarterController][run_server] called
+2024-09-01 21:36:18.192 INFO  [25354] [bukhtalog::Logger::log@139] [ClientHandlerController][start] called
+2024-09-01 21:36:18.192 INFO  [25354] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] called
+2024-09-01 21:36:18.192 DEBUG [25354] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-09-01 21:36:26.055 INFO  [25354] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:26.055 DEBUG [25354] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-09-01 21:36:26.055 INFO  [25356] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:26.055 DEBUG [25356] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:26.055 INFO  [25356] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 680; data = POST /api/login HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+Content-Length: 39
+sec-ch-ua: "Chromium";v="128", "Not;A=Brand";v="24", "Google Chrome";v="128"
+Content-Type: application/json
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Origin: http://localhost:8081
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://localhost:8081/profile_page/signin.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
+
+{"email":"test@test","password":"test"}
+2024-09-01 21:36:26.055 INFO  [25356] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 6; http request type = POST; http body = {"email":"test@test","password":"test"}
+2024-09-01 21:36:26.055 WARN  [25356] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] Tmp logic for the POST request
+2024-09-01 21:36:26.056 DEBUG [25356] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:26.056 INFO  [25357] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] Socket = ip = 127.0.0.1; port = 37151; fd = 6; uri = /api/login json content = {"email":"test@test","password":"test"}
+2024-09-01 21:36:26.056 DEBUG [25357] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] email = test@test; password = test
+2024-09-01 21:36:26.056 INFO  [25357] [bukhtalog::Logger::log@139] [DBQuery][check_signin_is_valid] Current request: SELECT * FROM check_user_login('test@test', 'test')
+2024-09-01 21:36:26.057 DEBUG [25357] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] Send http response : Content-Type: application/json
+Content-Length: 5
+Connection: close
+
+null
+
+2024-09-01 21:36:26.057 INFO  [25356] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 0; data = 
+2024-09-01 21:36:26.057 INFO  [25356] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:26.057 INFO  [25356] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:39.675 INFO  [25354] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-09-01 21:36:39.675 DEBUG [25354] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-09-01 21:36:39.675 INFO  [25359] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-09-01 21:36:39.675 DEBUG [25359] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-09-01 21:36:39.675 INFO  [25359] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 680; data = POST /api/login HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+Content-Length: 39
+sec-ch-ua: "Chromium";v="128", "Not;A=Brand";v="24", "Google Chrome";v="128"
+Content-Type: application/json
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Origin: http://localhost:8081
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://localhost:8081/profile_page/signin.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
+
+{"email":"test@test","password":"test"}
+2024-09-01 21:36:39.675 INFO  [25359] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 7; http request type = POST; http body = {"email":"test@test","password":"test"}
+2024-09-01 21:36:39.675 WARN  [25359] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] Tmp logic for the POST request
+2024-09-01 21:36:39.675 DEBUG [25359] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-09-01 21:36:39.675 INFO  [25360] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] Socket = ip = 127.0.0.1; port = 37151; fd = 7; uri = /api/login json content = {"email":"test@test","password":"test"}
+2024-09-01 21:36:39.675 DEBUG [25360] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] email = test@test; password = test
+2024-09-01 21:36:39.675 INFO  [25360] [bukhtalog::Logger::log@139] [DBQuery][check_signin_is_valid] Current request: SELECT * FROM check_user_login('test@test', 'test')
+2024-09-01 21:36:39.676 DEBUG [25360] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] Send http response : Content-Type: application/json
+Content-Length: 5
+Connection: close
+
+null
+
+2024-09-01 21:36:39.676 INFO  [25359] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 0; data = 
+2024-09-01 21:36:39.676 INFO  [25359] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 7
+2024-09-01 21:36:39.676 INFO  [25359] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-09-01 21:36:39.811 INFO  [25354] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:39.811 DEBUG [25354] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-09-01 21:36:39.812 INFO  [25361] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:39.812 DEBUG [25361] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:39.812 INFO  [25361] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 680; data = POST /api/login HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+Content-Length: 39
+sec-ch-ua: "Chromium";v="128", "Not;A=Brand";v="24", "Google Chrome";v="128"
+Content-Type: application/json
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Origin: http://localhost:8081
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://localhost:8081/profile_page/signin.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
+
+{"email":"test@test","password":"test"}
+2024-09-01 21:36:39.812 INFO  [25361] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 6; http request type = POST; http body = {"email":"test@test","password":"test"}
+2024-09-01 21:36:39.812 WARN  [25361] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] Tmp logic for the POST request
+2024-09-01 21:36:39.812 DEBUG [25361] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:39.812 INFO  [25362] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] Socket = ip = 127.0.0.1; port = 37151; fd = 6; uri = /api/login json content = {"email":"test@test","password":"test"}
+2024-09-01 21:36:39.812 DEBUG [25362] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] email = test@test; password = test
+2024-09-01 21:36:39.812 INFO  [25362] [bukhtalog::Logger::log@139] [DBQuery][check_signin_is_valid] Current request: SELECT * FROM check_user_login('test@test', 'test')
+2024-09-01 21:36:39.812 DEBUG [25362] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] Send http response : Content-Type: application/json
+Content-Length: 5
+Connection: close
+
+null
+
+2024-09-01 21:36:39.813 INFO  [25361] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 0; data = 
+2024-09-01 21:36:39.813 INFO  [25361] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:39.813 INFO  [25361] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:39.977 INFO  [25354] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-09-01 21:36:39.977 DEBUG [25354] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-09-01 21:36:39.977 INFO  [25363] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-09-01 21:36:39.977 DEBUG [25363] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-09-01 21:36:39.977 INFO  [25363] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 680; data = POST /api/login HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+Content-Length: 39
+sec-ch-ua: "Chromium";v="128", "Not;A=Brand";v="24", "Google Chrome";v="128"
+Content-Type: application/json
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Origin: http://localhost:8081
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://localhost:8081/profile_page/signin.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
+
+{"email":"test@test","password":"test"}
+2024-09-01 21:36:39.977 INFO  [25363] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 7; http request type = POST; http body = {"email":"test@test","password":"test"}
+2024-09-01 21:36:39.977 WARN  [25363] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] Tmp logic for the POST request
+2024-09-01 21:36:39.977 DEBUG [25363] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-09-01 21:36:39.977 INFO  [25364] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] Socket = ip = 127.0.0.1; port = 37151; fd = 7; uri = /api/login json content = {"email":"test@test","password":"test"}
+2024-09-01 21:36:39.977 DEBUG [25364] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] email = test@test; password = test
+2024-09-01 21:36:39.978 INFO  [25364] [bukhtalog::Logger::log@139] [DBQuery][check_signin_is_valid] Current request: SELECT * FROM check_user_login('test@test', 'test')
+2024-09-01 21:36:39.978 DEBUG [25364] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] Send http response : Content-Type: application/json
+Content-Length: 5
+Connection: close
+
+null
+
+2024-09-01 21:36:39.978 INFO  [25363] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 0; data = 
+2024-09-01 21:36:39.978 INFO  [25363] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 7
+2024-09-01 21:36:39.978 INFO  [25363] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-09-01 21:36:40.142 INFO  [25354] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:40.142 DEBUG [25354] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-09-01 21:36:40.142 INFO  [25365] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:40.142 DEBUG [25365] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:40.142 INFO  [25365] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 680; data = POST /api/login HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+Content-Length: 39
+sec-ch-ua: "Chromium";v="128", "Not;A=Brand";v="24", "Google Chrome";v="128"
+Content-Type: application/json
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Origin: http://localhost:8081
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://localhost:8081/profile_page/signin.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
+
+{"email":"test@test","password":"test"}
+2024-09-01 21:36:40.142 INFO  [25365] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 6; http request type = POST; http body = {"email":"test@test","password":"test"}
+2024-09-01 21:36:40.142 WARN  [25365] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] Tmp logic for the POST request
+2024-09-01 21:36:40.142 DEBUG [25365] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:40.142 INFO  [25366] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] Socket = ip = 127.0.0.1; port = 37151; fd = 6; uri = /api/login json content = {"email":"test@test","password":"test"}
+2024-09-01 21:36:40.142 DEBUG [25366] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] email = test@test; password = test
+2024-09-01 21:36:40.142 INFO  [25366] [bukhtalog::Logger::log@139] [DBQuery][check_signin_is_valid] Current request: SELECT * FROM check_user_login('test@test', 'test')
+2024-09-01 21:36:40.143 DEBUG [25366] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] Send http response : Content-Type: application/json
+Content-Length: 5
+Connection: close
+
+null
+
+2024-09-01 21:36:40.143 INFO  [25365] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 0; data = 
+2024-09-01 21:36:40.143 INFO  [25365] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:40.143 INFO  [25365] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:40.402 INFO  [25354] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-09-01 21:36:40.402 DEBUG [25354] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-09-01 21:36:40.402 INFO  [25367] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-09-01 21:36:40.402 DEBUG [25367] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-09-01 21:36:40.402 INFO  [25367] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 680; data = POST /api/login HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+Content-Length: 39
+sec-ch-ua: "Chromium";v="128", "Not;A=Brand";v="24", "Google Chrome";v="128"
+Content-Type: application/json
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Origin: http://localhost:8081
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://localhost:8081/profile_page/signin.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
+
+{"email":"test@test","password":"test"}
+2024-09-01 21:36:40.402 INFO  [25367] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 7; http request type = POST; http body = {"email":"test@test","password":"test"}
+2024-09-01 21:36:40.402 WARN  [25367] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] Tmp logic for the POST request
+2024-09-01 21:36:40.402 DEBUG [25367] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-09-01 21:36:40.402 INFO  [25368] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] Socket = ip = 127.0.0.1; port = 37151; fd = 7; uri = /api/login json content = {"email":"test@test","password":"test"}
+2024-09-01 21:36:40.402 DEBUG [25368] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] email = test@test; password = test
+2024-09-01 21:36:40.403 INFO  [25368] [bukhtalog::Logger::log@139] [DBQuery][check_signin_is_valid] Current request: SELECT * FROM check_user_login('test@test', 'test')
+2024-09-01 21:36:40.403 DEBUG [25368] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] Send http response : Content-Type: application/json
+Content-Length: 5
+Connection: close
+
+null
+
+2024-09-01 21:36:40.403 INFO  [25367] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 0; data = 
+2024-09-01 21:36:40.403 INFO  [25367] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 7
+2024-09-01 21:36:40.403 INFO  [25367] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-09-01 21:36:40.552 INFO  [25354] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:40.552 DEBUG [25354] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-09-01 21:36:40.552 INFO  [25369] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:40.552 DEBUG [25369] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:40.552 INFO  [25369] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 680; data = POST /api/login HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+Content-Length: 39
+sec-ch-ua: "Chromium";v="128", "Not;A=Brand";v="24", "Google Chrome";v="128"
+Content-Type: application/json
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36
+sec-ch-ua-platform: "Linux"
+Accept: */*
+Origin: http://localhost:8081
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://localhost:8081/profile_page/signin.html
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
+
+{"email":"test@test","password":"test"}
+2024-09-01 21:36:40.553 INFO  [25369] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 6; http request type = POST; http body = {"email":"test@test","password":"test"}
+2024-09-01 21:36:40.553 WARN  [25369] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] Tmp logic for the POST request
+2024-09-01 21:36:40.553 DEBUG [25369] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:40.553 INFO  [25370] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] Socket = ip = 127.0.0.1; port = 37151; fd = 6; uri = /api/login json content = {"email":"test@test","password":"test"}
+2024-09-01 21:36:40.553 DEBUG [25370] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] email = test@test; password = test
+2024-09-01 21:36:40.553 INFO  [25370] [bukhtalog::Logger::log@139] [DBQuery][check_signin_is_valid] Current request: SELECT * FROM check_user_login('test@test', 'test')
+2024-09-01 21:36:40.553 DEBUG [25370] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_json_post] Send http response : Content-Type: application/json
+Content-Length: 5
+Connection: close
+
+null
+
+2024-09-01 21:36:40.553 INFO  [25369] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 0; data = 
+2024-09-01 21:36:40.553 INFO  [25369] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 6
+2024-09-01 21:36:40.553 INFO  [25369] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 6

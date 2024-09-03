@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+
+  polyclinic-db:
+    build: database
+    container_name: polyclinic-db
+    environment:
+      POSTGRES_USER: mbukhta
+      POSTGRES_PASSWORD: 1qa@WS3ed
+      POSTGRES_DB: polyclinic
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  polyclinic:
+    build: .
+    container_name: polyclinic_server
+    volumes:
+      - .:/app
+    ports:
+      - "8081:8081"  # Порт вашего сервера
+    environment:
+      - DB_HOST=polyclinic-db
+      - DB_USERNAME=mbukhta
+      - DB_PASSWORD=1qa@WS3ed
+      - DB_NAME=polyclinic
+      - DB_PORT=5432
+      - SERVER_PORT=8081
+    depends_on:
+      - polyclinic-db
+
+volumes:
+  pgdata:

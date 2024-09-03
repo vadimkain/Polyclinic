@@ -11,6 +11,7 @@ set(
 
 add_library(
     ${PROJECT_NAME}
+    STATIC
     ${LIB_SRC}
 )
 

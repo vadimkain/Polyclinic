@@ -1,0 +1,213 @@
+﻿2024-06-28 12:15:31.485 INFO  [7589] [bukhtalog::Logger::log@139] [ServerStarterController][ServerStarterController] constructor called on thread #140719140514112
+2024-06-28 12:15:31.485 INFO  [7589] [bukhtalog::Logger::log@139] [ClientHandlerController][ClientHandlerController] constructor called on thread #140719140514112
+2024-06-28 12:15:31.485 INFO  [7589] [bukhtalog::Logger::log@139] [DBQuery][DBQuery] constructor called on thread #140719140514112
+2024-06-28 12:15:31.485 INFO  [7589] [bukhtalog::Logger::log@139] [DBQuery][DBQuery] Make connection to db. host=127.0.0.1 port=5432 user=mbukhta password=1qa@WS3ed dbname=polyclinic
+2024-06-28 12:15:31.499 DEBUG [7589] [bukhtalog::Logger::log@139] [DBQuery][DBQuery] Connection success
+2024-06-28 12:15:31.499 INFO  [7589] [bukhtalog::Logger::log@139] [ContextHandlerController][ContextHandlerController] Constructor called
+2024-06-28 12:15:31.499 INFO  [7591] [bukhtalog::Logger::log@139] [ServerStarterController][start] called
+2024-06-28 12:15:31.499 INFO  [7591] [bukhtalog::Logger::log@139] [ServerStarterController][run_server] called
+2024-06-28 12:15:31.500 INFO  [7592] [bukhtalog::Logger::log@139] [ClientHandlerController][start] called
+2024-06-28 12:15:31.500 INFO  [7592] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] called
+2024-06-28 12:15:31.500 DEBUG [7592] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:15:37.075 INFO  [7592] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:15:37.075 DEBUG [7592] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:15:37.075 INFO  [7592] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:15:37.075 INFO  [7677] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:15:37.075 DEBUG [7677] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:15:37.075 DEBUG [7592] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:15:37.075 INFO  [7678] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:15:37.076 DEBUG [7678] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:15:37.076 INFO  [7677] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 766; data = GET / HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:15:37.076 INFO  [7677] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 6; http request type = GET; http body = 
+2024-06-28 12:15:37.076 VERB  [7677] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /
+2024-06-28 12:15:37.077 DEBUG [7677] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:15:37.077 INFO  [7682] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /; socket = ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:15:37.077 DEBUG [7682] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: text/html
+; file_path = ./frontend_web/index.html
+2024-06-28 12:15:37.077 VERB  [7682] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_send_data] Socket = ip = 127.0.0.1; port = 37151; fd = 6; data = HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 2614
+Connection: close
+
+
+2024-06-28 12:15:37.077 DEBUG [7682] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/index.html happened successfull. Was sent 2614 bytes.
+2024-06-28 12:15:37.077 INFO  [7683] [bukhtalog::Logger::log@139] [ClientHandlerController][on_send_data] Socket = ip = 127.0.0.1; port = 37151; fd = 6; data = HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 2614
+Connection: close
+
+
+2024-06-28 12:15:37.077 INFO  [7684] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /
+2024-06-28 12:15:37.077 INFO  [7677] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = -1; data = 
+2024-06-28 12:15:37.077 ERROR [7677] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Error in reading data: Connection reset by peer
+2024-06-28 12:15:37.077 DEBUG [7677] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:15:37.077 INFO  [7677] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 0; data = 
+2024-06-28 12:15:37.077 INFO  [7677] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:15:37.077 INFO  [7677] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:15:38.098 INFO  [7592] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:15:38.098 DEBUG [7592] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:15:38.098 INFO  [7699] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:15:38.098 DEBUG [7699] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:15:38.099 INFO  [7678] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 792; data = GET / HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+Cache-Control: max-age=0
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:15:38.099 INFO  [7678] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 7; http request type = GET; http body = 
+2024-06-28 12:15:38.099 VERB  [7678] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /
+2024-06-28 12:15:38.099 DEBUG [7678] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:15:38.099 INFO  [7701] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /; socket = ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:15:38.099 DEBUG [7701] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: text/html
+; file_path = ./frontend_web/index.html
+2024-06-28 12:15:38.099 VERB  [7701] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_send_data] Socket = ip = 127.0.0.1; port = 37151; fd = 7; data = HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 2614
+Connection: close
+
+
+2024-06-28 12:15:38.099 INFO  [7702] [bukhtalog::Logger::log@139] [ClientHandlerController][on_send_data] Socket = ip = 127.0.0.1; port = 37151; fd = 7; data = HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 2614
+Connection: close
+
+
+2024-06-28 12:15:38.099 DEBUG [7701] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/index.html happened successfull. Was sent 2614 bytes.
+2024-06-28 12:15:38.099 INFO  [7703] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /
+2024-06-28 12:15:38.099 INFO  [7678] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = -1; data = 
+2024-06-28 12:15:38.099 ERROR [7678] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Error in reading data: Connection reset by peer
+2024-06-28 12:15:38.099 DEBUG [7678] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:15:38.099 INFO  [7678] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 7bytes_read = 0; data = 
+2024-06-28 12:15:38.099 INFO  [7678] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:15:38.099 INFO  [7678] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:15:38.839 INFO  [7592] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:15:38.839 DEBUG [7592] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:15:38.839 INFO  [7713] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:15:38.839 DEBUG [7713] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:15:38.842 INFO  [7699] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 8bytes_read = 798; data = GET / HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+Cache-Control: max-age=0
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:15:38.842 INFO  [7699] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 8; http request type = GET; http body = 
+2024-06-28 12:15:38.842 VERB  [7699] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /
+2024-06-28 12:15:38.842 DEBUG [7699] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:15:38.842 INFO  [7714] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /; socket = ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:15:38.842 DEBUG [7714] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: text/html
+; file_path = ./frontend_web/index.html
+2024-06-28 12:15:38.842 VERB  [7714] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_send_data] Socket = ip = 127.0.0.1; port = 37151; fd = 8; data = HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 2614
+Connection: close
+
+
+2024-06-28 12:15:38.842 INFO  [7715] [bukhtalog::Logger::log@139] [ClientHandlerController][on_send_data] Socket = ip = 127.0.0.1; port = 37151; fd = 8; data = HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 2614
+Connection: close
+
+
+2024-06-28 12:15:38.842 DEBUG [7714] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/index.html happened successfull. Was sent 2614 bytes.
+2024-06-28 12:15:38.842 INFO  [7716] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /
+2024-06-28 12:15:38.842 INFO  [7699] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 8bytes_read = -1; data = 
+2024-06-28 12:15:38.842 ERROR [7699] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Error in reading data: Connection reset by peer
+2024-06-28 12:15:38.842 DEBUG [7699] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:15:38.842 INFO  [7699] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 8bytes_read = 0; data = 
+2024-06-28 12:15:38.842 INFO  [7699] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:15:38.842 INFO  [7699] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 8
+2024-06-28 12:15:43.858 INFO  [7592] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_connect] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:15:43.858 DEBUG [7592] [bukhtalog::Logger::log@139] [ClientHandlerController][catch_new_connection] waiting for connection
+2024-06-28 12:15:43.858 INFO  [7725] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:15:43.858 DEBUG [7725] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 7
+2024-06-28 12:15:43.860 INFO  [7713] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 778; data = GET / HTTP/1.1
+Host: localhost:8081
+Connection: keep-alive
+Cache-Control: max-age=0
+sec-ch-ua: "Not/A)Brand";v="8", "Chromium";v="126", "Google Chrome";v="126"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Linux"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: ru,en;q=0.9,en-US;q=0.8,uk;q=0.7,uk-UA;q=0.6
+Cookie: SL_G_WPT_TO=en; SL_GWPT_Show_Hide_tmp=undefined; SL_wptGlobTipTmp=undefined
+
+
+2024-06-28 12:15:43.860 INFO  [7713] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_http_request] client: ip = 127.0.0.1; port = 37151; fd = 6; http request type = GET; http body = 
+2024-06-28 12:15:43.860 VERB  [7713] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_open_uri] uri = /
+2024-06-28 12:15:43.860 DEBUG [7713] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:15:43.860 INFO  [7729] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] uri = /; socket = ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:15:43.860 DEBUG [7729] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] request = HTTP/1.1 200 OK
+Content-Type: text/html
+; file_path = ./frontend_web/index.html
+2024-06-28 12:15:43.860 VERB  [7729] [bukhtalog::Logger::log@139] [ContextHandlerInterface][request_to_send_data] Socket = ip = 127.0.0.1; port = 37151; fd = 6; data = HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 2614
+Connection: close
+
+
+2024-06-28 12:15:43.861 DEBUG [7729] [bukhtalog::Logger::log@139] [ContextHandlerController][on_open_uri] Sent file: ./frontend_web/index.html happened successfull. Was sent 2614 bytes.
+2024-06-28 12:15:43.861 INFO  [7730] [bukhtalog::Logger::log@139] [ClientHandlerController][on_send_data] Socket = ip = 127.0.0.1; port = 37151; fd = 6; data = HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 2614
+Connection: close
+
+
+2024-06-28 12:15:43.861 INFO  [7731] [bukhtalog::Logger::log@139] [ClientHandlerController][on_page_updated] Page address = /
+2024-06-28 12:15:43.861 INFO  [7713] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = -1; data = 
+2024-06-28 12:15:43.861 ERROR [7713] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Error in reading data: Connection reset by peer
+2024-06-28 12:15:43.861 DEBUG [7713] [bukhtalog::Logger::log@139] [ClientHandlerController][read_data] Reading client: ip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:15:43.861 INFO  [7713] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] client: ip = 127.0.0.1; port = 37151; fd = 6bytes_read = 0; data = 
+2024-06-28 12:15:43.861 INFO  [7713] [bukhtalog::Logger::log@139] [ClientHandlerController][handle_read] Disconnect clientip = 127.0.0.1; port = 37151; fd = 6
+2024-06-28 12:15:43.861 INFO  [7713] [bukhtalog::Logger::log@139] [ClientHandlerController][disconnect] client: ip = 127.0.0.1; port = 37151; fd = 6
